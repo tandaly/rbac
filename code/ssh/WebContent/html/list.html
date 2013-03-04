@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=gb18030">
+		<meta name="save" content="history">
+		<title>列表页面</title>
+		<script language="javascript" src="./js/application.js"></script>
+	
+		<script type="text/javascript">
+			//app_initWebSkin();	
+		</script>
+			
+		<style type="text/css">
+			td.o_title2 {
+				background: url(./images/icos.png) -128px 0 repeat-y;
+				margin: 0;
+				padding: 0 0 0 12px;
+			}
+			
+			.smt_id_settopcontainer {
+				margin-left: -14px;
+			}
+			
+			.smt_container.smt_id_settopcontainer .smt_inner:after {
+				margin-left: 8px;
+			}
+			
+			u {
+				outline: medium none;
+			}
+			
+			.tbody {
+				overflow-x: hidden;
+				_overflow-y: visible;
+			}
+			
+			.talk {
+				display: block;
+				font-size: 12px;
+				font-weight: normal;
+				text-decoration: none;
+				clear: both;
+				border-left: none;
+				border-right: none; *
+				position: relative;
+				padding: 8px 0px 3px 9px;
+				border-bottom-width: 2px;
+				border-top: none;
+			}
+			
+			.talk b {
+				font-size: 14px
+			}
+			
+			.talk .one {
+				left: 0;
+			}
+			
+			.toarea .F,.toarea .M {
+				border-bottom-width: 1px;
+			}
+			
+			.toarea .bd {
+				border-bottom-width: 1px;
+				border-top: 0 none;
+				border-left: 0 none;
+				border-right: 0 none;
+			}
+			
+			.talk label {
+				cursor: pointer;
+			}
+			
+			.talk .cur_default {
+				text-decoration: none;
+			}
+			
+			.jumpmenusdjust {
+				_padding-top: 8px;
+			}
+			
+			input.s2bg {
+				border: 0;
+				padding: 0;
+				width: 16px;
+				height: 14px;
+				_vertical-align: middle;
+			}
+			
+			.rssbg {
+				width: 12px;
+				height: 14px;
+				padding: 0;
+				border-width: 0;
+			}
+			
+			.ico_rssObj {
+				margin: 2px 0 0 -15px;
+				position: absolute;
+			}
+			
+			table.i td.ab {
+				padding-top: 0;
+				padding-bottom: 2px;
+			}
+			
+			.importantmail {
+				position: relative;
+				margin-right: 5px;
+				padding: 0 5px 2px; *
+				padding: 2px 5px 0;
+				border-radius: 2px;
+				color: #fff;
+				font-weight: normal;
+			}
+			
+			.importantmail .arrow {
+				_display: none;
+				position: absolute;
+				right: -3px;
+				top: 50%;
+				margin-top: -3px;
+				border-width: 3px 0 3px 3px;
+				border-style: dashed dashed dashed solid;
+				border-color: transparent transparent transparent #e5e5e5;
+				width: 0;
+				height: 0;
+				font-size: 0;
+				line-height: 0;
+			}
+			
+			.F .importantmail {
+				background-color: #e5e5e5;
+				color: #666;
+			}
+			
+			.M .importantmail {
+				background-color: #e5e5e5;
+				color: #bbb;
+			}
+			
+			.M .importantmail .arrow {
+				border-left-color: #e5e5e5;
+			}
+
+		
+		</style>
+
+
+	</head>
+	<body class="tbody" id="list">
+		<div class="mailcontainer" id="qqmail_mailcontainer">
+
+			<div class="txt_title">
+				<div class="somail" id="somail">
+
+					<div id="gotnomail" class="normal"
+						style="position: absolute; top: 35px;"></div>
+				</div>
+				列表页面
+				<span id="_ut" class="f_size normal black"> (共 <span
+					id="_ut_c">4</span> 条记录<span id="_ua" style="display: ;">，其中
+						<span id="_ur" style="display: ;"><a href="javascript:;"
+							class="green">未读记录</a> <span id="_ur_c">3</span> 条</span>) </span>
+			</div>
+
+
+
+
+
+			<div class="toolbg toolbgline toolheight nowrap" style="">
+				<div class="right">
+					1/
+					<script>document.write(12 + 1);</script>
+					页 &nbsp;
+					<a href="javascript:;" id="prevpage" title="按 CTRL + ← 键上一页"
+						accesskey="n">上一页</a> &nbsp;
+					<a href="javascript:;" id="nextpage" title="按 CTRL + → 键下一页"
+						accesskey="n">下一页</a> &nbsp;
+					<a href="javascript:void(0)" id="maillistjump" name="maillistjump"
+						title="跳转到指定一页" _mljump_="1">跳转</a>
+
+				</div>
+				<div class="nowrap left" unselectable="on"
+					onselectstart="return false;">
+					<a class="btn_gray btn_space" hidefocus="" id="quick_del"
+						onClick="getTop().delMailML( '1', false, null, document);"
+						href="javascript:;" name="del">删除</a>
+					<a class="btn_gray btn_space" hidefocus="" id="quick_completelydel"
+						onClick="return getTop().checkPerDelML( '1', false, document)"
+						href="javascript:;">彻底删除</a>
+					<a class="btn_gray btn_space" hidefocus=""
+						onClick="return FwMailML();" href="javascript:;">新增</a>
+					<a id="btn_reportSpam" class="btn_gray btn_space" hidefocus=""
+						onClick="getTop().reportSpamML(true,window)" href="javascript:;">修改</a>
+
+				</div>
+			</div>
+			<table cellspacing="0" cellpadding="0"
+				style="table-layout: fixed; width: 100%; * width: auto;" class="O2">
+				<tbody>
+					<tr>
+						<td style="padding: 1px 0 1px 5px;" width="27">
+							<input type="checkbox"
+								onClick="getTop().hideSelectGroupTip();getTop().selectAll(this.checked,document);getTop().checkAll('mailid',document)"
+								title="选中/取消选中">
+						</td>
+						<td class="o_title2"
+							style="width: 6px; font-size: 1px; padding: 0;">
+							&nbsp;
+						</td>
+						<td style="width: 31px; padding: 0;">
+							<input type="button" class="ico_mailtitle" disabled="">
+						</td>
+						<td class="o_title2" style="width: 135px; * width: 134px;">
+							<a href="javascript:;" target="actionFrame"
+								onClick="submitSort('/cgi-bin/mail_list?sid=xF4a26qrRqiESGw9&amp;folderid=1&amp;page=0&amp;sorttype=5&amp;fun=&amp;s=&amp;searchmode=&amp;filetype=&amp;stype=&amp;topmails=',5,1)"
+								hidefocus="">发件人</a>
+						</td>
+						<td class="o_title2">
+							<a href="javascript:;" target="actionFrame"
+								onClick="submitSort('/cgi-bin/mail_list?sid=xF4a26qrRqiESGw9&amp;folderid=1&amp;page=0&amp;sorttype=7&amp;fun=&amp;s=&amp;searchmode=&amp;filetype=&amp;stype=&amp;topmails=',7,1)"
+								hidefocus="">主题</a>
+						</td>
+						<td class="o_title2" style="padding-left: 2px; width: 100px;">
+							<div style="margin-left: 10px;">
+								<a href="javascript:;" target="actionFrame"
+									onClick="submitSort('/cgi-bin/mail_list?sid=xF4a26qrRqiESGw9&amp;folderid=1&amp;page=0&amp;sorttype=6&amp;fun=&amp;s=&amp;searchmode=&amp;filetype=&amp;stype=&amp;topmails=',6,1)"
+									hidefocus="">时间↓</a>
+							</div>
+						</td>
+						<td style="width: 20px; font-size: 1px; padding-left: 2px">
+							&nbsp;
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+
+
+			<div id="selectAll" class="graytip_con" style="height: 50px;">
+				<div class="graytip">
+					<div un="unselect">
+						已勾选本页&nbsp;26&nbsp;条记录
+					</div>
+					<div un="selected" style="display: block;">
+						已勾选&nbsp;
+						<span start="25" end="307">25</span>&nbsp;条记录，
+						<a onClick="">取消勾选</a>
+					</div>
+				</div>
+			</div>
+
+			<div id="tips_bar">
+			</div>
+			<div class="bd talk">
+				<input type="checkbox" class="one" name="selectgroup"
+					onClick="getTop().CA(this)"
+					style="position: absolute; margin: 0 0 0 -33px"
+					id="topmails1361844862434322" keyword="topmails">
+				<a class="right pointer toolbg" title="设置未读记录"
+					style="width: 18px; height: 18px; overflow: hidden; text-align: center; background-image: none; border-radius: 2px;"
+					id="selectTopDayContainer"><em
+					style="float: left; _display: inline; width: 10px; height: 8px; vertical-align: middle; margin: 7px 4px 0; background: url(http://rescdn.qqmail.com/zh_CN/htmledition/images/icon_topmail109e9b.gif) top left no-repeat;"></em>
+				</a>
+
+				<a class="cur_default"> <label for="topmails1361844862434322"
+						hidefocus="">
+						<b>未读记录</b> (
+						<span class="newfd underline" title="选中组内该页所有邮件" hidefocus="">1
+							条</span>)
+					</label> </a>
+				<div class="sidetip" style="visibility: visible;"
+					name="selectgrouptip" keyword="topmails">
+					<span class="sidetip_content" un="select">已勾选<span
+						un="nowcnt">50</span>条记录，<a href="javascript:;"
+						onClick="getTop().selectGroupCheck(this,true);">勾选该组全部1736条邮件</a>
+					</span>
+					<span class="sidetip_content" style="display: none;" un="unselect">已勾选<span
+						un="totalcnt">1736</span>条记录，<a href="javascript:;"
+						onClick="getTop().selectGroupCheck(this,false);">取消勾选</a> </span>
+					<div class="arrow">
+						<div class="arrow_dk"></div>
+						<div class="arrow_lt"></div>
+					</div>
+				</div>
+			</div>
+			<div class="toarea">
+				<table cellspacing="0" class="i F">
+					<tbody>
+						<tr>
+							<td class="cx">
+								<input totime="1361533175000" type="checkbox" unread="true"
+									fn="健康水处理" fa="2628736493@qq.com" name="mailid"
+									value="ZC0022-2kC3cwJayyUCWX0sZWvrS32" colid="152777912"
+									adconv="0" ssystag="system:0|friend:0|important:0|" init="true">
+							</td>
+							<td class="ci">
+								<div class="ciz ">
+									&nbsp;
+								</div>
+								<div class="cir" title="">
+									&nbsp;
+								</div>
+								<div class="cij" title="附件">
+									&nbsp;
+								</div>
+							</td>
+
+
+							<td hitmailid=""
+								onClick="getTop().RD(event,'ZC0022-2kC3cwJayyUCWX0sZWvrS32',1,1,1,0,0,'','3175');"
+								class="l">
+								<table cellspacing="0" class="i bold">
+									<tbody>
+										<tr>
+											<td class="tl tf" title="2628736493@qq.com">
+												<nobr>
+													健康水处理&nbsp;
+												</nobr>
+											</td>
+											<td class="fg_n ">
+												<div></div>
+											</td>
+											<td class="gt">
+												<div class="tf no">
+													<u tabindex="0" class="black tt "> 《团团圆圆》</u><b class="no ">&nbsp;-&nbsp;新余市仙汝涞净水科技祝您2013年万事如意，生活幸福美满~&nbsp;&nbsp;&nbsp;&nbsp;
+														&nbsp;&nbsp;如果您无法查看贺卡，点击此处查看。&nbsp;月</b>&nbsp;
+												</div>
+												<div class="TagDiv">
+												</div>
+											</td>
+											<td class="dt">
+												<div>
+													2月22日
+												</div>
+											</td>
+											<td class="" title="标记星标">
+												<div></div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="bd"
+					style="height: 0px; overflow: hidden; margin: -1px 0 4px; border-width: 0 0 2px;">
+					&nbsp;
+				</div>
+
+			</div>
+			<div class="bd talk">
+				<input type="checkbox" class="one" name="selectgroup"
+					onClick="getTop().CA(this)"
+					style="position: absolute; margin: 0 0 0 -33px"
+					id="showtoday1361844862434986" keyword="showtoday">
+				<a class="cur_default"> <label for="showtoday1361844862434986"
+						hidefocus="">
+						<b>今天</b> (
+						<span class="newfd underline" title="选中组内该页所有邮件" hidefocus="">2
+							条</span>)
+					</label> </a>
+				<div class="sidetip" style="visibility: visible;"
+					name="selectgrouptip" keyword="showtoday">
+					<span class="sidetip_content" un="select">已勾选<span
+						un="nowcnt">50</span>条邮件，<a href="javascript:;"
+						onClick="getTop().selectGroupCheck(this,true);">勾选该组全部1736条邮件</a>
+					</span>
+					<span class="sidetip_content" style="display: none;" un="unselect">已勾选<span
+						un="totalcnt">1736</span>条邮件，<a href="javascript:;"
+						onClick="getTop().selectGroupCheck(this,false);">取消勾选</a> </span>
+					<div class="arrow">
+						<div class="arrow_dk"></div>
+						<div class="arrow_lt"></div>
+					</div>
+				</div>
+			</div>
+			<div class="toarea">
+				<table cellspacing="0" class="i F">
+					<tbody>
+						<tr>
+							<td class="cx">
+								<input totime="1361818308000" type="checkbox" unread="true"
+									fn="凡科网" fa="support@faisco.com" name="mailid"
+									value="C1T7A56F8F5" colid="1847599664" adconv="1"
+									ssystag="system:1|friend:0|important:0|" init="true">
+							</td>
+							<td class="ci">
+								<div class="ciz ">
+									&nbsp;
+								</div>
+								<div class="cir" title="">
+									&nbsp;
+								</div>
+								<div class="cij" title="附件">
+									&nbsp;
+								</div>
+							</td>
+
+
+							<td hitmailid=""
+								onClick="getTop().RD(event,'C1T7A56F8F5',1,3,1,0,0,'','8308');"
+								class="l">
+								<table cellspacing="0" class="i bold">
+									<tbody>
+										<tr>
+											<td class="tl tf" title="support@faisco.com">
+												<nobr>
+													世界网&nbsp;
+												</nobr>
+											</td>
+											<td class="fg_n ">
+												<div></div>
+											</td>
+											<td class="gt">
+												<div class="tf no">
+													<u tabindex="0" class="black tt ">通知<b class="no">(2)
+													</b> </u><b class="no ">&nbsp;-&nbsp;tandaly，您好：&nbsp;苏丹分离技术的路附近司法拘留所的飞机洛杉矶发生较大烦死了的飞机三等奖路附近是史丹利分级</b>&nbsp;
+												</div>
+												<div class="TagDiv">
+												</div>
+											</td>
+											<td class="dt">
+												<div>
+													今天 02:51
+												</div>
+											</td>
+											<td class="" title="标记星标">
+												<div></div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+
+
+				<table cellspacing="0" class="i F">
+					<tbody>
+						<tr>
+							<td class="cx">
+								<input totime="1361811576000" type="checkbox" unread="true"
+									fn="创业邦" fa="e-weekly@cyzone.cn" name="mailid"
+									value="C1TC7483059" colid="1847599664" adconv="1"
+									ssystag="system:1|friend:0|important:0|" init="true">
+							</td>
+							<td class="ci">
+								<div class="ciz ">
+									&nbsp;
+								</div>
+								<div class="cir" title="">
+									&nbsp;
+								</div>
+								<div class="cij" title="附件">
+									&nbsp;
+								</div>
+							</td>
+
+
+							<td hitmailid=""
+								onClick="getTop().RD(event,'C1TC7483059',1,3,1,0,0,'','1576');"
+								class="l">
+								<table cellspacing="0" class="i bold">
+									<tbody>
+										<tr>
+											<td class="tl tf" title="e-weekly@cyzone.cn">
+												<nobr>
+													创业邦&nbsp;
+												</nobr>
+											</td>
+											<td class="fg_n ">
+												<div></div>
+											</td>
+											<td class="gt">
+												<div class="tf no">
+													<u tabindex="0" class="black tt ">美国创业者怎样应对山寨？——第264期<b
+														class="no">(5) </b> </u><b class="no ">&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;首页&nbsp;行业资讯&nbsp;资本钱经&nbsp;创业学院&nbsp;编辑推荐&nbsp;创业吧&nbsp;创新中国&nbsp;往期回顾&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;美国创业者</b>&nbsp;
+												</div>
+												<div class="TagDiv">
+												</div>
+											</td>
+											<td class="dt">
+												<div>
+													今天 00:59
+												</div>
+											</td>
+											<td class="" title="标记星标">
+												<div></div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+
+
+			</div>
+			<div class="bd talk">
+				<input type="checkbox" class="one" name="selectgroup"
+					onClick="getTop().CA(this)"
+					style="position: absolute; margin: 0 0 0 -33px"
+					id="showyesterday1361844862435600" keyword="showyesterday">
+				<a class="cur_default"> <label
+						for="showyesterday1361844862435600" hidefocus="">
+						<b>昨天</b> (
+						<span class="newfd underline" title="选中组内该页所有邮件" hidefocus="">1
+							条</span>)
+					</label> </a>
+				<div class="sidetip" style="visibility: visible;"
+					name="selectgrouptip" keyword="showyesterday">
+					<span class="sidetip_content" un="select">已勾选<span
+						un="nowcnt">50</span>条邮件，<a href="javascript:;"
+						onClick="getTop().selectGroupCheck(this,true);">勾选该组全部1736条邮件</a>
+					</span>
+					<span class="sidetip_content" style="display: none;" un="unselect">已勾选<span
+						un="totalcnt">1736</span>条邮件，<a href="javascript:;"
+						onClick="getTop().selectGroupCheck(this,false);">取消勾选</a> </span>
+					<div class="arrow">
+						<div class="arrow_dk"></div>
+						<div class="arrow_lt"></div>
+					</div>
+				</div>
+			</div>
+			<div class="toarea">
+				<table cellspacing="0" class="i M">
+					<tbody>
+						<tr>
+							<td class="cx">
+								<input totime="1361721692000" type="checkbox" unread="false"
+									fn="SVN&nbsp;China中国源代码托管中心" fa="webmaster@svnchina.com"
+									name="mailid" value="ZC0125-Paf78oO6T6GLNxNCqCMeZ32"
+									colid="1847599664" adconv="0"
+									ssystag="system:0|friend:0|important:0|" init="true">
+							</td>
+							<td class="ci">
+								<div class="ciz ">
+									&nbsp;
+								</div>
+								<div class="cir" title="新窗口读信">
+									&nbsp;
+								</div>
+								<div class="cij" title="附件">
+									&nbsp;
+								</div>
+							</td>
+
+
+							<td hitmailid=""
+								onClick="getTop().RD(event,'ZC0125-Paf78oO6T6GLNxNCqCMeZ32',0,1,1,0,0,'','1692');"
+								class="l">
+								<table cellspacing="0" class="i">
+									<tbody>
+										<tr>
+											<td class="tl tf" title="webmaster@svnchina.com">
+												<nobr>
+													作者
+												</nobr>
+											</td>
+											<td class="fg_n ">
+												<div></div>
+											</td>
+											<td class="gt">
+												<div class="tf no">
+													<u tabindex="0" class="black tt ">记录标题</u><b class="no ">&nbsp;-&nbsp;&nbsp;记录内容。所得税的飞机螺丝钉解放</b>&nbsp;
+												</div>
+												<div class="TagDiv">
+												</div>
+											</td>
+											<td class="dt">
+												<div>
+													昨天 00:01
+												</div>
+											</td>
+											<td class="" title="标记星标">
+												<div></div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+
+			</div>
+			<div class="list_btline">
+				<div
+					style="height: 19px; * height: 24px; padding-top: 5px; * padding-top: 3px"
+					class="f_size selbar_bt barspace2">
+					<span class="addrtitle">选择：</span>&nbsp;
+					<a href="javascript:''"
+						onClick="getTop().selectAll(true,document);getTop().checkAll('mailid',document);return false;">全部</a>&nbsp;-&nbsp;
+					<a href="javascript:''"
+						onClick="getTop().selectAll(false,document);getTop().checkAll('mailid',document);return false;">无</a>&nbsp;-&nbsp;
+					<a href="javascript:''"
+						onClick="getTop().selectAll(false,document);getTop().selectReadMail('true',document);getTop().checkAll('mailid',document);return false;">已读</a>&nbsp;-&nbsp;
+					<a href="javascript:''"
+						onClick="getTop().selectAll(false,document);getTop().selectReadMail('false',document);getTop().checkAll('mailid',document);return false;">未读</a>
+				</div>
+			</div>
+
+			<div class="toolbg toolbgline toolheight nowrap" style="">
+				<div class="right">
+					1/
+					<script>document.write(12 + 1);</script>
+					页 &nbsp;
+					<a href="javascript:;" id="prevpage" title="按 CTRL + ← 键上一页"
+						accesskey="n">上一页</a> &nbsp;
+					<a href="javascript:;" id="nextpage" title="按 CTRL + → 键下一页"
+						accesskey="n">下一页</a> &nbsp;
+					<a href="javascript:void(0)" id="maillistjump" name="maillistjump"
+						title="跳转到指定一页" _mljump_="1">跳转</a>
+
+				</div>
+				<div class="nowrap left" unselectable="on"
+					onselectstart="return false;">
+					<a class="btn_gray btn_space" hidefocus="" id="quick_del"
+						onClick="getTop().delMailML( '1', false, null, document);"
+						href="javascript:;" name="del">删除</a>
+					<a class="btn_gray btn_space" hidefocus="" id="quick_completelydel"
+						onClick="return getTop().checkPerDelML( '1', false, document)"
+						href="javascript:;">彻底删除</a>
+					<a class="btn_gray btn_space" hidefocus=""
+						onClick="return FwMailML();" href="javascript:;">新增</a>
+					<a id="btn_reportSpam" class="btn_gray btn_space" hidefocus=""
+						onClick="getTop().reportSpamML(true,window)" href="javascript:;">修改</a>
+
+				</div>
+			</div>
+
+
+		</div>
+
+
+
+
+
+	</body>
+</html>

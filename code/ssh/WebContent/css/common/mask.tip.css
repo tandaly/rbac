@@ -1,0 +1,3 @@
+.mask-tip-msg {
+	position: absolute;z-index: 1120;cursor: wait;left: 382px;top: 154px;width: auto;height: 16px;padding: 12px 5px 10px 30px;background: #fff no-repeat scroll 5px 10px;border: 2px solid #6593CF;color: #222;display: none;
+}

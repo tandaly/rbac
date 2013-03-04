@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=gb18030">
+		<meta name="save" content="history">
+		<title>表单页面</title>
+		
+		<script language="javascript" src="./js/application.js"></script>
+		
+		<script type="text/javascript">
+			//app_initWebSkin();	
+		</script>
+
+
+	
+
+	</head>
+	<body class="tbody">
+		
+		<div id="dndContainer" class="QMEditorMenuBorder"
+			style="top: 233px; left: 400px;">
+			
+			<div style="padding: 5px 5px 0; font-size: 12px;">
+				<a class="right" onClick="QMAttach.hideDragAndDropContainer();">关闭</a>
+			</div>
+			<div style="height: 150px;">
+				<div
+					style="width: 100%; height: 100%; font-size: 14px; text-align: center; line-height: 150px;">
+					将文件拖拽至此区域
+				</div>
+			</div>
+		</div>
+	
+			
+	
+		<table style="position: absolute; z-index: 999; left: 700px; top: 0;"
+			cellspacing="0" cellpadding="0" onMouseDown="return false;"
+			unselectable="on">
+			<tbody>
+				<tr>
+					<td>
+						<div
+							style="border: 1px solid #ACA899; width: 130px; padding: 2px; background: #fff;">
+							<div class="menu_item"
+								onMouseOver="if (this.className == 'menu_item'){this.className = 'menu_item_high';}"
+								onMouseOut="if (this.className == 'menu_item_high'){this.className = 'menu_item';}"
+								style="padding: 0 20px; line-height: 19px;" unselectable="on"
+								opt="cut">
+								<div style="float: right;" unselectable="on" opt="cut">
+									Ctrl+X
+								</div>
+								剪切
+							</div>
+							<div class="menu_item"
+								onMouseOver="if (this.className == 'menu_item'){this.className = 'menu_item_high';}"
+								onMouseOut="if (this.className == 'menu_item_high'){this.className = 'menu_item';}"
+								style="padding: 0 20px; line-height: 19px;" unselectable="on"
+								opt="copy">
+								<div style="float: right;" unselectable="on" opt="copy">
+									Ctrl+C
+								</div>
+								复制
+							</div>
+							<div class="menu_item"
+								onMouseOver="if (this.className == 'menu_item'){this.className = 'menu_item_high';}"
+								onMouseOut="if (this.className == 'menu_item_high'){this.className = 'menu_item';}"
+								style="padding: 0 20px; line-height: 19px;" unselectable="on"
+								opt="paste">
+								<div style="float: right;" unselectable="on" opt="paste">
+									Ctrl+V
+								</div>
+								粘贴
+							</div>
+							<div class="menu_item"
+								onMouseOver="if (this.className == 'menu_item'){this.className = 'menu_item_high';}"
+								onMouseOut="if (this.className == 'menu_item_high'){this.className = 'menu_item';}"
+								style="padding: 0 20px; line-height: 19px;" unselectable="on"
+								opt="edit">
+								<div style="float: right;" unselectable="on" opt="edit"></div>
+								编辑
+							</div>
+							<div class="menu_item"
+								onMouseOver="if (this.className == 'menu_item'){this.className = 'menu_item_high';}"
+								onMouseOut="if (this.className == 'menu_item_high'){this.className = 'menu_item';}"
+								style="padding: 0 20px; line-height: 19px;" unselectable="on"
+								opt="delete">
+								<div style="float: right;" unselectable="on" opt="delete"></div>
+								删除
+							</div>
+							<div style="font-size: 1px; height: 7px; overflow: hidden;"
+								unselectable="on">
+								<div style="border-top: 1px solid #ACA899; margin-top: 3px;"></div>
+							</div>
+							<div class="menu_item"
+								onMouseOver="if (this.className == 'menu_item'){this.className = 'menu_item_high';}"
+								onMouseOut="if (this.className == 'menu_item_high'){this.className = 'menu_item';}"
+								style="padding: 0 20px; line-height: 19px;" unselectable="on"
+								opt="selectall">
+								<div style="float: right;" unselectable="on" opt="selectall">
+									Ctrl+A
+								</div>
+								全选
+							</div>
+						</div>
+					</td>
+					<td
+						style="height: 100%; filter: alpha(opacity =   50); opacity: 0.5;">
+						<div
+							style="margin-top: 4px; border-left: 2px solid black; height: 100%;"></div>
+					</td>
+				</tr>
+				<tr>
+					<td style="filter: alpha(opacity =   50); opacity: 0.5;">
+						<div
+							style="margin-left: 4px; border-top: 2px solid black; height: 2px;"></div>
+					</td>
+					<td style="filter: alpha(opacity =   50); opacity: 0.5;">
+						<div
+							style="margin-left: 0px; border-top: 2px solid black; height: 2px;"></div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<!-- 
+		<div id="1361853456517022373370337300003_QMAutoCompleteMenu" class=""
+			style="background: #fff; display: none; z-index: 1121; position: absolute; left: px; top: px; height: 315px;">
+			<div style="margin: 0px;">
+				<div class="menu_base">
+					<div class="menu_bd" style="padding: 0;">
+						<div unselectable="on"
+							id="1361853456517022373370337300003_QMAutoCompleteMenu__title_"
+							style="white-space: nowrap; width: 220px; line-height: 21px; display: none;"></div>
+						<div unselectable="on"
+							id="1361853456517022373370337300003_QMAutoCompleteMenu__menuall_"
+							style="overflow-y: auto; height: auto; line-height: 21px; width: 220px"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		-->
+
+
+		<form method="post" id="frm" name="frm" target="actionFrame"
+			action="#" enctype="multipart/form-data">
+
+			<table cellspacing="0" cellpadding="0" border="0" class="composetab">
+				<tbody>
+					<tr>
+						<td>
+							<div class="composetab_img"></div>
+							<div class="composetab_unsel">
+								<div>
+									表单页面
+								</div>
+							</div>
+						</td>
+						<td>
+							<div class="composetab_img"></div>
+							<div class="composetab_sel">
+								<div>
+									<a class="">表单2</a>
+								</div>
+							</div>
+						</td>
+
+					</tr>
+				</tbody>
+			</table>
+
+			<div id="toolbar">
+				<div class="toolbg toolbgline" style="background-image: none;">
+					<a name="sendbtn" tabindex="9" class="btn_gray btn_space"
+						hidefocus="" href="javascript:;" oldstyledisplay=""
+						disablednodeid="" style="">增加</a>
+					<a name="closebtn"
+						onClick="return exitConfirm('redirectExitURLId(1)');"
+						tabindex="11" class="btn_gray btn_space" hidefocus=""
+						href="javascript:;">关闭</a>
+				</div>
+			</div>
+
+			<div class="readmailinfo"
+				style="border-bottom: 1px solid #fff; min-width: 650px; _zoom: 1;"
+				id="sendtimepadding">
+				<div id="rightArea"
+					style="float: right; width: 179px !important; width: 180px; margin: 16px 12px 0 0; margin: 14px 14px 0 0\9; filter: none;">
+					<div id="addr_cmd"
+						onMouseOver="if(this.className != 'cptab cpslt')this.className='cptab toolbg'"
+						onMouseOut="if(this.className == 'cptab toolbg')this.className='cptab'"
+						class="cptab cpslt" style="_width: 88px;"
+						onClick="changeTab('AddrTab');">
+						<a hidefocus="">联系人</a>
+					</div>
+					<div id="stationery_cmd"
+						onMouseOver="if(this.className != 'cptab cpslt')this.className='cptab toolbg'"
+						onMouseOut="if(this.className == 'cptab toolbg')this.className='cptab'"
+						class="cptab"
+						style="margin-left: 89px; margin-left: 90px\9; border-left: 1px solid #7f9db9; border-left-width: 0px\9;"
+						onClick="useStationery();">
+						<a hidefocus="">啊&nbsp;&nbsp;呃</a>
+					</div>
+					<div style="height: 25px; filter: none;" class="grptitle_tab_"></div>
+					<div id="AddrTab" class="addrtab cpright" style="">
+						<div id="quickaddr_div">
+							<div class="lm_sbar">
+								<div>
+									<input id=""
+										type="text" class="txt" value="查找联系人..." autocomplete="off">
+								</div>
+							</div>
+							<div id="lm1361853456572003655416797846556tree" class="lm_panel">
+								<div class="groupopen" style="display: " key="t1" sub="0">
+									<div class="settingtable qqshowbd"
+										style="padding: 4px 0 2px 8px;">
+										联系人
+									</div>
+								</div>
+								<div class="groupsub" style="" key="t1" sub="1">
+									<div class="groupopen" style="display: " key="g3" sub="0">
+										<div class="" onMouseOver="this.style.background='#ffeec2'"
+											onMouseOut="this.style.background='#fff'"
+											style="padding: 2px 0 1px; overflow: hidden; height: 100%;">
+											<div style="overflow: hidden; width: 100%">
+												<a nocheck="true" href="javascript:''" class="lm_rt"
+													fun="g3" title="清空最近联系人记录">清空</a>
+												<div title="最近联系人" class="lm_ca">
+													<a nocheck="true"><input type="button" class="lm_ico">最近联系人</a>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="groupsub" style="" key="g3" sub="1">
+										<div class="groupclose" style="display: " key="448" sub="0">
+											<a unselectable="on" nocheck="true"
+												onMouseDown="return false;" href="javascript:''"
+												title="service@javaniu.com" class="lm_addr">service</a>
+										</div>
+										<div class="groupclose" style="display: " key="447" sub="0">
+											<a unselectable="on" nocheck="true"
+												onMouseDown="return false;" href="javascript:''"
+												title="262595000@qq.com" class="lm_addr">262595000</a>
+										</div>
+
+
+										<div class="groupclose" style="display: " key="441" sub="0">
+											<a unselectable="on" nocheck="true"
+												onMouseDown="return false;" href="javascript:''"
+												title="378916628@qq.com" class="lm_addr">斯蒂芬</a>
+										</div>
+
+										<div class="groupclose" style="display: " key="m4" sub="0">
+											<a unselectable="on" nocheck="true"
+												onMouseDown="return false;" href="javascript:''"
+												title="更多联系人" class="lm_addr"><b>显示更多↓</b> </a>
+										</div>
+
+									</div>
+								</div>
+
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- 
+				<div
+					style="float: right; margin: 200px 3px 0 6px !important; margin: 200px 5px 0 3px; height: 220px; x_height: 120px;">
+					<a id="rightAreaBtn"
+						style="height: 200px; font: bold 12px 宋体; text-decoration: none; color: #585858"
+						onClick="hideRightArea(false)"><input type="button"
+							class="prefd">
+					</a>
+				</div>
+				-->
+			<div style="margin-right: 22px; margin-top: 14px; clear: left;">
+
+
+
+
+				<table cellpadding="0" cellspacing="0" border="0" class="i"
+					style="width: auto; margin-bottom: 5px;" id="trTO">
+					<tbody>
+						<tr>
+							<td style="width: 58px; * padding-right: 10px;" valign="top"
+								nowrap="">
+								<div
+									style="width: 58px; padding-right: 10px; text-align: right; padding-top: 6px"
+									nowrap="">
+									<a id="to_btn" title="点击选择" href="javascript:;">姓名</a>
+								</div>
+							</td>
+							<td class="content_title" width="99%" style="padding-right: 4px;">
+								<div id="toAreaCtrl" class="noime div_txt" style="cursor: text;">
+									<div
+										style="position: absolute; color: rgb(160, 160, 160); padding-top: 1px;"></div>
+									<div class="addr_text"
+										style="float: left; border: none; overflow: hidden; width: 13px;">
+										<input type="input"
+											style="border: none; outline: none; -webkit-appearance: none; width: 100%;"
+											ime-mode="disabled" accesskey="t" tabindex="1"
+											autocomplete="off">
+										<div
+											style="width: 1px; height: 1px; overflow: auto; white-space: nowrap; border: none; margin: 0px; padding: 0px; font-family: Tahoma; font-size: 12px; font-weight: normal; line-height: normal; word-spacing: 0px;"></div>
+									</div>
+									<div style="clear: both; border: none; margin: 0; padding: 0;"
+										unselectable="on">
+										<input type="text"
+											style="position: absolute; border: none; padding: 0; width: 10px; left: -9999px; top: -9999px;"
+											tabindex="-1">
+									</div>
+								</div>
+								<div style="display: none;"></div>
+								<textarea title="sdf" id="to" name="to"
+									class="noime txt input_wd rev" onFocus="setFocus('cc');"
+									style="display: none;" tabindex="1" accesskey="t"></textarea>
+								<input id="swap3" name="swap3" value="" type="hidden">
+							</td>
+						</tr>
+					</tbody>
+				</table>
+
+
+
+				<div style="overflow: hidden; min-height: 22px; _zoom: 1;">
+					<div class="input_title addrtitle">
+						<div style="float: left; white-space: nowrap; padding-left: 1px;">
+							<span><a id="aCC" title="" href="javascript:;">A</a>&nbsp;-&nbsp;<a
+								id="aBCC" title="" href="javascript:;">B</a>&nbsp;|&nbsp;</span>
+							<a id="aSC" title="" href="javascript:;">C</a>
+						</div>
+						<div class="addrtitle right">
+							您是否还要找：
+							<span id="addrAssociation"><a href="">nicoyang</a>，<a
+								href="">angusdu</a>, <a href="">allen</a> </span>
+						</div>
+						<div class="clr"></div>
+					</div>
+				</div>
+
+				<table cellpadding="0" cellspacing="0" border="0" class="i"
+					style="width: auto; margin: 5px 0;">
+					<tbody>
+						<tr>
+							<td style="width: 58px; * padding-right: 10px;" valign="top"
+								nowrap=""></td>
+							<td width="99%" id="receiverMsgContainer">
+								<div style="display: none;"></div>
+							</td>
+						</tr>
+						<tr>
+							<td style="width: 58px; * padding-right: 10px;" valign="top"
+								nowrap="">
+								<div
+									style="width: 58px; padding-right: 10px; text-align: right; padding-top: 6px"
+									nowrap="">
+									<span title="标题。">输入</span>
+								</div>
+							</td>
+							<td class="content_title" width="99%" style="padding-right: 4px;">
+								<div class="div_txt" style="cursor: text;" unselectable="on">
+
+									<div style="margin-right: 32px; height: 16px;">
+										<div style="_position: absolute; _width: 100%;">
+											<input id="subject" title="可不填。" name="subject" type="text"
+												autocomplete="off" tabindex="2" class=""
+												style="word-break: break-all; height: 16px; line-height: 16px; width: 99%; border-width: 0;"
+												value="" onFocus="showSubjectMsg(false);">
+										</div>
+									</div>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+
+			<div class="input_title infobar" id="encrypt_mail_tips"
+				style="display: line-height :   25px; padding: 0 0 0 10px; margin: 0 210px 5px 68px;">
+				撒旦发射的内容。
+			</div>
+
+			<div style="margin-right: 20px; margin-top: -5px;">
+				<table cellpadding="0" class="i" cellspacing="0" border="0"
+					style="width: auto;">
+					<tbody>
+						<tr>
+							<td style="width: 58px; * padding-right: 10px;" valign="top"
+								nowrap="">
+								<div
+									style="width: 58px; padding-right: 10px; text-align: right; padding-top: 6px"
+									nowrap="">
+									留言
+								</div>
+							</td>
+							<td class="content_title"
+								style="padding-top: 1px !important; padding-top: 0; padding-right: 0; width: 99%;"
+								valign="top">
+								<textarea id="content" name="content__html" style="display: "></textarea>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<div style="margin-top: 5px; height: auto; float: left; width: 100%;"
+				class="settingtable">
+				<div id="otherComposeOptionCntr" style="display: ">
+					<div class="qqshowbd"
+						style="padding: 6px 8px; background: #FFF; margin: 0 210px 8px 68px; margin-right: 213px\9; padding-top: 3px\9; _padding-top: 10px; line-height: 22px; overflow: hidden; zoom: 1;">
+						<span class="nowrap left" style="margin-right: 6px;"> <input
+								title="" type="checkbox" id="savesendbox" tabindex="8"
+								name="savesendbox" value="1"
+								style="margin: 2px 1px 0 0; _margin: -5px 1px 0 0; vertical-align: middle;">
+
+							<label style="cursor: pointer; vertical-align: middle;"
+								for="savesendbox" title="">
+								music
+							</label>&nbsp;&nbsp; <input type="checkbox" id="high" tabindex="9"
+								name="priority" title="" value="urgency"
+								style="margin: 2px 1px 0 0; _margin-top: -5px; vertical-align: middle;">
+							<label style="cursor: pointer; vertical-align: middle;"
+								for="high" title="">
+								的萨芬
+							</label> </span>
+
+
+					</div>
+					<div class="clr"></div>
+				</div>
+			</div>
+			<div class="clr"></div>
+
+			<div id="toolbar">
+				<div class="toolbg toolbgline" style="background-image: none;">
+					<a name="sendbtn" tabindex="9" class="btn_gray btn_space"
+						hidefocus="" href="javascript:;" oldstyledisplay=""
+						disablednodeid="" style="">增加</a>
+					<a name="closebtn"
+						onClick="return exitConfirm('redirectExitURLId(1)');"
+						tabindex="11" class="btn_gray btn_space" hidefocus=""
+						href="javascript:;">关闭</a>
+				</div>
+			</div>
+
+		</form>
+	</body>
+</html>

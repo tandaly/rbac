@@ -1,0 +1,666 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<base href="${pageContext.request.scheme}${'://'}${pageContext.request.serverName}${':'}${pageContext.request.serverPort}${pageContext.request.contextPath}/" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="cache-control" content="no-cache">
+		<meta http-equiv="pragma" content="no-cache">
+		<title>RBAS</title>
+		<!-- 自定义公共js -->
+		<script type="text/javascript" src="js/frame/application.js"></script>
+		
+		<!-- 本页自定义js -->
+		<script type="text/javascript" src="js/frame/index.js"></script>
+		
+	<link rel="stylesheet" href="plugins/ztree/css/zTreeStyle/zTreeStyle.css" type="text/css">
+	<script type="text/javascript" src="plugins/ztree/js/jquery-1.4.4.min.js"></script>
+	<script type="text/javascript" src="plugins/ztree/js/jquery.ztree.core-3.2.js"></script>
+		
+		<SCRIPT type="text/javascript">
+		<!--
+		var setting = {	
+				callback: {
+					onClick: function (event, treeId, treeNode){
+						turnPage(treeNode.linkUrl);
+					}
+				}
+		};
+
+		var zNodes =[
+			{ 
+				name:"系统管理", open:true,
+				children: [
+					{ name:"用户管理", linkUrl: "frame/toUserList.do"},
+					{ name:"角色管理"}
+				]
+			}
+		];
+
+		$(document).ready(function(){
+			$.fn.zTree.init($("#leftMenuTree"), setting, zNodes);
+		});
+		//-->
+	</SCRIPT>
+	</head>
+	<body class="frame_class">
+	<!-- 
+	<body class="frame_class" ondragstart="window.event.returnValue=false"
+		oncontextmenu="window.event.returnValue=false"
+		onselectstart="event.returnValue=false">
+	-->
+		<div id="msgBoxDIV"
+			style="display: none; position: absolute; width: 100%; padding-top: 2px; height: 24px; top: 43px; text-align: center;">
+			<span class="msg">失败乃成功他妈</span>
+		</div>
+
+		<div id="msgScroll"
+			style="position: absolute; width: 50%; left: 200px; padding-top: 2px; height: 24px; top: 43px; text-align: center; display: ;">
+			<marquee scrollamount="2" onmouseover="this.stop();"
+				onmouseout="this.start();">
+				<font color='green'>欢迎来到tandaly多功能操作空间 --<a
+					href="http://blog.csdn.net/tandaly" target="mainFrame"
+					title="点点有惊喜哦">tandaly</a> </font>
+			</marquee>
+		</div>
+
+		<!-- 顶级导航菜单 -->
+		<div style="position: absolute; width: 100%; top: 0px; left: 0px;">
+
+			<div id="menunav">
+				<div class="bg_menu">
+					<ul class="menu_l" id="topMenuUl">
+						<li id="">
+							<a href="http://www.baidu.com"> 
+								<span>百度</span> 
+							</a>
+						</li>
+						<li id="">
+							<a href="http://www.so.com"> 
+								<span>360</span> 
+							</a>
+						</li>
+
+						<li id="">
+							<a href="http://www.jiyifa.cn"> 
+								<span>记忆法</span> 
+							</a>
+						</li>
+
+
+						<li id="">
+							<a href="http://dynamic.12306.cn/otsquery/query/queryRemanentTicketAction.do?method=init"> 
+								<span>火车票</span>
+							</a>
+						</li>
+
+						<li id="">
+							<a href="http://play.baidu.com/?__m=mboxCtrl.playSong&__a=34185463&__o=/song/34185463_playBtn&fr=-1||-1#loaded"> 
+								<span>百度音乐盒</span>
+							</a>
+						</li>
+						
+						<li id="">
+							<a href="http://www.ostools.net"> 
+								<span>在线API</span> 
+							</a>
+						</li>
+						
+
+					</ul>
+				</div>
+				<ul class="menu_r">
+					<li class="li1">
+						<a href="http://blog.csdn.net/tandaly" target="mainFrame" title="tandaly的空间"> 
+							<span>${user.userName}</span> 
+						</a>
+					</li>
+				</ul>
+			</div>
+
+			<!-- 
+			
+			<div id="menunav">
+				<div class="menu">
+					<div id="hmtabs">
+						<ul>
+							<li id="">
+								<a href="http://www.baidu.com" target="mainFrame" title="">
+									<span>百度</span> </a>
+							</li>
+							<li id="current">
+								<a href="javascript:;"
+									onclick="javascript:$('#mainFrame').attr('src','http://www.so.com');"
+									target="mainFrame" title=""> <span>360</span> </a>
+							</li>
+
+							<li id="">
+								<a href="http://www.jiyifa.cn" target="mainFrame" title="">
+									<span>记忆法</span> </a>
+							</li>
+
+
+							<li id="">
+								<a
+									href="http://dynamic.12306.cn/otsquery/query/queryRemanentTicketAction.do?method=init"
+									target="mainFrame" title=""> <span>火车票</span> </a>
+							</li>
+
+							<li id="">
+								<a href="http://feilongjian/FuRen_ASMS" target="mainFrame"
+									title=""> <span>富仁项目</span> </a>
+							</li>
+							
+							
+							<li id="">
+								<a href="http://play.baidu.com/?__m=mboxCtrl.playSong&__a=34185463&__o=/song/34185463_playBtn&fr=-1||-1#loaded" target="mainFrame"
+									title=""> <span>百度音乐盒</span> </a>
+							</li>
+
+							<li id=""
+								style="float: right; margin-right: 10px; margin-top: 5px;">
+								<a href="http://blog.csdn.net/tandaly" onclick=""
+									target="mainFrame" title="tandaly的空间"> <span>Tandaly</span>
+								</a>
+							</li>
+	
+							<!-- 
+
+		         <li id="" style="float: right;">
+		          <a href="help/index.htm" target="_blank">
+		             <span><img src="images/frame/help.png">在线帮助</span>
+		          </a>
+		         </li>  
+		         <li id="" style="float: right;">
+		          <a href="javascript:hide();thickbox_show('个人设置','?modulecg=Users&module=SysMng&submodule=UserMessageSet&action=Edit&ajax_thick=1&height=300&width=650&modal=true&modalclose=true');">
+		             <span><img src="http://erp.dxshops.com/themes/UmasoftNormal/images/frame/my_set.png">个人设置</span>
+		          </a>
+		         </li>   
+		         <li id="" style="float: right;">
+		            <a href="javascript:hide();thickbox_show('定制菜单','?modulecg=Users&module=UserMenuDef&action=UserMenuDef&ajax_thick=1&modal=true&modalclose=true')">
+		              <span><img src="http://erp.dxshops.com/themes/UmasoftNormal/images/frame/menu_set.png">定制菜单</span>
+		            </a>
+		          </li>
+		          		     	<li id="" style="float: right;">
+		          <a class="thickbox" href="?module=Home&amp;GadgetSearch=1&amp;ajax_thick=1&amp;DragContainerID=DragContainer1&amp;CreateContainerFun=CreateContainerFun&amp;height=300&amp;width=450" target="_blank">
+		             <span><img src="http://erp.dxshops.com/themes/UmasoftNormal/images/frame/desktop.png">定制首页</span>
+		          </a>
+		         </li>    
+		         --
+
+						</ul>
+					</div>
+				</div>
+
+			</div>
+			-->
+
+
+		</div>
+
+		<table id="load_process" cellspacing="0" cellpadding="0" border="0"
+			style="position: absolute; top: 45px; left: 0px; width: 100%; display: none; z-index: 9999;">
+			<tbody>
+				<tr>
+					<td align="center">
+						<table cellspacing="0" cellpadding="0" border="0"
+							class="autosave autosave_txt" style="height: 20px;">
+							<tbody>
+								<tr>
+									<td style="width: 2px;"></td>
+									<td id="load_process_img" style="padding: 0 0 0 5px;">
+										<img src="images/frame/ico_loading.gif"
+											style="width: 16px; height: 16px; vertical-align: middle;">
+									</td>
+									<td id="load_process_plan" valign="center" style="padding: 0 0 0 5px;">
+										<div
+											style="font: 1px; border: 1px solid white; width: 104px; text-align: left;">
+											<div id="load_process_plan_bar"
+												style="font: 1px; background: javascript :; fff; height: 8px; margin: 1px 0; width: 50%;"></div>
+										</div>
+									</td>
+									<td id="load_process_plan_info" style="padding: 0 0 0 5px;"></td>
+									<td id="load_process_plan_rate"
+										style="width: 40px; text-align: right; padding: 0;"></td>
+									<td id="load_process_info" style="padding: 0 0 0 5px;"></td>
+									<td id="load_process_cancel" style="padding: 0 0 0 5px;">
+										[
+										<a onclick="getTop().cancelDoSend();" style="color: white;">取消</a>]
+									</td>
+									<td style="padding: 0 0 0 5px;"></td>
+									<td style="width: 2px;"></td>
+								</tr>
+							</tbody>
+						</table>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<!-- 
+		<div id="" class=""
+			style="background: javascript :; fff; display: ; z-index: 1121; position: absolute; left: px; top: px; width: 280px;">
+			<div style="margin: 0px;">
+				<div class="menu_base">
+					<div class="menu_bd" style="padding: 0;">
+						<div unselectable="on" id=""
+							style="white-space: nowrap; width: 100px; line-height: 21px; display: none;"></div>
+						<div unselectable="on" id=""
+							style="overflow-y: auto; height: auto; line-height: 21px; width: 278px; overflow-x: hidden;"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	-->
+
+		<div class="getuserdata" id="topDataTd">
+			<div class="topdata">
+
+				<div class=""
+					style="height: 66px; position: absolute; right: 2px; top: 40px;">
+					<div class="setinfo addrtitle" id="SetInfo">
+					
+					
+						<div class="right" style="margin-top:-2px;">
+							
+					      	<!-- 
+							<a href="">[蓝色]</a>
+							<a href="javascript:chooseStyle('green');">[绿色]</a>
+							<a href="javascript:chooseStyle('gray');">[灰色]</a>
+							<a href="javascript:chooseStyle('pink');">[粉色]</a>
+							-->
+							
+							<span class="addrtitle"> | </span>
+							<a
+							href="javascript:;"
+							onclick="$('#QMconfirm_QMDialog').css('display', 'block'); $('#qqmail_mask').css('display', 'block');"
+							target="_parent" class="toptitle">退出</a>
+							
+							
+							
+						</div>
+						<div id="minimize_container" class="right">
+							<ul id="ul_skins" style="margin-top:-7px;">
+						        <li id="green" title="绿色" ></li>
+								<li id="blue" title="蓝色" ></li>
+								<li id="pink" title="桃红色" ></li>
+								<li id="gray" title="灰色"></li>
+								<!-- 
+								<li id="red" title="红色" onclick=""></li>
+								<li id="brown" title="褐色"></li>
+								-->
+					      	</ul>
+						</div>
+						<div id="gplayer_container" class="right" style="margin-top:-2px;">
+							<span id="app_time" class="time"></span> &nbsp;&nbsp;
+						</div>
+					</div>
+
+					<!-- <div class="topbg" style="height: 66px;">
+					<div class="setinfo addrtitle" id="SetInfo">
+						<div class="right">
+							<span id="imePanel" style="display: ;"><span
+								id="imeIcon"
+								style="margin: 0px 5px 0 0; _position: relative; _top: 2px;"
+								css="pointer icon_ime" on="已开启，点击可关闭云输入法" off="已关闭，点击可开启云输入法"
+								onclick="call(&javascript:;39;QMIme.toggle&javascript:;39;)"></span>
+								| </span>
+							<a href="javascript:chooseStyle('blue');">[蓝色]</a>
+							<a href="javascript:chooseStyle('green');">[绿色]</a>
+							<a href="javascript:chooseStyle('gray');">[灰色]</a>
+							<a href="javascript:chooseStyle('pink');">[粉色]</a>
+							<span class="addrtitle"> | </span><a href="javascript:;"
+								target="_blank" class="toptitle">帮助中心</a><span class="addrtitle"
+								onmousedown="return false" ondblclick="#"> | </span><a
+								href="javascript:;" target="_parent" class="toptitle">退出</a>
+						</div>
+						<div id="minimize_container" class="right"></div>
+						<div id="gplayer_container" class="right"></div>
+					</div>
+					
+				<div class="search_subject nowrap">
+					<div id="smartSearch" class="smartsearch">
+						<input type="text" class="searchinput" fullsearch="1"
+							newattachfolder="1" id="subject" name="subject"
+							autocomplete="off" value="搜索..."
+							style="color: rgb(160, 160, 160);"
+							onfocus="call(&javascript:;39;QMFullTextSearch.onfocus&javascript:;39;)"
+							onblur="call(&javascript:;39;QMFullTextSearch.onblur&javascript:;39;)"><span
+							class="ss_icon ss_fronticon ss_icon_search" id="searchIcon"></span><span
+							class="ss_icon ss_endicon ss_icon_arrowdown"
+							id="subjectsearchLogo"
+							onclick="call(&javascript:;39;showAdvanceSearchMenu&javascript:;39;)"></span>
+					</div>
+				</div>
+				
+				</div>
+				
+				
+				
+				<div class="lgoo" id="logotips">
+					<a class="imglogo pointer skinlogo"
+						style="width: 215px; height: 60px;" href="javascript:;"
+						target="mainFrame" hidefocus=""><img class="maillogo" t="3"
+							e="imglogo" logotitle="" stylenum="13" id="imglogo"
+							src="images/frame/spacer.gif"> </a>
+					<div class="switch">
+						<div class="left" style="margin-top: 1px;">
+							<b id="useralias">tandaly</b><span id="useraddrcontainer"
+								class="pointer">&lt;<span id="useraddr" title="关联其他邮箱">tandaly@qq.com</span>&gt;<small
+								class="arrow_fontsize" style="visibility: visible;"
+								id="useraddrArrow">▼</small> </span><span class=""
+								id="useraddrcontainer_ipad" style="display: none;">&lt;<span
+								id="useraddr_ipad" title="关联其他邮箱">tandaly@qq.com</span>&gt; </span>
+
+							<span class="addrtitle"><a href="javascript:;"
+								target="mainFrame">首页</a>&nbsp;|&nbsp;<a accesskey="o"
+								href="javascript:;" target="mainFrame" id="frame_html_setting">设置</a>&nbsp;-&nbsp;<a
+								id="changeSkin" href="javascript:;" target="mainFrame">换肤</a> </span>
+							<span id="qqplus_talktab"
+								style="position: absolute; cursor: pointer; white-space: nowrap;"></span>
+							<br>
+
+						</div>
+					</div>
+				</div>
+				-->
+				</div>
+			</div>
+
+			<!--加入导航条-->
+			<div class="topline_height" id="sepLineTd">
+				<div class="topline">
+					<div class="toplineimg left" id="imgLine"></div>
+				</div>
+			</div>
+
+			<div id="qqplus_panel" class="wqbg qq_panel_btn"
+				nowrap="
+				unselectable=" on" title="">
+				<a nocheck="true"
+					style="font-size: 12px; font-weight: normal; padding: 2px;"
+					class="onlineman" title=""><span title="" class=""
+					style="margin: 0px 3px 0 4px;" align="absmiddle"></span> </a>
+			</div>
+
+			<div class="fdbody bodybgbt"></div>
+			<div class="newskinbody" id="leftPanel"
+				oncontextmenu="call(&javascript:;39;navRightMenu&javascript:;39;,this,event);">
+				<div id="navBarDiv">
+					<ul class="navbar fdul" id="navBarTd">
+						<li class="composepart fs" id="composebtn_td">
+							<a id="composebtn" accesskey="c" hidefocus="" href="javascript:;"
+								target="mainFrame">操作盘</a>
+							<input type="button" class="composebtn" disabled="">
+						</li>
+						<li class="addrpart fs">
+							<a accesskey="l" hidefocus="" href="javascript:;"
+								target="mainFrame">Tandaly</a>
+							<input type="button" class="addrbtn" disabled="">
+						</li>
+					</ul>
+				</div>
+				<div id="navMidBar" class="listbg listflow">
+					<div id="folder" class="folderDiv"
+						style="overflow-y: auto; overflow-x: auto;">
+						<a id="detechFL"></a>
+						<div>
+							<div>
+								<div id="OutFolder">
+									<div id="SysFolderList">
+										<ul class="fdul">
+											<!-- 
+											<li id="left_menu_list" dr="1" class="fs" style="">
+												<a id="left_menu_list_a"
+													onClick="switchFolder(this.id);turnPage('list.html');"
+													href="javascript:;" class="f_size" title=""><b>分页列表页面</b><b>(6)</b> </a>
+											</li>
+											<li id="left_menu_form" class="fs" dr="starred">
+												<a id="left_menu_form_a"
+													onClick="switchFolder(this.id);turnPage('form.html');"
+													href="javascript:;" class="f_size staradjust" title="">表单页面 </a>
+											</li>
+											-->
+											
+											<li id="left_menu_user" class="fs">
+												<a id="left_menu_user_a"
+													onClick="switchFolder(this.id);turnPage('frame/toUserList.do');"
+													href="javascript:;" class="f_size staradjust" title="">用户管理 </a>
+											</li>
+											<div class="sepline"></div>
+											<li id="left_menu_box" class="fs" dr="starred">
+												<a id="left_menu_box_a"
+													onClick="switchFolder(this.id);turnPage('box.html');"
+													href="javascript:;" class="f_size staradjust" title="">盒子页面 </a>
+											</li>
+											
+											<li id="left_menu_tab" class="fs" dr="starred">
+												<a id="left_menu_tab_a"
+													onClick="switchFolder(this.id);turnPage('tab.html');"
+													href="javascript:;" class="f_size staradjust" title="">多选项卡页面 </a>
+											</li>
+											
+											<li id="left_menu_listMenu" class="fs" dr="starred">
+												<a id="left_menu_listMenu_a"
+													onClick="switchFolder(this.id);turnPage('listMenu.html');"
+													href="javascript:;" class="f_size staradjust" title="">列表菜单页面 </a>
+											</li>
+											
+											<li id="left_menu_button" class="fs" dr="starred">
+												<a id="left_menu_button_a"
+													onClick="switchFolder(this.id);turnPage('button.html');"
+													href="javascript:;" class="f_size staradjust" title="">按钮页面 </a>
+											</li>
+											
+											<!-- 
+											<li id="folder_starred2_td" class="fs" dr="starred">
+												<a id="folder_starred2"
+													onClick="switchFolder(this.id);turnPage('tab.html');"
+													href="javascript:;" class="f_size staradjust" title=""
+													hidefocus="" initlized="true" md="0">多标签页面<input
+														class="ico_input icon_folderlist_star" type="button"
+														hidefocus=""> </a>
+											</li>
+											-->
+
+
+											<!--
+									<li id="folder_5_td" dr="5" class="fs"
+										style="*margin-bottom: -1px; text-align: right;"><a
+										id="folder_5" onClick="switchFolder(this.id);"
+										href="javascript:;"
+										target="mainFrame" class="f_size" title="" hidefocus=""
+										style="text-align: left;" initlized="true" md="0">短消息</a><a
+										href="javascript:;" target="leftFrame"
+										onclick=""
+										class="nolinkbg normal fdleft empty_link" hidefocus="">[清空]</a></li>
+									<li id="folder_6_td" dr="6" class="fs"
+										style="*margin-bottom: -1px; text-align: right;"><a
+										id="folder_6" onClick="switchFolder(this.id);"
+										href="javascript:;"
+										target="mainFrame" class="f_size" title="" hidefocus=""
+										style="text-align: left;" initlized="true" md="0">回收箱</a><a
+										href="javascript:;" target="leftFrame"
+										onclick=""
+										class="nolinkbg normal fdleft empty_link" hidefocus="">[清空]</a></li>
+									-->
+
+											<div class="sepline"></div>
+											<li id="demo1" class="fs">
+												<a id="demo_slider"
+													onClick="switchFolder(this.id);turnPage('demo/slider/index.html');"
+													href="javascript:;" class="f_size staradjust" title=""
+													hidefocus="" initlized="true" md="0">图片轮换</a>
+											</li>
+										</ul>
+										<div class="sepline"></div>
+										<ul id="leftMenuTree" class="ztree"></ul>
+									</div>
+									<!--
+							<div id="ScrollFolder" style="overflow: auto;">
+								<div style="height:3px;overflow:hidden;"></div>
+								<div id="personalfoldersDiv" dp="personal">
+									<ul class="fdul">
+										<li class="fs" id="folder_personal_td"
+											style="*margin-bottom: -2px;" dr="personal" dp="personal"
+											nowrap=""><a nowrap="" accesskey="f"
+											id="folder_personal"
+											onclick=""
+											href="javascript:;"
+											target="mainFrame" hidefocus=""><b>我的文件夹(4)</b></a><img
+											src="images/frame/spacer.gif" id="icon_personal"
+											class="fd_on" onClick=""
+											hidefocus=""></li>
+									</ul>
+									<ul class="fdul" id="personalfolders"
+										style="display: block; overflow: hidden;">
+										<li class="fs" id="folder_131_td" dr="131" dp="personal"><a
+											href="javascript:;"
+											target="mainFrame" id="folder_131" name="personal"
+											onclick="switchFolder(this.id);" title="邮件归档 未读邮件 4 条"
+											hidefocus="" class="fdlist_width"><div class="max_width">
+													<b>邮件归档(4)</b>
+												</div></a></li>
+										<li class="fs" id="folder_130_td" dr="130" dp="personal"><a
+											href="javascript:;"
+											target="mainFrame" id="folder_130" name="personal"
+											onclick="switchFolder(this.id);" title="我的文件夹" hidefocus=""
+											class="fdlist_width"><div class="txtflow fdwidthmax">我的文件夹</div></a></li>
+									</ul>
+								</div>
+								<div id="popfoldersDiv" dp="pop">
+									<ul class="fdul">
+										<li class="fs" id="folder_pop_td"
+											style="*margin-bottom: -2px;" dr="pop" dp="pop"><a
+											id="folder_pop" onClick="switchFolder(this.id);"
+											href="javascript:;"
+											target="mainFrame" hidefocus="">其他邮箱</a><img
+											src="images/frame/spacer.gif" id="icon_pop"
+											class="fd_on hidden" onClick="showFolders(&javascript:;39;pop&javascript:;39;)"
+											hidefocus=""></li>
+									</ul>
+									<ul class="fdul" id="popfolders"
+										style="display: none; overflow: hidden;">
+									</ul>
+								</div>
+								<div id="tagfoldersDiv" dp="tag">
+									<ul class="fdul " id="tagfolders"
+										style="display: none; overflow: hidden;">
+									</ul>
+								</div>
+								<div class="sepline" style="margin-top: 4px;"></div>
+								<div class="sepline_height"></div>
+								<ul class="fdul" id="my_note">
+									<li id="folder_11_td" class="fs" style=""><a accesskey="p"
+										id="folder_11" onClick="switchFolder(this.id);"
+										href="javascript:;"
+										target="mainFrame" class="normal drifticonadjust" hidefocus="">漂流瓶<input
+											class="ico_input drifticon " type="button" hidefocus=""></a></li>
+									<li class="fs fs_sep" style=""><span><a
+											accesskey="k" id="folder_card"
+											href="javascript:;"
+											target="mainFrame" onClick="switchFolder(this.id);"
+											hidefocus="">贺卡</a></span><a class="nolinkbg fdleft"
+										style="cursor: default; text-decoration: none; float: none; padding: 0; margin: 0 3px">|</a><span><a
+											id="folder_postcard"
+											href="javascript:;"
+											hidefocus="" target="mainFrame">明信片</a></span></li>
+									<li class="fs fs_sep" style=""><span><a
+											href="javascript:;"
+											target="mainFrame" id="folder_reminder"
+											onclick="switchFolder(this.id);" hidefocus="">日历</a></span><a
+										class="nolinkbg fdleft"
+										style="cursor: default; text-decoration: none; float: none; padding: 0; margin: 0 3px">|</a><span><a
+											href="javascript:;"
+											target="mainFrame" id="folder_note"
+											onclick="switchFolder(this.id);" hidefocus=""
+											class="unfoldersel">记事本</a></span></li>
+									<li id="folder_reader_td" class="fs" style=""><a
+										accesskey="r" id="folder_reader"
+										onclick="switchFolder(this.id);" hidefocus=""
+										href="javascript:;"
+										target="mainFrame" class=" bold" title="斯蒂芬">阅读分享<span
+											id="count_rss" style="">(271)</span></a></li>
+								</ul>
+							</div>-->
+
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="navBottomTd" class="navbottom"></div>
+			</div>
+
+
+
+			<div id="mainFrameContainer">
+				<iframe onload="" name="mainFrame" id="mainFrame"
+					style="display: none;" frameborder="no" scrolling="auto"
+					hidefocus=""></iframe>
+			</div>
+
+
+
+
+
+
+
+
+
+
+
+
+			<!--遮罩层和弹出框-->
+
+			<div id="QMconfirm_QMDialog" class="qm_dialog "
+				style="display: none; z-index: 1120; position: absolute; opacity: 1; left: 370px; top: 201px; margin-top: 0px;">
+				<div style="cursor: move;" class="dialog_head"
+					id="QMconfirm_QMDialog__head_">
+					<span >信息提示</span><a title="关闭" class="ico_close_d" href="javascript:;"></a>
+				</div>
+				<div style="visibility: visible;">
+					<div class="dialog_inner">
+						<div class="dialog_content" id="QMconfirm_QMDialog__body_">
+							<div class="">
+								<div class="cnfx_content">
+									<span class="dialog_icon icon_info_b"></span>
+									<div class="dialog_f_c">
+										您确定要退出吗？
+									</div>
+								</div>
+								<div class="cnfx_status" style="display: ;">
+									<input id="QMconfirm_QMDialog_recordstatus"
+										class="cnfx_status_checkbox" type="checkbox">
+									<label for="QMconfirm_QMDialog_recordstatus">
+										记住
+									</label>
+								</div>
+							</div>
+						</div>
+						<div class="dialog_operate">
+							<div class=" txt_right cnfx_btn">
+								<a class="btn_gray confirm wd2"
+									href="javascript:location.href='frame/logout.do';"
+									>确定</a><a class="btn_gray cancelwd2"
+									id="" style="display: ;"
+									href="javascript:;"
+									onclick="$('#QMconfirm_QMDialog').css('display', 'none'); $('#qqmail_mask').css('display', 'none');">取消</a>
+							</div>
+							<div class="clr"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- 遮罩层 -->
+			<div id="qqmail_mask" class="editor_mask opa50Mask "
+				style="z-index: 98; display: none;" onkeypress="return false;"
+				onkeydown="return false;" tabindex="0"></div>
+	</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="Shortcut Icon" href="../../images/logo.ico" type="image/x-icon">
+		<meta http-equiv="Content-Type" content="text/html; charset=gb18030">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="cache-control" content="no-cache">
+		<meta http-equiv="expires" content="mon, 22 jul 2002 11:12:01 GMT">
+		<meta http-equiv="pragma" content="no-cache">
+		<title>nivo-slider 渐变过渡的幻灯片切换效果</title>
+		<link rel="stylesheet" href="images/themes/default/default.css"
+			type="text/css" media="screen" />
+		<link rel="stylesheet" href="images/themes/pascal/pascal.css"
+			type="text/css" media="screen" />
+		<link rel="stylesheet" href="images/themes/orman/orman.css"
+			type="text/css" media="screen" />
+		<link rel="stylesheet" href="css/nivo-slider.css" type="text/css"
+			media="screen" />
+		<link rel="stylesheet" href="css/style.css" type="text/css"
+			media="screen" />
+	</head>
+	<body>
+		<div id="wrapper">
+
+			<a href="http://dev7studios.com" id="dev7link"
+				title="Go to dev7studios">dev7studios</a>
+
+			<div class="slider-wrapper theme-default">
+				<div class="ribbon"></div>
+				<div id="slider" class="nivoSlider">
+					<img src="images/toystory.jpg" alt="" />
+					<a href="http://dev7studios.com"><img src="images/up.jpg"
+							alt="" title="这是连接地址" />
+					</a>
+					<img src="images/walle.jpg" alt="" title="#htmlcaption" />
+					<img src="images/nemo.jpg" alt="" title="#htmlcaption" />
+				</div>
+				<div id="htmlcaption" class="nivo-html-caption">
+					<strong>这是</strong> 一个关于
+					<em>HTML</em> 标题
+					<a href="#">连接地址</a>.
+				</div>
+			</div>
+
+		</div>
+		<script type="text/javascript" src="js/jquery-1.6.1.min.js"></script>
+		<script type="text/javascript" src="js/jquery.nivo.slider.pack.js"></script>
+		<script type="text/javascript">
+    $(window).load(function() {
+        $('#slider').nivoSlider();
+    });
+    </script>
+	</body>
+</html>

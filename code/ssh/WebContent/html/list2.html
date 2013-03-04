@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=gb18030">
+		<meta name="save" content="history">
+		<title>列表页面</title>
+		<script language="javascript" src="./js/application.js"></script>
+	
+		<script type="text/javascript">
+			//app_initWebSkin();	
+		</script>
+			
+		<style type="text/css">
+			td.o_title2 {
+				background: url(./images/icos.png) -128px 0 repeat-y;
+				margin: 0;
+				padding: 0 0 0 12px;
+			}
+			
+			.smt_id_settopcontainer {
+				margin-left: -14px;
+			}
+			
+			.smt_container.smt_id_settopcontainer .smt_inner:after {
+				margin-left: 8px;
+			}
+			
+			u {
+				outline: medium none;
+			}
+			
+			.tbody {
+				overflow-x: hidden;
+				_overflow-y: visible;
+			}
+			
+			.talk {
+				display: block;
+				font-size: 12px;
+				font-weight: normal;
+				text-decoration: none;
+				clear: both;
+				border-left: none;
+				border-right: none; *
+				position: relative;
+				padding: 8px 0px 3px 9px;
+				border-bottom-width: 2px;
+				border-top: none;
+			}
+			
+			.talk b {
+				font-size: 14px
+			}
+			
+			.talk .one {
+				left: 0;
+			}
+			
+			.toarea .F,.toarea .M {
+				border-bottom-width: 1px;
+			}
+			
+			.toarea .bd {
+				border-bottom-width: 1px;
+				border-top: 0 none;
+				border-left: 0 none;
+				border-right: 0 none;
+			}
+			
+			.talk label {
+				cursor: pointer;
+			}
+			
+			.talk .cur_default {
+				text-decoration: none;
+			}
+			
+			.jumpmenusdjust {
+				_padding-top: 8px;
+			}
+			
+			input.s2bg {
+				border: 0;
+				padding: 0;
+				width: 16px;
+				height: 14px;
+				_vertical-align: middle;
+			}
+			
+			.rssbg {
+				width: 12px;
+				height: 14px;
+				padding: 0;
+				border-width: 0;
+			}
+			
+			.ico_rssObj {
+				margin: 2px 0 0 -15px;
+				position: absolute;
+			}
+			
+			table.i td.ab {
+				padding-top: 0;
+				padding-bottom: 2px;
+			}
+			
+			.importantmail {
+				position: relative;
+				margin-right: 5px;
+				padding: 0 5px 2px; *
+				padding: 2px 5px 0;
+				border-radius: 2px;
+				color: #fff;
+				font-weight: normal;
+			}
+			
+			.importantmail .arrow {
+				_display: none;
+				position: absolute;
+				right: -3px;
+				top: 50%;
+				margin-top: -3px;
+				border-width: 3px 0 3px 3px;
+				border-style: dashed dashed dashed solid;
+				border-color: transparent transparent transparent #e5e5e5;
+				width: 0;
+				height: 0;
+				font-size: 0;
+				line-height: 0;
+			}
+			
+			.F .importantmail {
+				background-color: #e5e5e5;
+				color: #666;
+			}
+			
+			.M .importantmail {
+				background-color: #e5e5e5;
+				color: #bbb;
+			}
+			
+			.M .importantmail .arrow {
+				border-left-color: #e5e5e5;
+			}
+
+		
+		</style>
+
+
+	</head>
+	<body class="tbody" id="list">
+		<div class="mailcontainer" id="qqmail_mailcontainer">
+
+			<div class="txt_title">
+				<div class="somail" id="somail">
+
+					<div id="gotnomail" class="normal"
+						style="position: absolute; top: 35px;"></div>
+				</div>
+				列表页面
+				<span id="_ut" class="f_size normal black"> (共 <span
+					id="_ut_c">4</span> 条记录<span id="_ua" style="display: ;">，其中
+						<span id="_ur" style="display: ;"><a href="javascript:;"
+							class="green">未读记录</a> <span id="_ur_c">3</span> 条</span>) </span>
+			</div>
+
+
+
+
+
+			<div class="toolbg toolbgline toolheight nowrap" style="">
+				<div class="right">
+					1/
+					<script>document.write(12 + 1);</script>
+					页 &nbsp;
+					<a href="javascript:;" id="prevpage" title="按 CTRL + ← 键上一页"
+						accesskey="n">上一页</a> &nbsp;
+					<a href="javascript:;" id="nextpage" title="按 CTRL + → 键下一页"
+						accesskey="n">下一页</a> &nbsp;
+					<a href="javascript:void(0)" id="maillistjump" name="maillistjump"
+						title="跳转到指定一页" _mljump_="1">跳转</a>
+
+				</div>
+				<div class="nowrap left" unselectable="on"
+					onselectstart="return false;">
+					<a class="btn_gray btn_space" hidefocus="" id="quick_del"
+						onClick="getTop().delMailML( '1', false, null, document);"
+						href="javascript:;" name="del">删除</a>
+					<a class="btn_gray btn_space" hidefocus="" id="quick_completelydel"
+						onClick="return getTop().checkPerDelML( '1', false, document)"
+						href="javascript:;">彻底删除</a>
+					<a class="btn_gray btn_space" hidefocus=""
+						onClick="return FwMailML();" href="javascript:;">新增</a>
+					<a id="btn_reportSpam" class="btn_gray btn_space" hidefocus=""
+						onClick="getTop().reportSpamML(true,window)" href="javascript:;">修改</a>
+
+				</div>
+			</div>
+			<table cellspacing="0" cellpadding="0"
+				style="table-layout: fixed; width: 100%; * width: auto;" class="O2">
+				<tbody>
+					<tr>
+						<td style="padding: 1px 0 1px 5px;" width="27">
+							<input type="checkbox"
+								title="选中/取消选中">
+						</td>
+						<td class="o_title2"
+							style="width: 6px; font-size: 1px; padding: 0;">
+							&nbsp;
+						</td>
+						<td style="width: 31px; padding: 0;">
+							<input type="button" class="ico_mailtitle" disabled="">
+						</td>
+						<td class="o_title2" style="width: 135px;">
+							<a href="javascript:;">姓名</a>
+						</td>
+						<td class="o_title2" style="padding-left: 2px; width: 500px;">
+							<a href="javascript:;" >内容</a>
+						</td>
+						<td class="o_title2" style="padding-left: 2px; width: 100px;">
+							<div style="margin-left: 10px;">
+								<a href="javascript:;" >时间↓</a>
+							</div>
+						</td>
+						<td style="width: 20px; font-size: 1px; padding-left: 2px">
+							&nbsp;
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+
+
+			<div id="selectAll" class="graytip_con" style="height: 50px;display:none;">
+				<div class="graytip">
+					<div>
+						已勾选本页&nbsp;26&nbsp;条记录
+					</div>
+				</div>
+			</div>
+
+			<div class="toarea">
+				<table cellspacing="0" class="i M">
+					<tbody>
+						<tr>
+							<td class="cx">
+								<input type="checkbox">
+							</td>
+							<td class="ci">
+							</td>
+							
+							<td class="l" style="width: 135px;">
+								斯蒂芬斯蒂芬
+							</td>
+							<td  class="l" style="padding-left: 2px; width: 500px;">
+								sdfs
+							</td>
+							<td class="l" style="padding-left: 2px; width: 100px;"> 
+								233
+							</td>
+							<td class="l">
+							</td>
+						</tr>
+					</tbody>
+				</table>
+
+			</div>
+			<div class="list_btline">
+				<div
+					style="height: 19px; * height: 24px; padding-top: 5px; * padding-top: 3px"
+					class="f_size selbar_bt barspace2">
+					<span class="addrtitle">选择：</span>&nbsp;
+					<a href="javascript:''">全部</a>&nbsp;-&nbsp;
+					<a href="javascript:''">无</a>&nbsp;-&nbsp;
+					<a href="javascript:''">已读</a>&nbsp;-&nbsp;
+					<a href="javascript:''">未读</a>
+				</div>
+			</div>
+
+			<div class="toolbg toolbgline toolheight nowrap" style="">
+				<div class="right">
+					1/
+					<script>document.write(12 + 1);</script>
+					页 &nbsp;
+					<a href="javascript:;" id="prevpage" title="按 CTRL + ← 键上一页"
+						accesskey="n">上一页</a> &nbsp;
+					<a href="javascript:;" id="nextpage" title="按 CTRL + → 键下一页"
+						accesskey="n">下一页</a> &nbsp;
+					<a href="javascript:void(0)" id="maillistjump" name="maillistjump"
+						title="跳转到指定一页" _mljump_="1">跳转</a>
+
+				</div>
+				<div class="nowrap left" unselectable="on"
+					onselectstart="return false;">
+					<a class="btn_gray btn_space" hidefocus="" id="quick_del"
+						onClick="getTop().delMailML( '1', false, null, document);"
+						href="javascript:;" name="del">删除</a>
+					<a class="btn_gray btn_space" hidefocus="" id="quick_completelydel"
+						onClick="return getTop().checkPerDelML( '1', false, document)"
+						href="javascript:;">彻底删除</a>
+					<a class="btn_gray btn_space" hidefocus=""
+						onClick="return FwMailML();" href="javascript:;">新增</a>
+					<a id="btn_reportSpam" class="btn_gray btn_space" hidefocus=""
+						onClick="getTop().reportSpamML(true,window)" href="javascript:;">修改</a>
+
+				</div>
+			</div>
+
+
+		</div>
+
+
+
+
+
+	</body>
+</html>

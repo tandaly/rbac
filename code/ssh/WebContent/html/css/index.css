@@ -1,0 +1,165 @@
+html,body {
+	padding: 0;
+	margin: 0;
+	overflow: auto;
+	overflow-x: hidden;
+}
+
+html {
+	height: 100%;
+	min-width: 950px;
+}
+
+javascript       :;mainFrame {
+	position: absolute;
+	_position: relative;
+}
+
+.max_width {
+	width: 110px;
+	overflow: hidden;
+}
+
+.bindacc .menu_item,.bindacc  .menu_item_high,.bindacc  .menu_item_nofun
+	{
+	padding: 0 10px 0 8px;
+}
+
+/*
+					#hmtabs {
+						width: 100%;
+						background: #F8A1BC; 蓝色#6392C8; 绿色#87A34D; 灰色#9C9C9C; 粉色#F8A1BC;
+							
+						line-height: normal;
+						height: 35px;
+						border-bottom: 1px solid #24618E;
+						border-top: none;
+						padding: 0;
+						font-size: 12px;
+						font-weight: bold;
+					}
+					*/ /*
+		#hmtabs ul {
+			margin: 0;
+			padding: 0px 3px 0 3px;
+			list-style: none;
+		}
+		
+		ol,ul {
+			list-style: none;
+		}
+		
+		#hmtabs li {
+			display: inline;
+			margin: 0;
+			padding: 0;
+		}
+		
+		#hmtabs #current {
+			padding: 0;
+		}
+		
+		#hmtabs #current a {
+			background: url(./images/menu_a_s.jpg) no-repeat left top;
+			color: #333333;
+			
+			
+			display: block;
+			color: #333;
+			
+			background: #528bcb;
+			background-image: -moz-linear-gradient(top, #6499d6, #528bcb);
+			background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#6499d6),
+				to(#528bcb) );
+			margin-top: 2px;
+			color: #FFFFFF;
+		}
+		
+		#current a span
+		{
+			background: url(./images/menu_span_s.jpg) no-repeat right top;
+		}
+		
+		#hmtabs a {
+			float: left;
+			display: inline;
+			margin: 0;
+			color: #fff;
+			margin: 0 3px;
+			padding: 0 0 0 20px;
+			text-decoration: none;
+			overflow: hidden;
+			zoom: 1;
+		}
+		
+		#hmtabs a span {
+			display: block;
+			float: left;
+			margin: 0;
+			padding: 8px 12px 8px 0;
+		}
+		
+		span {
+			position: relative;
+		}
+		*/ /*
+		#menunav {
+			background: #79B0CF repeat-x left bottom;
+			height: 35px;
+		}*/
+.menu_l {
+	float: left;
+	position: relative;
+	margin-left: 80px;
+}
+
+#menunav li {
+	float: left;
+	display: inline;
+}
+
+#menunav a {
+	float: left;
+	margin: 0;
+	color: #fff;
+	font-weight: 700;
+	margin: 0 3px;
+	padding-left: 12px;
+	line-height: 35px;
+	text-decoration: none;
+}
+
+#menunav a span {
+	display: block;
+	padding-right: 12px;
+}
+
+.menu_r {
+	float: right;
+	text-align: right;
+}
+
+#current a {
+	/*background: url(./images/menu_a_s.png) no-repeat left top;*/
+	color: #333333;
+	background-color: #ffffff;
+	margin-top: 4px;
+}
+
+#current a span {
+	/*background: url(./images/menu_span_s.png) no-repeat right top;*/
+	background-color: #ffffff;
+	font-size: 16px;
+}
+
+#current a:hover span {
+	/*background: url(./images/menu_span_s.png) no-repeat right top;*/
+	background-color: #ffffff;
+	font-size: 16px;
+}
+
+#current a:hover {
+	color: #333333;
+	background-color: #ffffff;
+	margin-top: 4px;
+}

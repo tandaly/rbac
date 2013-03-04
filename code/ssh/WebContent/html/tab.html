@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=gb18030">
+		<meta name="save" content="history">
+		<title>tab页面</title>
+
+		<script language="javascript" src="./js/application.js"></script>
+		<style type="text/css">
+			.tab_title {
+				font: normal 14px Verdana;
+				margin-bottom: 5px;
+				padding-left: 10px;
+				padding-top: 7px;
+			}
+			
+			.panelTab {
+				height: 28px;
+				padding: 0 0 0 4px;
+				margin-bottom: 0;
+				border-width: 0 0 1px!important;
+			}
+		
+			.tab_list {
+				font-size: 12px;
+				line-height: 15px;
+				float: left;
+				padding: 4px 10px;
+				border-width: 1px 1px 0;
+				margin: 4px 3px 0 0;
+			}
+			
+			.tab_title .actived {
+				background: #fff;
+				border-bottom: 1px solid #fff;
+			}
+		</style>
+	</head>
+	<body class="tbody">
+		<div style="height: 230px; bckaground: #FFF;" class="bd">
+			<div class="tab_title settingtable bold bd panelTab"
+				style="">
+				<div style="position: absolute;">
+					<div class="tab_list bd pointer actived">
+						选项1
+					</div>
+					<div class="tab_list bd pointer">
+						选项2
+					</div>
+					<div class="tab_list bd pointer">
+						选项3
+					</div>
+				</div>
+			</div>
+			<div id="pannel" >
+				<div style="padding: 10px; line-height: 150px; text-align: center;"
+					class="graytext">
+					正在加载...
+				</div>
+			</div>
+		</div>
+		
+		
+		
+	</body>
+</html>

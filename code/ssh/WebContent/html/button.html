@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=gb18030">
+		<meta name="save" content="history">
+		<title>button页面</title>
+
+		<script language="javascript" src="./js/application.js"></script>
+		<style type="text/css">
+.btn_select .ico_select_s {
+	right: 8px;
+	top: 4px;
+}
+
+.ico_select_s {
+	position: absolute;
+	background: url(./images/icons.png) no-repeat 0 -128px;
+	width: 14px;
+	height: 14px;
+	overflow: hidden;
+	display: block;
+}
+</style>
+	</head>
+	<body class="tbody">
+		<div class="nowrap left">
+			<a class="btn_gray btn_space" href="javascript:;">按钮1</a>
+			<a class="btn_gray btn_space" href="javascript:;">按钮2</a>
+
+			<span class="btn_space"> 
+				<a tabindex="-1" class="btn_gray btn_select" href="javascript:;" onclick="$('#select_Menu').css('display','block');"> 
+					<span class="btn_select_txt">下拉菜单...</span> 
+					<span class="ico_select_s"></span>
+				</a> 
+			</span>
+		</div>
+
+		<div id="select_Menu" class="qmpanel_shadow rounded5"
+			style="display:none;z-index: 1121; position: absolute; left: 129px; top: 26px; height: 23px;">
+			<div style="margin: 0pt;">
+				<div class="menu_base">
+					<div class="menu_bd">
+						<div id="select_QMMenu__menuall_"
+							style="overflow-y: auto; width: 110px; "
+							class="txtflow">
+							<div id="menuitem_fid_1" itemid="fid_1"
+								class="menu_item_high" style="height: 22px; line-height: 22px;"
+								title="" onclick=";">
+								列表1
+							</div>
+							<div id="menuitem_fid_3" itemid="fid_3"
+								class="menu_item" style="height: 22px; line-height: 22px;"
+								title="" onclick=";">
+								列表2
+							</div>
+							
+							<div id="" itemid=""
+								class="menu_item_nofun" style="height: 10px; line-height: 10px;"
+								title="" onclick=";">
+								<div
+									style="background: #CCC; height: 1px; margin-top: 5px; overflow: hidden;"></div>
+							</div>
+							<div id="" itemid="new"
+								class="menu_item" style="height: 22px; line-height: 22px;"
+								title="" onclick=";">
+								更多...
+							</div>
+						</div>
+						<div id="select_QMMenu__foot_"
+							style="overflow-y: auto; width: 114px; padding-top: 3px; border-top-width: 1px; border-top-style: solid; border-top-color: rgb(204, 204, 204); display: none; height: auto;"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
