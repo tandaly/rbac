@@ -10,7 +10,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta http-equiv="cache-control" content="no-cache">
 		<meta http-equiv="pragma" content="no-cache">
-		<title>RBAS</title>
+		<title>RBAC</title>
 		<!-- 自定义公共js -->
 		<script type="text/javascript" src="js/frame/application.js"></script>
 		
@@ -475,7 +475,7 @@
 													href="javascript:;" class="f_size staradjust" title="">表单页面 </a>
 											</li>
 											-->
-											
+											<!-- 
 											<li id="left_menu_user" class="fs">
 												<a id="left_menu_user_a"
 													onClick="switchFolder(this.id);turnPage('frame/toUserList.do');"
@@ -504,7 +504,7 @@
 												<a id="left_menu_button_a"
 													onClick="switchFolder(this.id);turnPage('button.html');"
 													href="javascript:;" class="f_size staradjust" title="">按钮页面 </a>
-											</li>
+											</li> -->
 											
 											<!-- 
 											<li id="folder_starred2_td" class="fs" dr="starred">
@@ -539,15 +539,15 @@
 										class="nolinkbg normal fdleft empty_link" hidefocus="">[清空]</a></li>
 									-->
 
-											<div class="sepline"></div>
+											<!-- <div class="sepline"></div>
 											<li id="demo1" class="fs">
 												<a id="demo_slider"
 													onClick="switchFolder(this.id);turnPage('demo/slider/index.html');"
 													href="javascript:;" class="f_size staradjust" title=""
 													hidefocus="" initlized="true" md="0">图片轮换</a>
-											</li>
+											</li> -->
 										</ul>
-										<div class="sepline"></div>
+										<!-- <div class="sepline"></div> -->
 										<ul id="leftMenuTree" class="ztree"></ul>
 									</div>
 									<!--

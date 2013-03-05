@@ -50,6 +50,17 @@ public class IndexConstroller {
 	}
 	
 	/**
+	 * 跳转到首页
+	 * @return
+	 */
+	@RequestMapping(value = "home")
+	public String home()
+	{
+		return "system/home";
+	}
+	
+
+	/**
 	 * ajax获得系统左菜单根节点树
 	 * @param response
 	 */

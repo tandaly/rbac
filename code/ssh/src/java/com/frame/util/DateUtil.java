@@ -1186,7 +1186,7 @@ public class DateUtil
 	public static java.sql.Date getDateByAge(int age)
 	{
 		Calendar calendar = Calendar.getInstance(Locale.CHINESE);
-		long current = calendar.getTimeInMillis();
+		//long current = calendar.getTimeInMillis();
 		calendar.set(calendar.get(Calendar.YEAR) - age, calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE));
 		return new java.sql.Date((calendar.getTimeInMillis()));
 	}
@@ -1603,7 +1603,7 @@ public class DateUtil
 		if (6 != ym.length())
 			return ym;
 		String year = ym.substring(0, 4);
-		String month1 = ym.substring(4);
+		//String month1 = ym.substring(4);
 		return new StringBuffer(year).append("年").append(month).append("月").toString();
 	}
 
@@ -2631,6 +2631,7 @@ public class DateUtil
 		return returnDate;
 	}
 	//add by huyanzhi
+	@SuppressWarnings("deprecation")
 	public static String addDate(String date, String type, int into) throws Exception
 	{
 		String Sdate = "";
@@ -2659,6 +2660,7 @@ public class DateUtil
 		}
 		return Sdate;
 	}
+	@SuppressWarnings("deprecation")
 	public static String addDate(String date, String into) throws Exception
 	{
 		String Sdate = "";
@@ -2689,6 +2691,7 @@ public class DateUtil
 	}
 	//
 
+	@SuppressWarnings("deprecation")
 	public static String addValidateDate(String date, String into) throws Exception
 	{
 		String Sdate = "";

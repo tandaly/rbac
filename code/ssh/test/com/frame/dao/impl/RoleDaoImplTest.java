@@ -1,24 +1,12 @@
 package com.frame.dao.impl;
 
-import java.util.Iterator;
-
-import junit.framework.Assert;
-
-import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.frame.BaseCommonTest;
-import com.frame.dao.RoleDao;
-import com.frame.model.Menu;
-import com.frame.model.Privilege;
-import com.frame.model.Role;
-import com.frame.model.User;
 
 public class RoleDaoImplTest extends BaseCommonTest {
-
+	/*
 	@Autowired
 	private RoleDao roleDao;
-/*	
+	
 	@Test
 	public void testSave() {
 		Role role = new Role();

@@ -26,7 +26,7 @@ function showAppTime()
 
 /*使用iframe标签，延迟加载跨域JS文件*/
 $(window).load(function(){	
-	var defaultHome = "";
+	var defaultHome = "frame/home.do";
 	$("#mainFrame").attr("src",defaultHome);
 	$("#mainFrame").show();
 	

@@ -46,6 +46,7 @@
 		<url-pattern>*.htm</url-pattern>
 	</servlet-mapping>
 	-->
+	
 	<!-- 统一字符编码为UTF-8 -->
 	<filter>
 		<filter-name>setCharacter</filter-name>

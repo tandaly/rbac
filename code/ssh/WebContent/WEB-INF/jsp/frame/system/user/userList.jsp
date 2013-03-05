@@ -79,7 +79,7 @@
 				tr += "<td>"+obj.userName+"</td>";
 				tr += "<td>"+obj.password+"</td>";
 				tr += "<td style=\"text-align: center;\" width=\"160px;\">"
-					+"<a href='' >授权</a>"
+					+"<a href='' >授权</a> &nbsp;&nbsp;"
 					+"<a href=\"frame/toUpdateUser.do?id="+obj.id+"\">修改</a>&nbsp;&nbsp;<a href=\"javascript:deleteUser("+obj.id+")\">删除</a>"
 					+"</td>";
 				return tr;

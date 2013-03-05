@@ -74,7 +74,7 @@ public class Pagination extends SimplePage implements java.io.Serializable,
 	 * 
 	 * @param list
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public void setList(List list) {
 		this.list = list;
 	}

@@ -1,25 +1,19 @@
 package com.frame.dao.impl;
 
-import static org.junit.Assert.fail;
-
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.frame.BaseCommonTest;
-import com.frame.dao.RoleDao;
 import com.frame.dao.UserDao;
-import com.frame.model.Role;
-import com.frame.model.User;
-import com.frame.model.Usergroup;
 
 public class UserDaoImplTest extends BaseCommonTest {
 
 	@Autowired
 	private UserDao userDao;
-	
+	/*
 	@Autowired
 	private RoleDao roleDao;
-	/*
+	
 	@Test
 	public void testSave() {
 		User user = new User();
