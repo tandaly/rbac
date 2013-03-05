@@ -49,9 +49,17 @@
 						var result = data.result;
 						$.fn.debug(data.result);
 						var insetViewData = "";
-						 $.each(result, function(i) {
-							insetViewData += createTR(i+1, result[i]);
-						 });
+						
+						if(result.length == 0)
+						{
+							insetViewData = "<tr><td colspan='5' style='text-align:center;color:red;'>查询无记录</td></tr>";
+						}else
+						{
+							 $.each(result, function(i) {
+									insetViewData += createTR(i+1, result[i]);
+								 });	
+						}
+						
 						 
 						 $("#table > tbody").html(insetViewData);
 						 //$('#mytab > tbody > tr:even').addClass('a1'); //奇偶变色，添加样式 
