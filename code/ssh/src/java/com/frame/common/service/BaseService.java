@@ -8,7 +8,7 @@ import com.frame.common.page.Pagination;
  * @author Tandaly
  * @date 2013-3-5 下午2:32:53
  */
-public interface CommonService {
+public interface BaseService {
 
 	/**
 	 * 分页查询

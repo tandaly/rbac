@@ -29,7 +29,7 @@ public class MyHibernateTemplate extends HibernateTemplate{
 //		});
 //	}
 	
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public List find(final String queryString,final int startResult,final int maxResult, final Object... values) throws DataAccessException {
 		return executeWithNativeSession(new HibernateCallback<List>() {
 			public List doInHibernate(Session session) throws HibernateException {

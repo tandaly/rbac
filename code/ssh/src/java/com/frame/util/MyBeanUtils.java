@@ -64,7 +64,7 @@ public class MyBeanUtils {
 	/**
 	 * 循环向上转型,获取类的DeclaredField.
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	protected static Field getDeclaredField(final Class clazz,
 			final String fieldName) {
 		Assert.notNull(clazz);

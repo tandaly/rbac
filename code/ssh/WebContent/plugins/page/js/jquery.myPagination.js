@@ -133,6 +133,8 @@
 					  // 超时时间
 					  error: function() {
 						alert("访问服务器超时，请重试，谢谢！");
+						$("#_queryMask").css("display", "none");
+						$("#_queryTip").css("display", "none");
 					  },
 					  success: function(data) {
 						responseHandle(data);

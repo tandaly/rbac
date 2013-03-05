@@ -1,4 +1,4 @@
-package com.frame.common.dao;
+package com.frame.common.dao.util;
 
 import java.util.ArrayList;
 import java.util.Collection;

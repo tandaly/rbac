@@ -4,16 +4,16 @@ import javax.annotation.Resource;
 
 import org.junit.Test;
 
-import com.frame.common.dao.CommonDao;
+import com.frame.common.dao.BaseDao;
 
 public class InitDB extends BaseCommonTest{
 
-	@Resource(name = "commonDaoSupport")
-	private CommonDao commonDao;
+	@Resource(name = "baseDaoImpl")
+	private BaseDao baseDao;
 	
 	@Test
 	public void test() {
-		commonDao.initDB();
+		this.baseDao.initDB();
 	}
 
 }

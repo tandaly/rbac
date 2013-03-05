@@ -4,10 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.frame.common.dao.CommonDaoSupport;
-import com.frame.common.dao.Finder;
-import com.frame.common.page.PageParamMap;
-import com.frame.common.page.Pagination;
+import com.frame.common.dao.BaseDaoImpl;
 import com.frame.dao.UserDao;
 import com.frame.model.User;
 /**
@@ -16,7 +13,7 @@ import com.frame.model.User;
  * @date 2013-2-3 下午10:03:20
  */
 @Repository
-public class UserDaoImpl extends CommonDaoSupport implements UserDao {
+public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 	
 	@SuppressWarnings("unchecked")
 	@Override
@@ -36,23 +33,5 @@ public class UserDaoImpl extends CommonDaoSupport implements UserDao {
 		return list.get(0);
 	}
 
-//	@Override
-//	public Pagination findObjectsByPage(PageParamMap pageParamMap) {
-//		String hql = "From User u WHERE 1=1 ";
-//		
-//		Finder f = Finder.create(hql);
-//		
-//		/***************************组拼查询条件 start***************************/
-//		Object userName = pageParamMap.get("userName");//用户名查询条件
-//		if(null != userName && !"".equals(userName))
-//		{
-//			f.append("AND u.userName LIKE :userName");
-//			f.setParam("userName", "%" + userName + "%");
-//		}
-//		/***************************组拼查询条件 end***************************/
-//		
-//		return super.find(f, pageParamMap.getPageNo(),
-//				pageParamMap.getPageSize());
-//	}
 
 }

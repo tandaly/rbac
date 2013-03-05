@@ -37,13 +37,13 @@
 					  param:formData,
 					  ajaxStart:function(){
 						  //ZENG.msgbox.show(" 正在加载中，请稍后...", 6, 10000);
-						  $("#_mask").css("display", "block");
+						  $("#_queryMask").css("display", "block");
 						  $("#_queryTip").css("display", "block");
 					  },onClick:function(page){
 						  $.fn.debug(page);
 					  },
 					  callback:function(data){
-						 $("#_mask").css("display", "none");
+						 $("#_queryMask").css("display", "none");
 						 $("#_queryTip").css("display", "none");
 						//ZENG.msgbox.hide(); //隐藏加载提示
 						var result = data.result;
@@ -192,7 +192,7 @@
 	</div>
 	
 	<!-- 遮罩层 -->
-	<div id="_mask" class="editor_mask opa50Mask "
+	<div id="_queryMask" class="editor_mask opa50Mask "
 		style="z-index: 98; display: none;" tabindex="0">
 			
 	</div>

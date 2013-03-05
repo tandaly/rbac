@@ -23,6 +23,7 @@ import org.apache.commons.lang.StringUtils;
  *
  */
 
+@SuppressWarnings({ "rawtypes", "unchecked" })
 public class DateUtil
 {
 	static java.text.SimpleDateFormat sdfShort = new java.text.SimpleDateFormat("yyyyMMdd");

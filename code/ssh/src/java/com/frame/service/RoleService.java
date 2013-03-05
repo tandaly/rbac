@@ -1,6 +1,6 @@
 package com.frame.service;
 
-import com.frame.common.service.CommonService;
+import com.frame.common.service.BaseService;
 
 
 /**
@@ -8,6 +8,6 @@ import com.frame.common.service.CommonService;
  * @author Tandaly
  * @date 2013-3-5 下午2:32:53
  */
-public interface RoleService extends CommonService{
+public interface RoleService extends BaseService{
 
 }

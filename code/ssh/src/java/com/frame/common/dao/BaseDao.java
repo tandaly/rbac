@@ -11,7 +11,7 @@ import com.frame.common.page.Pagination;
  * @author tanfei(619606426@qq.com)
  * @date 2013-2-19 下午5:10:58
  */
-public interface CommonDao {
+public interface BaseDao {
 
 	/**
 	 * 初始化数据库数据

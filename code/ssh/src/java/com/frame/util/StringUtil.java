@@ -22,6 +22,7 @@ import sun.io.CharToByteConverter;
  *
  */
 
+@SuppressWarnings("deprecation")
 public class StringUtil
 {
 	public StringUtil()

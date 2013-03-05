@@ -6,9 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.frame.common.page.PageParamMap;
-import com.frame.common.page.Pagination;
-import com.frame.common.service.CommonServiceImpl;
+import com.frame.common.service.BaseServiceImpl;
 import com.frame.dao.UserDao;
 import com.frame.model.User;
 import com.frame.service.UserService;
@@ -19,7 +17,7 @@ import com.frame.service.UserService;
  */
 @Service
 @Transactional
-public class UserServiceImpl extends CommonServiceImpl implements UserService {
+public class UserServiceImpl extends BaseServiceImpl implements UserService {
 
 	@Autowired
 	private UserDao userDao;
@@ -69,11 +67,6 @@ public class UserServiceImpl extends CommonServiceImpl implements UserService {
 		User user = new User();
 		return this.userDao.findAll(user);
 	}
-
-//	@Override
-//	public Pagination fetchUsersByPage(PageParamMap pageParamMap) {
-//		return this.userDao.findObjectsByPage(pageParamMap);
-//	}
 
 	@Override
 	public User queryUserById(Long id) {

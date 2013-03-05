@@ -21,9 +21,59 @@
 	<script type="text/javascript" src="plugins/ztree/js/jquery-1.4.4.min.js"></script>
 	<script type="text/javascript" src="plugins/ztree/js/jquery.ztree.core-3.2.js"></script>
 		
+		<script type="text/javascript">
+			var setting = {
+				data: {
+					simpleData: {
+						enable: true,	//设置是否使用简单数据模式(Array)
+						idKey: "treeId",	//设置节点唯一标识属性名称
+						pIdKey: "parentId"		//设置父节点唯一标识属性名称
+					},
+					key: {
+						name: "name",
+						title: "name"				
+					}
+				},
+				async: {
+					enable: true,//开启异步加载
+					url:"frame/ajaxGetSysLeftMenuTreeChild.do",//设置异步获取节点的 URL 地址
+					autoParam:["treeId"]//设置父节点数据需要自动提交的参数
+				},
+				callback: {
+					onClick: function (event, treeId, treeNode){
+						//turnPage(treeNode.linkUrl);
+					}
+				}
+			};
+			
+			//初始化树
+			function initTree() {
+				$.ajax({  
+			   		type: 'POST',  
+			   		dataType : "json",
+			   		async:false,
+			   		url: "frame/ajaxGetSysLeftMenuTreeRoot.do",//请求的action路径
+			   		data: {"flag":true},  
+			   		error: function () {//请求失败处理函数  
+			       		alert('请求失败');  
+			   		},
+			   		success:function(data){ //请求成功后处理函数。  
+			       		treeNodes = data;   //把后台封装好的简单Json格式赋给treeNodes    
+			       		$.fn.zTree.init($("#leftMenuTree"), setting, treeNodes);		
+			   		}  
+			   		
+				});   				
+			}
+	
+			$(document).ready(function(){
+				initTree();
+			});
+		</script>
+		
+		
 		<SCRIPT type="text/javascript">
 		<!--
-		var setting = {	
+		/* var setting = {	
 				callback: {
 					onClick: function (event, treeId, treeNode){
 						turnPage(treeNode.linkUrl);
@@ -43,7 +93,7 @@
 
 		$(document).ready(function(){
 			$.fn.zTree.init($("#leftMenuTree"), setting, zNodes);
-		});
+		}); */
 		//-->
 	</SCRIPT>
 	</head>

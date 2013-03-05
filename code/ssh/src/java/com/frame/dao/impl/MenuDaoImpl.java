@@ -2,7 +2,7 @@ package com.frame.dao.impl;
 
 import org.springframework.stereotype.Repository;
 
-import com.frame.common.dao.CommonDaoSupport;
+import com.frame.common.dao.BaseDaoImpl;
 import com.frame.dao.MenuDao;
 
 /**
@@ -11,6 +11,6 @@ import com.frame.dao.MenuDao;
  * @date 2013-3-3 下午7:49:56
  */
 @Repository
-public class MenuDaoImpl extends CommonDaoSupport implements MenuDao {
+public class MenuDaoImpl extends BaseDaoImpl implements MenuDao {
 	
 }

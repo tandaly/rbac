@@ -20,6 +20,7 @@ import com.frame.util.DateUtil;
  * @author 
  *
  */
+@SuppressWarnings("rawtypes")
 public class JSONUtil{
 
     private static JSONUtil instance = null;
@@ -47,7 +48,6 @@ public class JSONUtil{
         return instance.getJSONObject(obj, useClassConvert).toString();
     }
 
-    @SuppressWarnings("unchecked")
 	private String getJSONArray(Object arrayObj, boolean useClassConvert) throws JSONException{
         
         if(arrayObj == null)
@@ -83,7 +83,6 @@ public class JSONUtil{
         return jSONArray.toString();
     }
 
-    @SuppressWarnings("unchecked")
 	JSONStringObject getJSONObject(Object value, boolean useClassConvert) throws JSONException{
 
         //处理原始类型
@@ -146,7 +145,6 @@ public class JSONUtil{
     }//value.equals(null)
 
 
-    @SuppressWarnings("unchecked")
 	private JSONStringObject reflectObject(Object bean, boolean useClassConvert){
         JSONObject jSONObject = new JSONObject();
 

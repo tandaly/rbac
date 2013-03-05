@@ -13,6 +13,7 @@ import org.hibernate.Session;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.stereotype.Repository;
 
+import com.frame.common.dao.util.Finder;
 import com.frame.common.page.PageParamMap;
 import com.frame.common.page.Pagination;
 import com.frame.common.page.SimplePage;
@@ -27,8 +28,8 @@ import com.frame.model.User;
  * @date 2013-2-19 下午5:17:14
  */
 @Repository
-public class CommonDaoSupport extends AbstractBaseDaoSupport implements
-		CommonDao {
+public class BaseDaoImpl extends AbstractBaseDaoSupport implements
+		BaseDao {
 
 	@Override
 	public void save(Object entity) {
@@ -223,6 +224,7 @@ public class CommonDaoSupport extends AbstractBaseDaoSupport implements
 	 * @param finder
 	 * @return
 	 */
+	@SuppressWarnings("rawtypes")
 	protected int countQueryResult(final Finder finder) {
 		final String hql = finder.getRowCountHql();
 		List list = getHibernateTemplate().executeFind(new HibernateCallback() 
@@ -348,7 +350,7 @@ public class CommonDaoSupport extends AbstractBaseDaoSupport implements
 				f.setParam(entry.getKey(), "%" + o + "%");
 			}
 		}
-		
+		System.out.println("查询----" + f.getOrigHql());
 		/***************************组拼查询条件 end***************************/
 		
 		return this.find(f, pageParamMap.getPageNo(),
