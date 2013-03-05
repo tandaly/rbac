@@ -22,6 +22,6 @@ public interface UserDao extends CommonDao{
 	 * 分页查询用户列表
 	 * @return
 	 */
-	public Pagination findUsersByPage(PageParamMap pageParamMap);
+	//public Pagination findObjectsByPage(PageParamMap pageParamMap);
 	
 }

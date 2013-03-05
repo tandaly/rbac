@@ -3,6 +3,9 @@ package com.frame.common.dao;
 import java.io.Serializable;
 import java.util.List;
 
+import com.frame.common.page.PageParamMap;
+import com.frame.common.page.Pagination;
+
 /**
  * 通用dao操作接口
  * @author tanfei(619606426@qq.com)
@@ -83,5 +86,11 @@ public interface CommonDao {
 	 */
 	@SuppressWarnings("rawtypes")
 	public List findAll(Object entity);
+	
+	/**
+	 * 分页查询列表
+	 * @return
+	 */
+	public Pagination findObjectsByPage(PageParamMap pageParamMap);
 	
 }

@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.frame.common.page.PageParamMap;
 import com.frame.common.page.Pagination;
+import com.frame.common.service.CommonServiceImpl;
 import com.frame.dao.UserDao;
 import com.frame.model.User;
 import com.frame.service.UserService;
@@ -18,7 +19,7 @@ import com.frame.service.UserService;
  */
 @Service
 @Transactional
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl extends CommonServiceImpl implements UserService {
 
 	@Autowired
 	private UserDao userDao;
@@ -69,10 +70,10 @@ public class UserServiceImpl implements UserService {
 		return this.userDao.findAll(user);
 	}
 
-	@Override
-	public Pagination fetchUsersByPage(PageParamMap pageParamMap) {
-		return this.userDao.findUsersByPage(pageParamMap);
-	}
+//	@Override
+//	public Pagination fetchUsersByPage(PageParamMap pageParamMap) {
+//		return this.userDao.findObjectsByPage(pageParamMap);
+//	}
 
 	@Override
 	public User queryUserById(Long id) {

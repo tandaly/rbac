@@ -36,23 +36,23 @@ public class UserDaoImpl extends CommonDaoSupport implements UserDao {
 		return list.get(0);
 	}
 
-	@Override
-	public Pagination findUsersByPage(PageParamMap pageParamMap) {
-		String hql = "From User u WHERE 1=1 ";
-		
-		Finder f = Finder.create(hql);
-		
-		/***************************组拼查询条件 start***************************/
-		Object userName = pageParamMap.get("userName");//用户名查询条件
-		if(null != userName && !"".equals(userName))
-		{
-			f.append("AND u.userName LIKE :userName");
-			f.setParam("userName", "%" + userName + "%");
-		}
-		/***************************组拼查询条件 end***************************/
-		
-		return super.find(f, pageParamMap.getPageNo(),
-				pageParamMap.getPageSize());
-	}
+//	@Override
+//	public Pagination findObjectsByPage(PageParamMap pageParamMap) {
+//		String hql = "From User u WHERE 1=1 ";
+//		
+//		Finder f = Finder.create(hql);
+//		
+//		/***************************组拼查询条件 start***************************/
+//		Object userName = pageParamMap.get("userName");//用户名查询条件
+//		if(null != userName && !"".equals(userName))
+//		{
+//			f.append("AND u.userName LIKE :userName");
+//			f.setParam("userName", "%" + userName + "%");
+//		}
+//		/***************************组拼查询条件 end***************************/
+//		
+//		return super.find(f, pageParamMap.getPageNo(),
+//				pageParamMap.getPageSize());
+//	}
 
 }

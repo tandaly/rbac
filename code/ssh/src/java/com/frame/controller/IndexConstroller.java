@@ -4,6 +4,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.frame.model.User;
@@ -40,5 +41,11 @@ public class IndexConstroller {
 		mav.setViewName("system/index");
 		mav.addObject(user);
 		return mav;
+	}
+	
+	@RequestMapping(value = "ajaxGetSysLeftMenuTree", method = RequestMethod.POST)
+	public void ajaxGetSysLeftMenuTree(String parentId)
+	{
+		
 	}
 }

@@ -142,9 +142,11 @@
 		<div id="queryDiv" style="display:none;height: 100%; _overflow-y: hidden;" class="bd"
 			>
 			<div style="padding-left:2px;padding-top:5px;text-align:center;">
-				<form id="queryForm" name="queryForm" onsubmit="return queryFrom();">
+				<form id="queryForm" name="queryForm" onsubmit="return queryFrom()">
 					<input type="hidden" name="pageSize" value="10"/>
 					用户名：<input name="userName" /> 
+					&nbsp;
+					密码：<input name="password" /> 
 					<input value="查询" type="submit" class="btn_gray btn_space"/>
 					<input value="清空" type="reset" class="btn_gray btn_space"/>
 				</form>

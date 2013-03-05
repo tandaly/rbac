@@ -1,6 +1,8 @@
 package com.frame.dao;
 
 import com.frame.common.dao.CommonDao;
+import com.frame.common.page.PageParamMap;
+import com.frame.common.page.Pagination;
 import com.frame.model.Role;
 
 /**
@@ -11,4 +13,10 @@ import com.frame.model.Role;
 public interface RoleDao extends CommonDao {
 
 	public Role load(Long id);
+	
+	/**
+	 * 分页查询角色列表
+	 * @return
+	 */
+	//public Pagination findObjectsByPage(PageParamMap pageParamMap);
 }

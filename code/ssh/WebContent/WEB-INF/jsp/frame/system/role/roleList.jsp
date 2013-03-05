@@ -32,7 +32,7 @@
 					ajax: 
 					{
 					  on: true,
-					  url: "frame/ajaxUserList.do",
+					  url: "frame/ajaxRoleList.do",
 					  dataType: 'json',
 					  param:formData,
 					  ajaxStart:function(){
@@ -76,8 +76,7 @@
 				var tr = "<tr>";
 				tr += "<td><input type=\"checkbox\"></td>";
 				tr += "<td style='text-align:center;'>"+no+"</td>";
-				tr += "<td>"+obj.userName+"</td>";
-				tr += "<td>"+obj.password+"</td>";
+				tr += "<td>"+obj.roleName+"</td>";
 				tr += "<td style=\"text-align: center;\" width=\"160px;\">"
 					+"<a href=\"frame/toUpdateUser.do?id="+obj.id+"\">修改</a>&nbsp;&nbsp;<a href=\"javascript:deleteUser("+obj.id+")\">删除</a>"
 					+"</td>";
@@ -125,7 +124,7 @@
 	</head>
 	<body>
 		<div class="txt_title">
-				系统管理&gt;用户管理&gt;用户列表 
+				系统管理&gt;角色管理&gt;用户列表 
 				<span id="_ut" class="f_size normal black">
 					(页面响应时间: <font color="red" id="responseTime">${responseTime}</font>秒 )
 				</span>
@@ -142,9 +141,9 @@
 		<div id="queryDiv" style="display:none;height: 100%; _overflow-y: hidden;" class="bd"
 			>
 			<div style="padding-left:2px;padding-top:5px;text-align:center;">
-				<form id="queryForm" name="queryForm" onsubmit="return queryFrom();">
+				<form id="queryForm" name="queryForm" onsubmit="return queryFrom()">
 					<input type="hidden" name="pageSize" value="10"/>
-					用户名：<input name="userName" /> 
+					角色名：<input name="roleName" /> 
 					<input value="查询" type="submit" class="btn_gray btn_space"/>
 					<input value="清空" type="reset" class="btn_gray btn_space"/>
 				</form>
@@ -159,8 +158,7 @@
 								title="选中/取消选中">
 					</th>
 					<th style="text-align: center;" width="60px;">序号</th>
-					<th class="o_title2">用户名</th>
-					<th class="o_title2">密码</th>
+					<th class="o_title2">角色名</th>
 					<th style="text-align: center;" width="160px;">操作</th>
 				</tr>
 			</thead>

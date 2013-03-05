@@ -11,6 +11,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.frame.common.controller.BaseController;
 import com.frame.common.page.PageParamMap;
 import com.frame.common.page.Pagination;
 import com.frame.model.User;
@@ -24,7 +25,7 @@ import com.frame.util.SystemConstants;
  */
 @Controller
 @RequestMapping(SystemConstants.PROJECT_PATH)
-public class UserConstroller {
+public class UserConstroller extends BaseController{
 
 	@Autowired
 	private UserService userService;
@@ -143,20 +144,26 @@ public class UserConstroller {
 	 * @param userName
 	 */
 	@RequestMapping(value = "/ajaxUserList", method = RequestMethod.POST)
-	public void ajaxUserList(int page, Integer pageSize, HttpServletResponse response, String userName)
+	public void ajaxUserList(HttpServletResponse response, int page, Integer pageSize, User user)
 	{
 		Map<String, Object> result = new HashMap<String, Object>();
-		PageParamMap pageParamMap = new PageParamMap(page, pageSize);
+		PageParamMap pageParamMap = new PageParamMap("User", page, pageSize);
 		
-		if(null != userName && !"".equals(userName.trim()))
-			pageParamMap.put("userName", userName);
-		
-		Pagination pagination = this.userService.fetchUsersByPage(pageParamMap);
-		
-		result.put("pageCount", pagination.getPageCount());
-		result.put("result", pagination.getList());
-		result.put("countRecord", pagination.getTotalCount());
+		/***********************封装查询条件 start*******************/
+		if(null != user)
+		{
+			if(null != user.getUserName() && !"".equals(user.getUserName().trim()))
+				pageParamMap.put("userName", user.getUserName());
 			
-		HtmlUtil.writerJson(response, result);
+			if(null != user.getPassword() && !"".equals(user.getPassword()))
+				pageParamMap.put("password", user.getPassword());
+		}
+		/***********************封装查询条件 start*******************/
+		
+		//分页查询
+		Pagination pagination = this.userService.fetchObjectsByPage(pageParamMap);
+		
+		//输出分页
+		super.writerPagination(response, pagination, result);
 	}
 }

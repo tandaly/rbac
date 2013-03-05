@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
@@ -11,6 +13,7 @@ import org.hibernate.Session;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.stereotype.Repository;
 
+import com.frame.common.page.PageParamMap;
 import com.frame.common.page.Pagination;
 import com.frame.common.page.SimplePage;
 import com.frame.model.Menu;
@@ -323,6 +326,33 @@ public class CommonDaoSupport extends AbstractBaseDaoSupport implements
 		{
 			session.close();
 		}
+	}
+
+	@Override
+	public Pagination findObjectsByPage(PageParamMap pageParamMap) {
+		StringBuffer hql = new StringBuffer();
+		
+		hql.append("From ").append(pageParamMap.getEntityName()).append(" o WHERE 1=1 ");
+		
+		Finder f = Finder.create(hql.toString());
+		
+		/***************************组拼查询条件 start***************************/
+		Set<Entry<String, Object>> sets = pageParamMap.entrySet();
+		
+		for(Entry<String, Object> entry:sets)
+		{
+			Object o = entry.getValue();
+			if(null != o && !"".equals(o))
+			{
+				f.append(" AND o.").append(entry.getKey()).append(" LIKE :").append(entry.getKey());
+				f.setParam(entry.getKey(), "%" + o + "%");
+			}
+		}
+		
+		/***************************组拼查询条件 end***************************/
+		
+		return this.find(f, pageParamMap.getPageNo(),
+				pageParamMap.getPageSize());
 	}
 	
 	

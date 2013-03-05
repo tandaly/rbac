@@ -36,7 +36,7 @@
 				name:"系统管理", open:true,
 				children: [
 					{ name:"用户管理", linkUrl: "frame/toUserList.do"},
-					{ name:"角色管理"}
+					{ name:"角色管理", linkUrl: "frame/toRoleList.do"}
 				]
 			}
 		];
