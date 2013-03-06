@@ -4,7 +4,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.frame.BaseCommonTest;
-import com.frame.dao.UserDao;
+import com.frame.application.admin.modules.system.dao.UserDao;
 
 public class UserDaoImplTest extends BaseCommonTest {
 

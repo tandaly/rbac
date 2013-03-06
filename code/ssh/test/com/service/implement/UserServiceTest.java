@@ -4,8 +4,8 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.frame.BaseCommonTest;
-import com.frame.model.User;
-import com.frame.service.UserService;
+import com.frame.application.admin.modules.system.model.User;
+import com.frame.application.admin.modules.system.service.UserService;
 
 
 public class UserServiceTest extends BaseCommonTest{

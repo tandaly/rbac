@@ -8,7 +8,7 @@ import org.junit.Test;
 import org.springframework.test.context.transaction.AfterTransaction;
 import org.springframework.test.context.transaction.BeforeTransaction;
 
-import com.frame.common.dao.BaseDao;
+import com.frame.core.base.dao.BaseDao;
 
 public class InitDB extends BaseCommonTest{
 

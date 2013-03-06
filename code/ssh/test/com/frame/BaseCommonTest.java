@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 //@RunWith(SpringJUnit4ClassRunner.class)
 //@ContextConfiguration(locations={"/spring/applicationContext-system.xml", "/spring/applicationContext.xml"})
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"/spring/spring-frame*.xml", "/spring/applicationContext*.xml"})
+@ContextConfiguration(locations = { "/spring/applicationContext.xml", "/spring/admin/applicationContext-admin.xml"})
 @TransactionConfiguration(defaultRollback = false)
 @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
 public class BaseCommonTest {
