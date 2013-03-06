@@ -59,6 +59,9 @@ public class MenuConstroller extends BaseController{
 		/***********************封装查询条件 start*******************/
 		if(null != menu)
 		{
+			if(null != menu.getParentNo() && !"".equals(menu.getParentNo().trim()))
+				pageParamMap.put("parentNo", menu.getParentNo());
+			
 			if(null != menu.getMenuName() && !"".equals(menu.getMenuName().trim()))
 				pageParamMap.put("menuName", menu.getMenuName());
 			

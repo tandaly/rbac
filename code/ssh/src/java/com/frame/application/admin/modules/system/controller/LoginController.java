@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.frame.application.admin.modules.system.model.User;
 import com.frame.application.admin.modules.system.service.UserService;
+import com.frame.core.base.controller.BaseController;
 import com.frame.core.base.util.SystemConstants;
 /**
  * 登陆控制器
@@ -26,7 +27,7 @@ import com.frame.core.base.util.SystemConstants;
  */
 @Controller
 @RequestMapping(SystemConstants.PROJECT_PATH)
-public class LoginController {
+public class LoginController extends BaseController{
 
 	Logger log = Logger.getLogger(getClass());
 	

@@ -151,6 +151,7 @@
 			<div style="padding-left:2px;padding-top:5px;text-align:center;">
 				<form id="queryForm" name="queryForm" onsubmit="return queryFrom()">
 					<input type="hidden" name="pageSize" value="10"/>
+					父菜单：<input name="parentNo" /> 
 					菜单名：<input name="menuName" /> 
 					<input value="查询" type="submit" class="btn_gray btn_space"/>
 					<input value="清空" type="reset" class="btn_gray btn_space"/>

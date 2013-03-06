@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.frame.application.admin.modules.system.model.MenuTreeBean;
 import com.frame.application.admin.modules.system.model.User;
+import com.frame.core.base.controller.BaseController;
 import com.frame.core.base.util.HtmlUtil;
 import com.frame.core.base.util.SystemConstants;
 
@@ -23,7 +24,7 @@ import com.frame.core.base.util.SystemConstants;
  */
 @Controller
 @RequestMapping(SystemConstants.PROJECT_PATH)
-public class IndexConstroller {
+public class IndexConstroller extends BaseController{
 
 	/**
 	 * 跳转到主页面
