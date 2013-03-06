@@ -1,7 +1,5 @@
 package com.frame.core.base.dao.impl;
 
-import javax.annotation.Resource;
-
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate3.HibernateTemplate;

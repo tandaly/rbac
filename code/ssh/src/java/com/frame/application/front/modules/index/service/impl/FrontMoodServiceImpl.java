@@ -2,7 +2,8 @@ package com.frame.application.front.modules.index.service.impl;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Service;
 
 import com.frame.application.front.modules.index.dao.FrontMoodDao;
@@ -13,7 +14,7 @@ import com.frame.core.base.service.impl.BaseServiceImpl;
 @Service
 public class FrontMoodServiceImpl extends BaseServiceImpl implements FrontMoodService{
 
-	@Autowired
+	@Resource
 	private FrontMoodDao frontMoodDao;
 	
 	@Override

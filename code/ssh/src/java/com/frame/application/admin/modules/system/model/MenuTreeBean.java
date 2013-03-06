@@ -1,7 +1,5 @@
 package com.frame.application.admin.modules.system.model;
 
-import java.io.Serializable;
-
 import com.frame.core.base.model.BaseTreeModel;
 
 /**

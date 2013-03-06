@@ -3,9 +3,9 @@ package com.frame.application.admin.modules.system.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,7 +25,7 @@ import com.frame.core.base.util.SystemConstants;
 @RequestMapping(SystemConstants.PROJECT_PATH)
 public class RoleConstroller extends BaseController{
 
-	@Autowired
+	@Resource
 	private RoleService roleService;
 	
 	

@@ -1,8 +1,8 @@
 package com.frame.application.front.modules.index.service.impl;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,7 +19,7 @@ import com.frame.core.base.service.impl.BaseServiceImpl;
 @Transactional
 public class FrontUserServiceImpl extends BaseServiceImpl implements FrontUserService {
 
-	@Autowired
+	@Resource
 	private FrontUserDao frontUserDao;
 	
 	@PostConstruct

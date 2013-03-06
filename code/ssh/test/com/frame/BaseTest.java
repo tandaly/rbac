@@ -14,6 +14,6 @@ import org.springframework.transaction.annotation.Transactional;
 @ContextConfiguration(locations = { "/spring/applicationContext.xml", "/spring/admin/applicationContext-admin.xml"})
 @TransactionConfiguration(defaultRollback = false)
 @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
-public class BaseCommonTest {
+public class BaseTest {
 
 }

@@ -12,6 +12,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.stereotype.Repository;
 
@@ -34,6 +35,15 @@ import com.frame.core.base.util.hibernate.Finder;
 public class BaseDaoImpl extends AbstractBaseDaoSupport implements
 		BaseDao {
 
+	@Value("${init.username}")//在system.properties中修改
+	private String initUserName; //初始化用户名 
+	
+	@Value("${init.password}")
+	private String initPassword;//初始化密码
+	
+	/**
+	 * 初始化数据库表数据
+	 */
 	@Override
 	public void initDB() {
 		SessionFactory sf = super.getSessionFactory();
@@ -41,7 +51,6 @@ public class BaseDaoImpl extends AbstractBaseDaoSupport implements
 		Session session = sf.openSession();
 		
 		session.beginTransaction();
-		
 		try {
 			//1.初始化菜单表
 			/*************顶级菜单****************/
@@ -102,8 +111,8 @@ public class BaseDaoImpl extends AbstractBaseDaoSupport implements
 			
 			//6.初始化用户表
 			User user = new User();
-			user.setUserName("admin");
-			user.setPassword("admin");
+			user.setUserName(this.initUserName);
+			user.setPassword(this.initPassword);
 			user.setRegisterDate(new Date());
 			
 			//7.给用户分配角色

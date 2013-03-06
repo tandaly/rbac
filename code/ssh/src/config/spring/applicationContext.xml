@@ -14,20 +14,21 @@
        		http://www.springframework.org/schema/aop
        		http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
 
-	
+
 	<!-- 使用 annotation --> 
 	<context:annotation-config />
 	
 	<!-- 使用 annotation 自动注册bean,并检查@Controller, @Service, @Repository注解已被注入 --> 
 	<context:component-scan base-package="com.frame.core" />
 	
+	<!--引入外部文件-->
 	<import resource="applicationContext-core.xml" />
 	
 	<!-- 读取属性配置文件 <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"> 
-		<property name="locations"> <list> <value>/WEB-INF/classes/jdbc.properties</value> 
-		</list> </property> </bean> -->
-	<context:property-placeholder location="classpath:jdbc.properties" />
-
+	<property name="locations"> <list> <value>/WEB-INF/classes/jdbc.properties</value> 
+	</list> </property> </bean> -->
+	<context:property-placeholder location="classpath:jdbc.properties, classpath:project.properties, classpath:system.properties" />
+	
 	<!-- 配置C3P0数据源 -->
 	<bean id="myDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
 		destroy-method="close">

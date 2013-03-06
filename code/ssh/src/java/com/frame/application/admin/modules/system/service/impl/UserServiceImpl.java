@@ -2,7 +2,8 @@ package com.frame.application.admin.modules.system.service.impl;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,7 +21,7 @@ import com.frame.core.base.service.impl.BaseServiceImpl;
 @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
 public class UserServiceImpl extends BaseServiceImpl implements UserService {
 
-	@Autowired
+	@Resource
 	private UserDao userDao;
 	
 	/**

@@ -1,8 +1,8 @@
 package com.frame.application.front.modules.index.controller;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,7 +20,7 @@ import com.frame.application.front.util.FrontConstants;
 @RequestMapping(FrontConstants.PROJECT_PATH)
 public class FrontMoodController {
 
-	@Autowired
+	@Resource
 	private FrontMoodService frontMoodService;
 	
 	/**

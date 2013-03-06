@@ -11,6 +11,18 @@
           	http://www.springframework.org/schema/mvc
 			http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 
+	<!-- 定义环境变量文件 -->
+	<bean id="propertyHolder" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />
+		<property name="ignoreResourceNotFound" value="true" />
+		<property name="locations">
+			<list>
+				<value>classpath*:/project.properties</value>
+				<value>classpath*:/system.properties</value>
+			</list>
+		</property>
+	</bean>
+
 	<!-- ***********************springMVC 配置 start ********************** -->
 	<!-- 国际化支持 -->
 	<bean id="messageSource"

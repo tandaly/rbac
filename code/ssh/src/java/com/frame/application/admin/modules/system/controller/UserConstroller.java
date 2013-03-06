@@ -4,9 +4,9 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,7 +29,7 @@ import com.frame.core.base.util.SystemConstants;
 @RequestMapping(SystemConstants.PROJECT_PATH)
 public class UserConstroller extends BaseController{
 
-	@Autowired
+	@Resource
 	private UserService userService;
 	
 	/**
