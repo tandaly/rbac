@@ -45,7 +45,7 @@
 							</label>
 							<div class="controls">
 								<input autofocus="autofocus" class="input-large" id="user_login"
-									name="userName" size="30" type="text">
+									name="userName" size="30" type="text" value="admin">
 
 
 							</div>
@@ -58,7 +58,7 @@
 							</label>
 							<div class="controls">
 								<input class="input-large" id="user_password"
-									name="password" size="30" type="password">
+									name="password" size="30" type="password" value="admin">
 							</div>
 						</div>
 						<div class="form-actions" style="text-align:right;padding-right:160px;">
