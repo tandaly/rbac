@@ -21,7 +21,7 @@
 	</bean>
 
 	<!-- 扫描类包，将标注Spring注解的类自动转化Bean，同时完成Bean的注入 -->
-	<context:component-scan base-package="com.frame.controller"
+	<context:component-scan base-package="com.frame.application.admin.modules"
 		use-default-filters="false">
 		<context:include-filter expression="org.springframework.stereotype.Controller"
 			type="annotation" />
@@ -37,7 +37,7 @@
 
 	<!-- 配置自定义拦截器 -->
 	<mvc:interceptors>
-		<bean class="com.frame.web.MyInterceptor" />
+		<bean class="com.frame.application.admin.web.interceptor.AdminInterceptor" />
 	</mvc:interceptors>
 
 	<!-- ***********************springMVC 配置 end ********************** -->

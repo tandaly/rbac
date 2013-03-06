@@ -11,32 +11,32 @@
 <!-- ***************springMVC配置 start******************** -->
 	<!-- 后台 springMVC 入口总控制器 -->
 	 <servlet>
-		<servlet-name>springMVC</servlet-name>
+		<servlet-name>springMVCAdmin</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
 			<param-value>
-				/WEB-INF/classes/spring/applicationContext*.xml
-				/WEB-INF/classes/spring/spring-frame*.xml
-				/WEB-INF/springMVC-servlet.xml
+				/WEB-INF/classes/spring/applicationContext.xml
+				/WEB-INF/classes/spring/admin/applicationContext-*.xml
+				/WEB-INF/springMVCAdmin-servlet.xml
 			</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>springMVC</servlet-name>
+		<servlet-name>springMVCAdmin</servlet-name>
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping> 
 	
-	<!-- 前端 
+	<!-- 前端 -->
 	<servlet>
 		<servlet-name>springMVCFront</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
 			<param-value>
-				/WEB-INF/classes/spring/applicationContext*.xml
-				/WEB-INF/classes/spring/spring-front*.xml
+				/WEB-INF/classes/spring/applicationContext.xml
+				/WEB-INF/classes/spring/front/applicationContext-*.xml
 				/WEB-INF/springMVCFront-servlet.xml
 			</param-value>
 		</init-param>
@@ -46,16 +46,16 @@
 		<servlet-name>springMVCFront</servlet-name>
 		<url-pattern>*.htm</url-pattern>
 	</servlet-mapping>
-	-->
+	
 	<!--服务器启动时初始化操作 -->
 	<servlet>
 	    <servlet-name>SystemServlet</servlet-name>
-	    <servlet-class>com.frame.web.servlet.SystemServlet</servlet-class>
+	    <servlet-class>com.frame.application.admin.web.servlet.SystemServlet</servlet-class>
 	    <init-param>
 	      <param-name>encoding</param-name>
 	      <param-value>UTF-8</param-value>
 	    </init-param>
-	    <load-on-startup>1</load-on-startup>
+	    <load-on-startup>3</load-on-startup>
 	</servlet>
 	
 	<!-- 统一字符编码为UTF-8 -->
