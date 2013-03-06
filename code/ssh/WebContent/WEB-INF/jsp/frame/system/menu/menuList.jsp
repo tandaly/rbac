@@ -10,7 +10,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta http-equiv="cache-control" content="no-cache">
 		<meta http-equiv="pragma" content="no-cache">
-		<title>用户列表</title>
+		<title>菜单列表</title>
 		<!-- 自定义公共js -->
 		<script type="text/javascript" src="js/frame/application.js"></script>
 		
@@ -32,7 +32,7 @@
 					ajax: 
 					{
 					  on: true,
-					  url: "frame/ajaxUserList.do",
+					  url: "frame/ajaxMenuList.do",
 					  dataType: 'json',
 					  param:formData,
 					  ajaxStart:function(){
@@ -76,11 +76,16 @@
 				var tr = "<tr>";
 				tr += "<td><input type=\"checkbox\"></td>";
 				tr += "<td style='text-align:center;'>"+no+"</td>";
-				tr += "<td>"+obj.userName+"</td>";
-				tr += "<td>"+obj.password+"</td>";
-				tr += "<td>"+obj.registerDate+"</td>";
+				if(null != obj.parentNo)
+				{
+					tr += "<td>"+obj.parentNo+"</td>";
+				}else
+				{
+					tr += "<td>--</td>";
+				}
+				tr += "<td>"+obj.menuNo+"</td>";
+				tr += "<td>"+obj.menuName+"</td>";
 				tr += "<td style=\"text-align: center;\" width=\"160px;\">"
-					+"<a href='' >授权</a> &nbsp;&nbsp;"
 					+"<a href=\"frame/toUpdateUser.do?id="+obj.id+"\">修改</a>&nbsp;&nbsp;<a href=\"javascript:deleteUser("+obj.id+")\">删除</a>"
 					+"</td>";
 				return tr;
@@ -127,7 +132,7 @@
 	</head>
 	<body>
 		<div class="txt_title">
-				系统管理&gt;权限管理&gt;用户管理&gt;用户列表 
+				系统管理&gt;权限管理&gt;菜单管理&gt;菜单列表 
 				<span id="_ut" class="f_size normal black">
 					(页面响应时间: <font color="red" id="responseTime">${responseTime}</font>秒 )
 				</span>
@@ -146,9 +151,7 @@
 			<div style="padding-left:2px;padding-top:5px;text-align:center;">
 				<form id="queryForm" name="queryForm" onsubmit="return queryFrom()">
 					<input type="hidden" name="pageSize" value="10"/>
-					用户名：<input name="userName" /> 
-					&nbsp;
-					密码：<input name="password" /> 
+					菜单名：<input name="menuName" /> 
 					<input value="查询" type="submit" class="btn_gray btn_space"/>
 					<input value="清空" type="reset" class="btn_gray btn_space"/>
 				</form>
@@ -163,9 +166,9 @@
 								title="选中/取消选中">
 					</th>
 					<th style="text-align: center;" width="60px;">序号</th>
-					<th class="o_title2">用户名</th>
-					<th class="o_title2">密码</th>
-					<th class="o_title2">注册日期</th>
+					<th class="o_title2">父菜单编号</th>
+					<th class="o_title2">菜单编号</th>
+					<th class="o_title2">菜单名</th>
 					<th style="text-align: center;" width="160px;">操作</th>
 				</tr>
 			</thead>

@@ -126,6 +126,15 @@ public class IndexConstroller {
 				
 				list.add(roleTree);
 				
+				MenuTreeBean menuTree = new MenuTreeBean();
+				menuTree.setTreeId("1001003");
+				menuTree.setParentId("1001");
+				menuTree.setName("菜单管理");
+				menuTree.setUrl("frame/toMenuList.do");
+				menuTree.setTarget("mainFrame");
+				
+				list.add(menuTree);
+				
 				break;
 			}
 		}

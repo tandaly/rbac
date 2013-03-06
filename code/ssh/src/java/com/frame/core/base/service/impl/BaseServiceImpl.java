@@ -27,4 +27,9 @@ public class BaseServiceImpl implements BaseService {
 		return this.baseDao.findObjectsByPage(pageParamMap);
 	}
 
+	@Override
+	public void save(Object entity) {
+		this.baseDao.save(entity);
+	}
+
 }

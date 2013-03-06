@@ -136,7 +136,7 @@
 	-->
 	
 	<!-- 配置事务的传播特性 -->
-	<!--
+	
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
 		<tx:attributes>
 			<tx:method name="add*" propagation="REQUIRED" />
@@ -149,15 +149,15 @@
 			<tx:method name="*" read-only="true" />
 		</tx:attributes>
 	</tx:advice>
-	-->
+	
 	
 	<!-- 配置事务的切入点 -->
-	<!--
+	
 	<aop:config>
 		<aop:pointcut id="targetMethod" expression="execution(* com.frame..service.*.*(..))" />
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="targetMethod" />
 	</aop:config>
-	-->
+	
 	
 
 	<!--自定义 实现BeanFactoryAware接口，把该接口配置到spring中，然后把getbean方法写成静态的，就可以动态获取-->

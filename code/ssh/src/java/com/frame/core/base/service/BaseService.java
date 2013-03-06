@@ -9,6 +9,12 @@ import com.frame.core.base.page.Pagination;
  * @date 2013-3-5 下午2:32:53
  */
 public interface BaseService {
+	
+	/**
+	 * 新增操作
+	 * @param entity
+	 */
+	public void save(Object entity);
 
 	/**
 	 * 分页查询
