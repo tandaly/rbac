@@ -10,6 +10,7 @@ import java.util.Set;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.stereotype.Repository;
 
@@ -31,6 +32,105 @@ import com.frame.model.User;
 public class BaseDaoImpl extends AbstractBaseDaoSupport implements
 		BaseDao {
 
+	@Override
+	public void initDB() {
+		SessionFactory sf = super.getSessionFactory();
+		//修改为create表 TODO
+		Session session = sf.openSession();
+		
+		session.beginTransaction();
+		
+		try {
+			//1.初始化菜单表
+			/*************顶级菜单****************/
+			Menu mSys = new Menu();
+			mSys.setMenuNo("1");
+			mSys.setMenuName("系统管理");
+			mSys.setClick("return false;");
+			mSys.setOrderNo(mSys.getMenuNo());
+			
+			/*************二级菜单****************/
+			Menu mSysPriv = new Menu();
+			mSysPriv.setMenuNo("1001");
+			mSysPriv.setParentNo("1");
+			mSysPriv.setMenuName("权限管理");
+			mSysPriv.setClick("return false;");
+			mSysPriv.setOrderNo(mSysPriv.getMenuNo());
+			
+			/*************三级菜单****************/
+			Menu mSysUser = new Menu();
+			mSysUser.setMenuNo("1001001");
+			mSysUser.setParentNo("1001");
+			mSysUser.setMenuUrl("frame/toUserList.do");
+			mSysUser.setMenuName("用户管理");
+			mSysUser.setOrderNo(mSysUser.getMenuNo());
+			
+			Menu mSysRole = new Menu();
+			mSysRole.setMenuNo("1001002");
+			mSysRole.setParentNo("1001");
+			mSysRole.setMenuUrl("frame/toRoleList.do");
+			mSysRole.setMenuName("角色管理");
+			mSysRole.setOrderNo(mSysRole.getMenuNo());
+			
+			//2.初始化权限表
+			Privilege p = new Privilege();
+			p.setPrivilegeName("系统权限");
+			
+			
+			//3.给权限分配菜单
+			mSys.getPrivileges().add(p);
+			p.getMenus().add(mSys);
+			
+			mSysPriv.getPrivileges().add(p);
+			p.getMenus().add(mSysPriv);
+			
+			mSysUser.getPrivileges().add(p);
+			p.getMenus().add(mSysUser);
+			
+			mSysRole.getPrivileges().add(p);
+			p.getMenus().add(mSysRole);
+			
+			//4.初始化角色表
+			Role role = new Role();
+			role.setRoleName("系统管理员");
+			
+			//5.给角色分配权限
+			p.getRoles().add(role);
+			role.getPrivileges().add(p);
+			
+			//6.初始化用户表
+			User user = new User();
+			user.setUserName("admin");
+			user.setPassword("admin");
+			
+			//7.给用户分配角色
+			role.getUsers().add(user);
+			user.getRoles().add(role);
+			
+			//8.保存操作
+			session.save(mSys);
+			session.save(mSysPriv);
+			session.save(mSysUser);
+			session.save(mSysRole);
+			
+			session.save(p);
+			
+			session.save(role);
+			
+			session.save(user);
+			
+			
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			session.getTransaction().rollback();
+		}
+		finally
+		{
+			session.close();
+		}
+	}
+	
+	
 	@Override
 	public void save(Object entity) {
 		super.getHibernateTemplate().save(entity);
@@ -250,84 +350,6 @@ public class BaseDaoImpl extends AbstractBaseDaoSupport implements
 //			query.setCacheable(true);
 //		}
 //		return ((Number) query.iterate().next()).intValue();
-	}
-
-	@Override
-	public void initDB() {
-		Session session = super.getSessionFactory().openSession();
-		
-		session.beginTransaction();
-		
-		try {
-			//1.初始化菜单表
-			Menu mSys = new Menu();
-			mSys.setMenuNo("1");
-			mSys.setMenuName("系统管理");
-			
-			Menu mSysUser = new Menu();
-			mSysUser.setMenuNo("1001");
-			mSysUser.setParentNo("1");
-			mSysUser.setMenuUrl("frame/toUserList.do");
-			mSysUser.setMenuName("用户管理");
-			
-			Menu mSysRole = new Menu();
-			mSysRole.setMenuNo("1002");
-			mSysRole.setParentNo("1");
-			mSysRole.setMenuUrl("frame/toRoleList.do");
-			mSysRole.setMenuName("角色管理");
-			
-			//2.初始化权限表
-			Privilege p = new Privilege();
-			p.setPrivilegeName("系统权限");
-			
-			
-			//3.给权限分配菜单
-			mSys.getPrivileges().add(p);
-			p.getMenus().add(mSys);
-			
-			mSysUser.getPrivileges().add(p);
-			p.getMenus().add(mSysUser);
-			
-			mSysRole.getPrivileges().add(p);
-			p.getMenus().add(mSysRole);
-			
-			//4.初始化角色表
-			Role role = new Role();
-			role.setRoleName("系统管理员");
-			
-			//5.给角色分配权限
-			p.getRoles().add(role);
-			role.getPrivileges().add(p);
-			
-			//6.初始化用户表
-			User user = new User();
-			user.setUserName("admin");
-			user.setPassword("admin");
-			
-			//7.给用户分配角色
-			role.getUsers().add(user);
-			user.getRoles().add(role);
-			
-			//8.保存操作
-			session.save(mSys);
-			session.save(mSysUser);
-			session.save(mSysRole);
-			
-			session.save(p);
-			
-			session.save(role);
-			
-			session.save(user);
-			
-			
-			session.getTransaction().commit();
-		} catch (Exception e) {
-			session.getTransaction().rollback();
-		}
-		finally
-		{
-			session.close();
-		}
 	}
 
 	@Override

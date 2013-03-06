@@ -51,6 +51,24 @@ public class Menu extends AbstractBaseModel{
 	private String menuUrl;
 	
 	/**
+	 * 目标值
+	 */
+	@Column(name = "target", length = 50)
+	private String target;
+	
+	/**
+	 * 菜单事件处理函数
+	 */
+	@Column(name = "click", length = 1000)
+	private String click;//默认无效
+	
+	/**
+	 * 排序编号
+	 */
+	@Column(name = "order_no", length = 100)
+	private String orderNo;
+	
+	/**
 	 * 权限集合
 	 */
 	@ManyToMany(
@@ -99,7 +117,29 @@ public class Menu extends AbstractBaseModel{
 	public void setParentNo(String parentNo) {
 		this.parentNo = parentNo;
 	}
-	
-	
+
+	public String getOrderNo() {
+		return orderNo;
+	}
+
+	public void setOrderNo(String orderNo) {
+		this.orderNo = orderNo;
+	}
+
+	public String getTarget() {
+		return target;
+	}
+
+	public void setTarget(String target) {
+		this.target = target;
+	}
+
+	public String getClick() {
+		return click;
+	}
+
+	public void setClick(String click) {
+		this.click = click;
+	}
 	
 }

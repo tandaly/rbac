@@ -56,6 +56,11 @@ public class TreeBean implements Serializable{
 	
 	/**********************菜单超链接 end**********************/
 	
+	/**
+	 * 显示图标
+	 */
+	private String icon;
+	
 	//----------------------GETTER AND SETTER-----------------------------------
 	public String getTreeId() {
 		return treeId;
@@ -98,6 +103,18 @@ public class TreeBean implements Serializable{
 	}
 	public void setClick(String click) {
 		this.click = click;
+	}
+	
+	public String getIcon() {
+		return icon;
+	}
+	
+	public void setIcon(String icon) {
+		if(null != icon && !"".equals(icon))
+		{
+			
+			this.icon = "plugins/ztree/icons/" + icon;
+		}
 	}
 	
 	

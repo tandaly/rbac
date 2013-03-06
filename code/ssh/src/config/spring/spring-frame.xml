@@ -15,19 +15,22 @@
        		http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
 
 	<!-- 扫描注解 -->
-	<context:component-scan base-package="com.frame.common.dao" />
+	<context:component-scan base-package="com.frame.common" />
 	<context:component-scan base-package="com.frame.service" />
 	<context:component-scan base-package="com.frame.dao" />
 	
-	<!-- 通过AOP配置提供事务增强，让service包下所有Bean的所有方法拥有事务
-	<aop:config proxy-target-class="true">
-		<aop:pointcut id="serviceMethod" expression=" execution(* com.frame.service..*(..))" />
-		<aop:advisor pointcut-ref="serviceMethod" advice-ref="txAdvice" />
+	<!-- 通过AOP配置提供事务增强，让service包下所有Bean的所有方法拥有事务 -->
+	<aop:config>
+		<aop:pointcut id="targetMethod" expression="execution(* com.frame..service.*.*(..))" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="targetMethod" />
 	</aop:config>
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
 		<tx:attributes>
-			<tx:method name="*" />
+			<tx:method name="*" propagation="REQUIRED"/>
 		</tx:attributes>
 	</tx:advice>
-	 -->
+	
+	<!--自定义 实现BeanFactoryAware接口，把该接口配置到spring中，然后把getbean方法写成静态的，就可以动态获取-->
+	<bean class="com.frame.common.util.SpringFactory"/>
+	 
 </beans>

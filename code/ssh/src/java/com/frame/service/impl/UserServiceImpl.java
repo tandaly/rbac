@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.frame.common.service.BaseServiceImpl;
@@ -16,7 +17,7 @@ import com.frame.service.UserService;
  * @date 2013-2-3 下午9:56:34
  */
 @Service
-@Transactional
+@Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
 public class UserServiceImpl extends BaseServiceImpl implements UserService {
 
 	@Autowired
@@ -26,7 +27,6 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 	 * 用户登陆
 	 */
 	@Override
-	@Transactional(readOnly = true)
 	public User loginCheck(User user) {
 		User u  = userDao.queryUserByUserName(user.getUserName());
 		if(null != user.getPassword() && null != u 
@@ -42,6 +42,7 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 	 * 用户注册
 	 */
 	@Override
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
 	public boolean register(User user) {
 		if(null == user || null == user.getUserName() 
 				|| "".equals(user.getUserName().trim()) 
@@ -60,6 +61,12 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 			return false;
 		}
 	}
+	
+	@Override
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
+	public void deleteUser(Long id) {
+		this.userDao.deleteById("User", id);
+	}
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -73,9 +80,6 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 		return (User) this.userDao.findById(User.class, id);
 	}
 
-	@Override
-	public void deleteUser(Long id) {
-		this.userDao.deleteById("User", id);
-	}
+
 
 }

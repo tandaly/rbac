@@ -124,7 +124,7 @@
 	</head>
 	<body>
 		<div class="txt_title">
-				系统管理&gt;角色管理&gt;用户列表 
+				系统管理&gt;权限管理&gt;角色管理&gt;用户列表 
 				<span id="_ut" class="f_size normal black">
 					(页面响应时间: <font color="red" id="responseTime">${responseTime}</font>秒 )
 				</span>

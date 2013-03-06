@@ -90,26 +90,44 @@ public class IndexConstroller {
 	{
 		List<TreeBean> list = new ArrayList<TreeBean>();
 		
-		if(null != treeId && "1".equals(treeId))
+		if(null != treeId)
 		{
-			TreeBean userTree = new TreeBean();
-			userTree.setTreeId("1001");
-			userTree.setName("用户管理");
-			userTree.setUrl("frame/toUserList.do");
-			userTree.setTarget("mainFrame");
-			userTree.setParentId("1");
-			
-			list.add(userTree);
-			
-			TreeBean roleTree = new TreeBean();
-			roleTree.setTreeId("1002");
-			roleTree.setName("角色管理");
-			roleTree.setUrl("frame/toRoleList.do");
-			roleTree.setTarget("mainFrame");
-			roleTree.setParentId("1");
-			
-			
-			list.add(roleTree);
+			switch(Integer.valueOf(treeId))
+			{
+			case 1:
+				TreeBean pTree = new TreeBean();
+				pTree.setTreeId("1001");
+				pTree.setParentId("1");
+				pTree.setName("权限管理");
+				pTree.setClick("return false;");
+				pTree.setIsParent(true);
+				
+				list.add(pTree);
+				
+				break;
+			case 1001:
+				TreeBean userTree = new TreeBean();
+				userTree.setTreeId("1001001");
+				userTree.setParentId("1001");
+				userTree.setName("用户管理");
+				userTree.setUrl("frame/toUserList.do");
+				userTree.setTarget("mainFrame");
+				//userTree.setIcon("user.gif");
+				
+				list.add(userTree);
+				
+				TreeBean roleTree = new TreeBean();
+				roleTree.setTreeId("1001002");
+				roleTree.setParentId("1001");
+				roleTree.setName("角色管理");
+				roleTree.setUrl("frame/toRoleList.do");
+				roleTree.setTarget("mainFrame");
+				//roleTree.setIcon("role.gif");
+				
+				list.add(roleTree);
+				
+				break;
+			}
 		}
 		else {
 			System.out.println("--没有子树--");
