@@ -10,6 +10,7 @@ import com.frame.core.base.dao.BaseDao;
 import com.frame.core.base.page.PageParamMap;
 import com.frame.core.base.page.Pagination;
 import com.frame.core.base.service.BaseService;
+import com.frame.core.exception.service.ServiceException;
 /**
  * 角色业务接口实现
  * @author Tandaly
@@ -23,12 +24,12 @@ public class BaseServiceImpl implements BaseService {
 	private BaseDao baseDao;
 	
 	@Override
-	public Pagination fetchObjectsByPage(PageParamMap pageParamMap) {
+	public Pagination fetchObjectsByPage(PageParamMap pageParamMap) throws ServiceException{
 		return this.baseDao.findObjectsByPage(pageParamMap);
 	}
 
 	@Override
-	public void save(Object entity) {
+	public void save(Object entity) throws ServiceException{
 		this.baseDao.save(entity);
 	}
 

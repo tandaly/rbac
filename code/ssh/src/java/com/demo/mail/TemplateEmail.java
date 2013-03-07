@@ -12,7 +12,6 @@ import org.springframework.core.task.TaskExecutor;
 import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
@@ -21,10 +20,8 @@ import freemarker.template.Template;
 
 /**
  * 发送邮件 可以自己编写html模板
- * @author ajun
- * @email zhaojun2066@gmail.com
- * @blog http://blog.csdn.net/ajun_studio
- * 2011-12-6 下午04:49:01
+ * @author Tandaly
+ * @date 2013-3-7 下午2:53:24
  */
 @Service
 public class TemplateEmail {

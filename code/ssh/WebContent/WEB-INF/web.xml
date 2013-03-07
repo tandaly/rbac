@@ -72,7 +72,22 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 <!-- ***************springMVC配置 end******************** -->
-	
+
+<!-- ***************业务异常过滤器 start******************** -->
+	<filter>
+		<filter-name>ExceptionFilter</filter-name>
+		<filter-class>com.frame.core.base.web.filter.ExceptionFiler</filter-class>
+		<init-param>
+	    	<param-name>errorPage</param-name>
+	    	<param-value>/WEB-INF/jsp/error/error.jsp</param-value>
+	    </init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>ExceptionFilter</filter-name>
+		<url-pattern>*.do</url-pattern>
+	</filter-mapping>
+<!-- ***************业务异常过滤器 end******************** -->
+
 <!-- ***************错误码页面 start******************** -->
 	<error-page>
 		<error-code>404</error-code>

@@ -134,7 +134,7 @@
 		<div class="txt_title">
 				系统管理&gt;权限管理&gt;菜单管理&gt;菜单列表 
 				<span id="_ut" class="f_size normal black">
-					(页面响应时间: <font color="red" id="responseTime">${responseTime}</font>秒 )
+					(页面响应时间: <font color="red" id="responseTime">${responseTime}</font>ms )
 				</span>
 			</div>
 			

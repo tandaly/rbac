@@ -12,6 +12,7 @@ import com.frame.application.admin.modules.system.dao.UserDao;
 import com.frame.application.admin.modules.system.model.User;
 import com.frame.application.admin.modules.system.service.UserService;
 import com.frame.core.base.service.impl.BaseServiceImpl;
+import com.frame.core.exception.service.ServiceException;
 /**
  * 用户业务操作实现
  * @author tanfei(619606426@qq.com)
@@ -28,7 +29,7 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 	 * 用户登陆
 	 */
 	@Override
-	public User loginCheck(User user) {
+	public User loginCheck(User user) throws ServiceException{
 		User u  = userDao.queryUserByUserName(user.getUserName());
 		if(null != user.getPassword() && null != u 
 				&& user.getPassword().equals(u.getPassword())){
@@ -44,7 +45,7 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 	 */
 	@Override
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
-	public boolean register(User user) {
+	public boolean register(User user) throws ServiceException{
 		if(null == user || null == user.getUserName() 
 				|| "".equals(user.getUserName().trim()) 
 				|| null == user.getPassword()
@@ -65,19 +66,24 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 	
 	@Override
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
-	public void deleteUser(Long id) {
-		this.userDao.deleteById("User", id);
+	public void deleteUser(Long id) throws ServiceException{
+		try {
+			this.userDao.deleteById("User", id);
+		} catch (Exception e) {
+			throw new ServiceException("业务异常：删除用户失败！");
+		}
+		
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<User> fetchUsers() {
+	public List<User> fetchUsers() throws ServiceException{
 		User user = new User();
 		return this.userDao.findAll(user);
 	}
 
 	@Override
-	public User queryUserById(Long id) {
+	public User queryUserById(Long id) throws ServiceException{
 		return (User) this.userDao.findById(User.class, id);
 	}
 

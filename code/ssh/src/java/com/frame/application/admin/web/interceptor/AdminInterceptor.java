@@ -30,7 +30,7 @@ public class AdminInterceptor implements HandlerInterceptor {
 		
 		long responseTime = endTime - this.startTime;
 		if(null != model)
-			model.getModel().put("responseTime", responseTime/1000f);
+			model.getModel().put("responseTime", responseTime);
 	}
 
 	@Override

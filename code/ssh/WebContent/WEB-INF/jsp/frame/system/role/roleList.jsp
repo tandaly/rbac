@@ -126,7 +126,7 @@
 		<div class="txt_title">
 				系统管理&gt;权限管理&gt;角色管理&gt;用户列表 
 				<span id="_ut" class="f_size normal black">
-					(页面响应时间: <font color="red" id="responseTime">${responseTime}</font>秒 )
+					(页面响应时间: <font color="red" id="responseTime">${responseTime}</font>ms )
 				</span>
 			</div>
 			
@@ -183,7 +183,7 @@
 	<div>
 		
 		<%-- <div style="display:none;">当前页：${pages.pageNo}  当前显示数：${pages.pageSize} 
-			总数：${pages.totalCount }  响应时间: ${responseTime}秒 <br /> 
+			总数：${pages.totalCount }  响应时间: ${responseTime}ms <br /> 
 		</div>
 		<div>
 			<a href="frame/userList.do?pageNo=${pages.prePage}">上一页</a> 

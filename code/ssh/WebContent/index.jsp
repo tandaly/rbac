@@ -12,6 +12,13 @@
 		1、为了支持freemarker，添加了两个jar包
 			spring-context-support-3.2.0.M1.jar (http://www.findjar.cn/showjar.x?id=697)
 			com.springsource.freemarker-2.3.18.jar (http://ebr.springsource.com/repository/app/bundle/version/detail?name=com.springsource.freemarker&version=2.3.18)
+			
+		2、为了支持邮件发送，添加了一个jar包
+			mail.jar(http://www.findjar.cn/showjar.x?id=926)
+			
+		3、字节码操作，利用cglib给javabean动态添加属性
+		   cglib.jar(http://www.findjar.cn/showjar.x?id=278)
+		   asm-3.3.jar(http://www.findjar.cn/showjar.x?id=1258)
 	</pre>
 </body>
 </html>
