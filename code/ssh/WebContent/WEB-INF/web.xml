@@ -28,7 +28,7 @@
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping> 
 	
-	<!-- 前端 -->
+	<!-- 前端 
 	<servlet>
 		<servlet-name>springMVCFront</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -46,7 +46,7 @@
 		<servlet-name>springMVCFront</servlet-name>
 		<url-pattern>*.htm</url-pattern>
 	</servlet-mapping>
-	
+	-->
 	<!--服务器启动时初始化操作 -->
 	<servlet>
 	    <servlet-name>SystemServlet</servlet-name>

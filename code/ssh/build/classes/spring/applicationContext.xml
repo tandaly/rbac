@@ -14,15 +14,22 @@
        		http://www.springframework.org/schema/aop
        		http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
 
-	<!-- 扫描注解 -->
-	<context:component-scan base-package="com.frame.util" />
 
+	<!-- 使用 annotation --> 
+	<context:annotation-config />
+	
+	<!-- 使用 annotation 自动注册bean,并检查@Controller, @Service, @Repository注解已被注入 --> 
+	<context:component-scan base-package="com.frame.core" />
+	
+	<!--引入外部文件-->
+	<import resource="applicationContext-core.xml" />
+	
 	<!-- 读取属性配置文件 <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"> 
-		<property name="locations"> <list> <value>/WEB-INF/classes/jdbc.properties</value> 
-		</list> </property> </bean> -->
-	<context:property-placeholder location="classpath:jdbc.properties" />
-
-	<!-- 配置数据源 -->
+	<property name="locations"> <list> <value>/WEB-INF/classes/jdbc.properties</value> 
+	</list> </property> </bean> -->
+	<context:property-placeholder location="classpath:jdbc.properties, classpath:project.properties, classpath:system.properties" />
+	
+	<!-- 配置C3P0数据源 -->
 	<bean id="myDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
 		destroy-method="close">
 		<property name="driverClass">
@@ -89,7 +96,7 @@
 		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
 		<property name="dataSource" ref="myDataSource" />
 		<property name="lobHandler" ref="lobHandler"></property>
-	    <property name="packagesToScan" value="com.*" /> 
+	    <property name="packagesToScan" value="com.frame.*" /> 
 		 <!-- <property name="mappingLocations">
 			<list>
 				<value>classpath*:/com/frame/model/hbm/*.hbm.xml</value>
@@ -105,6 +112,11 @@
 		</property>
 	</bean>
 	
+	<bean id="hibernateTemplate"
+        class="org.springframework.orm.hibernate3.HibernateTemplate">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+    
 	<bean id="lobHandler" class="org.springframework.jdbc.support.lob.DefaultLobHandler"/>
 	
 	<!-- spring 的事务处理类配置 -->
@@ -112,12 +124,43 @@
 		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-	
-	<context:annotation-config/>
-	<!-- 事务注解  这项配置告诉spring去检查容器中所有不管在类层面还是方法层面配置了注解-->
-	<tx:annotation-driven transaction-manager="transactionManager"
-		 />
-	
 <!-- **********************spring集成hibernate end************************** -->
+	
+	
+	<!-- 事务注解  这项配置告诉spring去检查容器中所有不管在类层面还是方法层面配置了注解 （cglib：proxy-target-class="true"）-->
+	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
+	
+	<!-- 指定使用cglib -->
+	<!-- 
+		<aop:aspectj-autoproxy proxy-target-class="true" />  
+	-->
+	
+	<!-- 配置事务的传播特性 -->
+	
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="add*" propagation="REQUIRED" />
+			<tx:method name="edit*" propagation="REQUIRED" />
+			<tx:method name="remove*" propagation="REQUIRED" />
+			<tx:method name="save*" propagation="REQUIRED" />
+			<tx:method name="update*" propagation="REQUIRED" />
+			<tx:method name="delete*" propagation="REQUIRED" />
+			<tx:method name="batchUpdate" propagation="REQUIRED" />
+			<tx:method name="*" read-only="true" />
+		</tx:attributes>
+	</tx:advice>
+	
+	
+	<!-- 配置事务的切入点 -->
+	
+	<aop:config>
+		<aop:pointcut id="targetMethod" expression="execution(* com.frame..service.*.*(..))" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="targetMethod" />
+	</aop:config>
+	
+	
+
+	<!--自定义 实现BeanFactoryAware接口，把该接口配置到spring中，然后把getbean方法写成静态的，就可以动态获取-->
+	<bean class="com.frame.core.base.util.spring.SpringFactory"/>
 
 </beans>

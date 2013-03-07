@@ -14,13 +14,14 @@
        		http://www.springframework.org/schema/aop
        		http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
 
-	<!-- 扫描注解 -->
-	<context:component-scan base-package="com.front.model" />
-	<context:component-scan base-package="com.front.service" />
-	<context:component-scan base-package="com.front.dao" />
+	<!-- 扫描注解
+	<context:component-scan base-package="com.frame.core.base.model" />
+	<context:component-scan base-package="com.frame.core.base.service" />
+	<context:component-scan base-package="com.frame.core.base.dao" />
+	<context:component-scan base-package="com.frame.core.base.util" />
+ -->
 	
-	
-		<!-- 通过AOP配置提供事务增强，让service包下所有Bean的所有方法拥有事务
+<!-- 通过AOP配置提供事务增强，让service包下所有Bean的所有方法拥有事务
 	<aop:config proxy-target-class="true">
 		<aop:pointcut id="serviceMethod" expression=" execution(* com.front.service..*(..))" />
 		<aop:advisor pointcut-ref="serviceMethod" advice-ref="txAdvice" />
