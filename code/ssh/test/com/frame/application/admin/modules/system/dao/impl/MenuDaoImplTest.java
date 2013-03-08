@@ -1,5 +1,6 @@
 package com.frame.application.admin.modules.system.dao.impl;
 
+
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -29,6 +30,14 @@ public class MenuDaoImplTest extends BaseTest{
 		{
 			System.out.println(menu.getMenuName());
 		}
+	}
+	
+	@Test
+	public void testDeleteByIds()
+	{
+		Menu menu = (Menu) this.menuDao.findById(Menu.class, new Long(8));
+		
+		this.menuDao.delete(menu);
 	}
 
 }

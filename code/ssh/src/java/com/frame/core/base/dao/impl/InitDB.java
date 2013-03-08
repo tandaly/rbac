@@ -60,14 +60,23 @@ public class InitDB {
 			mSysPriv.setOrderNo(mSysPriv.getMenuNo());
 			session.save(mSysPriv);
 			
-			//字典表维护菜单
+			//基础数据维护菜单
 			Menu mSysBaseData = new Menu();
 			mSysBaseData.setMenuNo("1002");
 			mSysBaseData.setParentNo("1");
-			mSysBaseData.setMenuName("字典表维护");
+			mSysBaseData.setMenuName("基础数据维护");
 			mSysBaseData.setClick("return false;");
 			mSysBaseData.setOrderNo(mSysBaseData.getMenuNo());
 			session.save(mSysBaseData);
+			
+			//运行监控菜单
+			Menu mSysRunMonitor = new Menu();
+			mSysRunMonitor.setMenuNo("1003");
+			mSysRunMonitor.setParentNo("1");
+			mSysRunMonitor.setMenuName("运行监控");
+			mSysRunMonitor.setClick("return false;");
+			mSysRunMonitor.setOrderNo(mSysRunMonitor.getMenuNo());
+			session.save(mSysRunMonitor);
 			
 			//////////三级菜单
 			//用户管理菜单
@@ -115,6 +124,51 @@ public class InitDB {
 			mSysAppParam.setOrderNo(mSysAppParam.getMenuNo());
 			session.save(mSysAppParam);
 			
+			//request请求监控菜单
+			Menu mSysRquestMonitor = new Menu();
+			mSysRquestMonitor.setMenuNo("1003001");
+			mSysRquestMonitor.setParentNo("1003");
+			mSysRquestMonitor.setMenuUrl("frame/build.do");
+			mSysRquestMonitor.setMenuName("request请求监控");
+			mSysRquestMonitor.setOrderNo(mSysRquestMonitor.getMenuNo());
+			session.save(mSysRquestMonitor);
+			
+			//session会话监控菜单
+			Menu mSysSessionMonitor = new Menu();
+			mSysSessionMonitor.setMenuNo("1003002");
+			mSysSessionMonitor.setParentNo("1003");
+			mSysSessionMonitor.setMenuUrl("frame/build.do");
+			mSysSessionMonitor.setMenuName("session会话监控");
+			mSysSessionMonitor.setOrderNo(mSysSessionMonitor.getMenuNo());
+			session.save(mSysSessionMonitor);
+			
+			//JDBC执行监控菜单
+			Menu mSysJDBCMonitor = new Menu();
+			mSysJDBCMonitor.setMenuNo("1003003");
+			mSysJDBCMonitor.setParentNo("1003");
+			mSysJDBCMonitor.setMenuUrl("frame/build.do");
+			mSysJDBCMonitor.setMenuName("JDBC执行监控");
+			mSysJDBCMonitor.setOrderNo(mSysJDBCMonitor.getMenuNo());
+			session.save(mSysJDBCMonitor);
+			
+			//系统异常监控菜单
+			Menu mSysExceptionMonitor = new Menu();
+			mSysExceptionMonitor.setMenuNo("1003004");
+			mSysExceptionMonitor.setParentNo("1003");
+			mSysExceptionMonitor.setMenuUrl("frame/build.do");
+			mSysExceptionMonitor.setMenuName("系统异常监控");
+			mSysExceptionMonitor.setOrderNo(mSysExceptionMonitor.getMenuNo());
+			session.save(mSysExceptionMonitor);
+			
+			//服务器信息菜单
+			Menu mSysServerMonitor = new Menu();
+			mSysServerMonitor.setMenuNo("1003005");
+			mSysServerMonitor.setParentNo("1003");
+			mSysServerMonitor.setMenuUrl("frame/build.do");
+			mSysServerMonitor.setMenuName("服务器信息监控");
+			mSysServerMonitor.setOrderNo(mSysServerMonitor.getMenuNo());
+			session.save(mSysServerMonitor);
+			
 			/*******************2.初始化权限表*******************/
 			//超级权限
 			Privilege p = new Privilege();
@@ -150,6 +204,10 @@ public class InitDB {
 			mSysBaseData.getPrivileges().add(p);
 			p.getMenus().add(mSysBaseData);
 			
+			//运行监控菜单 - 超级权限
+			mSysRunMonitor.getPrivileges().add(p);
+			p.getMenus().add(mSysRunMonitor);
+			
 			/////////////三级菜单
 			//用户管理菜单- 超级权限
 			mSysUser.getPrivileges().add(p);
@@ -182,6 +240,26 @@ public class InitDB {
 			//全局参数表维护菜单- 超级权限
 			mSysAppParam.getPrivileges().add(p);
 			p.getMenus().add(mSysAppParam);
+			
+			//request请求监控菜单 - 超级权限
+			mSysRquestMonitor.getPrivileges().add(p);
+			p.getMenus().add(mSysRquestMonitor);
+			
+			//session会话监控菜单 - 超级权限
+			mSysSessionMonitor.getPrivileges().add(p);
+			p.getMenus().add(mSysSessionMonitor);
+			
+			//JDBC执行监控菜单 - 超级权限
+			mSysJDBCMonitor.getPrivileges().add(p);
+			p.getMenus().add(mSysJDBCMonitor);
+			
+			//系统异常监控菜单 - 超级权限
+			mSysExceptionMonitor.getPrivileges().add(p);
+			p.getMenus().add(mSysExceptionMonitor);
+			
+			//服务器信息监控菜单 - 超级权限
+			mSysServerMonitor.getPrivileges().add(p);
+			p.getMenus().add(mSysServerMonitor);
 			
 			/**************4.初始化角色表******************/
 			//超级管理员角色

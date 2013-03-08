@@ -39,6 +39,12 @@ public interface BaseDao {
 	public void delete(Object entity);
 	
 	/**
+	 * 多删除实体
+	 * @param ids
+	 */
+	public Integer deleteByIds(String entityName, Serializable[] ids);
+	
+	/**
 	 * 根据ID删除实体类.
 	 * 
 	 * @param entityName

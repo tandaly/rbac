@@ -1,10 +1,8 @@
 package com.frame.application.admin.web.servlet;
 
-import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 
-import com.frame.core.base.dao.BaseDao;
 import com.frame.core.base.dao.impl.InitDB;
 import com.frame.core.base.util.spring.SpringFactory;
 /**

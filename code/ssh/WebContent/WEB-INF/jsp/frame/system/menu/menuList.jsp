@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 	<head>
-		<base href="${pageContext.request.contextPath}/" />
+		<base href="${pageContext.request.scheme}${'://'}${pageContext.request.serverName}${':'}${pageContext.request.serverPort}${pageContext.request.contextPath}/" />
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta http-equiv="cache-control" content="no-cache">

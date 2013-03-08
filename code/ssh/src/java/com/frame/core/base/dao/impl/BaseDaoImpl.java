@@ -48,13 +48,29 @@ public class BaseDaoImpl extends AbstractBaseDaoSupport implements
 	@Override
 	public void delete(Object entity) {
 		super.getHibernateTemplate().delete(entity);
-		//super.getSession().delete(entity);
+	}
+	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@Override
+	public Integer deleteByIds(String entityName, final Serializable[] ids) {
+		final String hql = "DELETE " +  entityName + " WHERE id IN (:ids)";
+		
+		return (Integer) getHibernateTemplate().execute(new HibernateCallback(){
+			@Override
+			public Object doInHibernate(Session session)
+					throws HibernateException, SQLException {
+				Query query = session.createQuery(hql);
+				query.setParameterList("ids", ids);
+				return query.executeUpdate();
+			}
+			
+		});
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public Integer deleteById(String entityName, final Long id) {
-		final String hql = "delete " + entityName + " where id = " + id;
+		final String hql = "DELETE " + entityName + " WHERE id = " + id;
 
 		return (Integer) getHibernateTemplate().execute(
 				new HibernateCallback() {
@@ -119,6 +135,8 @@ public class BaseDaoImpl extends AbstractBaseDaoSupport implements
 	public List<Object[]> queryMultiObjects(String hql) {
 		return super.queryMultiObjectsResult(hql);
 	}
+
+
 	
 	
 	
