@@ -1,9 +1,11 @@
 package com.frame.application.admin.web.servlet;
 
+import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 
 import com.frame.core.base.dao.BaseDao;
+import com.frame.core.base.dao.impl.InitDB;
 import com.frame.core.base.util.spring.SpringFactory;
 /**
  * 服务器启动时初始化操作
@@ -12,7 +14,7 @@ import com.frame.core.base.util.spring.SpringFactory;
  */
 public class SystemServlet extends HttpServlet
 {
-
+	
     /**
 	 * 序列号
 	 */
@@ -29,9 +31,9 @@ public class SystemServlet extends HttpServlet
     {
     	System.out.println("----------------初始化操作开始------------");
     	System.out.println("--开始获得操作bean");
-    	BaseDao  baseDao = SpringFactory.getBean("baseDaoImpl");
+    	InitDB  initDB = SpringFactory.getBean("initDB");
     	System.out.println("--开始进行数据库初始化操作");
-    	baseDao.initDB();
+    	initDB.excute();
     	System.out.println("--初始化完成");
     	
     }

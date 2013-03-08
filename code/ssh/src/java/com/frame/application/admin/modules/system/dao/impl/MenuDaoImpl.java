@@ -29,7 +29,7 @@ public class MenuDaoImpl extends BaseDaoImpl implements MenuDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Menu> querySysLeftMenuTreeRoot(Serializable userId) {
-		String hql = "SELECT m FROM Menu m JOIN m.privileges ps JOIN ps.roles rs JOIN rs.users us " +
+		String hql = "SELECT DISTINCT m FROM Menu m JOIN m.privileges ps JOIN ps.roles rs JOIN rs.users us " +
 				" WHERE us.id = ? AND m.parentNo is null";
 		
 		return super.getHibernateTemplate().find(hql, userId);
@@ -39,7 +39,7 @@ public class MenuDaoImpl extends BaseDaoImpl implements MenuDao {
 	@Override
 	public List<Menu> querySysLeftMenuTreeChild(Serializable userId,
 			Serializable parentId) {
-		String hql = "SELECT m FROM Menu m JOIN m.privileges ps JOIN ps.roles rs JOIN rs.users us " +
+		String hql = "SELECT DISTINCT m FROM Menu m JOIN m.privileges ps JOIN ps.roles rs JOIN rs.users us " +
 				" WHERE us.id = ? AND m.parentNo = ?";
 		
 		return super.getHibernateTemplate().find(hql, userId, parentId);

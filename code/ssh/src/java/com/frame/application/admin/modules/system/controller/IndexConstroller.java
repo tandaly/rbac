@@ -1,6 +1,5 @@
 package com.frame.application.admin.modules.system.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -21,7 +20,7 @@ import com.frame.core.base.util.SystemConstants;
 
 /**
  * 主页控制器
- * @author tanfei(619606426@qq.com)
+ * @author tandaly(tandaly001@gmail.com)
  * @date 2013-2-3 上午1:08:38
  */
 @Controller
@@ -30,6 +29,16 @@ public class IndexConstroller extends BaseController{
 
 	@Resource
 	private MenuService menuService;
+	
+	/**
+	 * 跳转到建设页
+	 * @return
+	 */
+	@RequestMapping("build")
+	public String build()
+	{
+		return "system/build";
+	}
 	
 	/**
 	 * 跳转到主页面
@@ -74,27 +83,21 @@ public class IndexConstroller extends BaseController{
 	public void ajaxGetSysLeftMenuTreeRoot(HttpSession session, HttpServletResponse response)
 	{
 		List<MenuTreeBean> menuTrees = null;
-		/*
-		MenuTreeBean root = new MenuTreeBean();
-		root.setTreeId("1");
-		root.setName("系统管理");
-		root.setClick("return false;");
-		root.setIsParent(true);
 		
-		list.add(root);
+		User user = (User) session.getAttribute(SystemConstants.USER_IN_SESSION);
+		if(null != user)
+		{
+			menuTrees = this.menuService.fetchSysLeftMenuTreeRoot(user.getId());
+		}
 		
+		//TODO 测试用 
 		MenuTreeBean demo = new MenuTreeBean();
 		demo.setTreeId("2");
 		demo.setName("测试管理");
 		demo.setClick("return false;");
 		demo.setIsParent(true);
 		
-		list.add(demo);*/
-		User user = (User) session.getAttribute(SystemConstants.USER_IN_SESSION);
-		if(null != user)
-		{
-			menuTrees = this.menuService.fetchSysLeftMenuTreeRoot(user.getId());
-		}
+		menuTrees.add(demo);
 		
 		HtmlUtil.writerJson(response, menuTrees);
 	}
@@ -109,76 +112,30 @@ public class IndexConstroller extends BaseController{
 	{
 		List<MenuTreeBean> menuTrees = null;
 		
-		/*if(null != treeId)
-		{
-			switch(Integer.valueOf(treeId))
-			{
-			case 1:
-				MenuTreeBean pTree = new MenuTreeBean();
-				pTree.setTreeId("1001");
-				pTree.setParentId("1");
-				pTree.setName("权限管理");
-				pTree.setClick("return false;");
-				pTree.setIsParent(true);
-				
-				list.add(pTree);
-				
-				break;
-			case 1001:
-				MenuTreeBean userTree = new MenuTreeBean();
-				userTree.setTreeId("1001001");
-				userTree.setParentId("1001");
-				userTree.setName("用户管理");
-				userTree.setUrl("frame/toUserList.do");
-				userTree.setTarget("mainFrame");
-				//userTree.setIcon("user.gif");
-				
-				list.add(userTree);
-				
-				MenuTreeBean roleTree = new MenuTreeBean();
-				roleTree.setTreeId("1001002");
-				roleTree.setParentId("1001");
-				roleTree.setName("角色管理");
-				roleTree.setUrl("frame/toRoleList.do");
-				roleTree.setTarget("mainFrame");
-				//roleTree.setIcon("role.gif");
-				
-				list.add(roleTree);
-				
-				MenuTreeBean menuTree = new MenuTreeBean();
-				menuTree.setTreeId("1001003");
-				menuTree.setParentId("1001");
-				menuTree.setName("菜单管理");
-				menuTree.setUrl("frame/toMenuList.do");
-				menuTree.setTarget("mainFrame");
-				
-				list.add(menuTree);
-				
-				break;
-			
-			case 2:
-				MenuTreeBean mailTree = new MenuTreeBean();
-				mailTree.setTreeId("2001");
-				mailTree.setParentId("2");
-				mailTree.setName("freeMarker模版");
-				mailTree.setUrl("freeMarker/hello.do");
-				mailTree.setTarget("mainFrame");
-				
-				list.add(mailTree);
-				
-				break;
-			}
-		}
-		else {
-			System.out.println("--没有子树--");
-		}*/
-		
 		User user = (User) session.getAttribute(SystemConstants.USER_IN_SESSION);
 		if(null != user)
 		{
 			menuTrees = this.menuService.fetchSysLeftMenuTreeChild(user.getId(), treeId);
 		}
 		
+		//TODO 测试用
+		if(null != treeId)
+		{
+			switch(Integer.valueOf(treeId))
+			{
+			case 2:
+			MenuTreeBean mailTree = new MenuTreeBean();
+			mailTree.setTreeId("2001");
+			mailTree.setParentId("2");
+			mailTree.setName("freeMarker模版");
+			mailTree.setUrl("freeMarker/hello.do");
+			mailTree.setTarget("mainFrame");
+			
+			menuTrees.add(mailTree);
+		
+			break;
+			}
+		}
 		
 		HtmlUtil.writerJson(response, menuTrees);
 	}

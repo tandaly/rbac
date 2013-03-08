@@ -1,7 +1,6 @@
 package com.frame.core.base.dao;
 
 import java.io.Serializable;
-import java.util.HashMap;
 import java.util.List;
 
 import com.frame.core.base.page.PageParamMap;
@@ -14,10 +13,6 @@ import com.frame.core.base.page.Pagination;
  */
 public interface BaseDao {
 
-	/**
-	 * 初始化数据库数据
-	 */
-	public void initDB();
 	
 	/**
 	 * 保存操作

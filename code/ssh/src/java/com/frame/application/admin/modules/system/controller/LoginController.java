@@ -22,7 +22,7 @@ import com.frame.core.base.controller.BaseController;
 import com.frame.core.base.util.SystemConstants;
 /**
  * 登陆控制器
- * @author tanfei(619606426@qq.com)
+ * @author tandaly(tandaly001@gmail.com)
  * @date 2013-2-3 上午1:11:39
  */
 @Controller

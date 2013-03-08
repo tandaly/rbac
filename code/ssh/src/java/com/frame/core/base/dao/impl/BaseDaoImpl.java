@@ -2,8 +2,6 @@ package com.frame.core.base.dao.impl;
 
 import java.io.Serializable;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -11,19 +9,12 @@ import java.util.Set;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.stereotype.Repository;
 
-import com.frame.application.admin.modules.system.model.Menu;
-import com.frame.application.admin.modules.system.model.Privilege;
-import com.frame.application.admin.modules.system.model.Role;
-import com.frame.application.admin.modules.system.model.User;
 import com.frame.core.base.dao.BaseDao;
 import com.frame.core.base.page.PageParamMap;
 import com.frame.core.base.page.Pagination;
-import com.frame.core.base.page.SimplePage;
 import com.frame.core.base.util.hibernate.Finder;
 
 /**
@@ -35,126 +26,6 @@ import com.frame.core.base.util.hibernate.Finder;
 public class BaseDaoImpl extends AbstractBaseDaoSupport implements
 		BaseDao {
 
-	@Value("${init.username}")//在system.properties中修改
-	private String initUserName; //初始化用户名 
-	
-	@Value("${init.password}")
-	private String initPassword;//初始化密码
-	
-	/**
-	 * 初始化数据库表数据
-	 */
-	@Override
-	public void initDB() {
-		SessionFactory sf = super.getSessionFactory();
-		//修改为create表 TODO
-		Session session = sf.openSession();
-		
-		session.beginTransaction();
-		try {
-			//1.初始化菜单表
-			/*************顶级菜单****************/
-			Menu mSys = new Menu();
-			mSys.setMenuNo("1");
-			mSys.setMenuName("系统管理");
-			mSys.setClick("return false;");
-			mSys.setOrderNo(mSys.getMenuNo());
-			
-			/*************二级菜单****************/
-			Menu mSysPriv = new Menu();
-			mSysPriv.setMenuNo("1001");
-			mSysPriv.setParentNo("1");
-			mSysPriv.setMenuName("权限管理");
-			mSysPriv.setClick("return false;");
-			mSysPriv.setOrderNo(mSysPriv.getMenuNo());
-			
-			/*************三级菜单****************/
-			Menu mSysUser = new Menu();
-			mSysUser.setMenuNo("1001001");
-			mSysUser.setParentNo("1001");
-			mSysUser.setMenuUrl("frame/toUserList.do");
-			mSysUser.setMenuName("用户管理");
-			mSysUser.setOrderNo(mSysUser.getMenuNo());
-			
-			Menu mSysRole = new Menu();
-			mSysRole.setMenuNo("1001002");
-			mSysRole.setParentNo("1001");
-			mSysRole.setMenuUrl("frame/toRoleList.do");
-			mSysRole.setMenuName("角色管理");
-			mSysRole.setOrderNo(mSysRole.getMenuNo());
-			
-			Menu mSysMenu = new Menu();
-			mSysMenu.setMenuNo("1001003");
-			mSysMenu.setParentNo("1001");
-			mSysMenu.setMenuUrl("frame/toMenuList.do");
-			mSysMenu.setMenuName("菜单管理");
-			mSysMenu.setOrderNo(mSysMenu.getMenuNo());
-			
-			//2.初始化权限表
-			Privilege p = new Privilege();
-			p.setPrivilegeName("系统权限");
-			
-			
-			//3.给权限分配菜单
-			mSys.getPrivileges().add(p);
-			p.getMenus().add(mSys);
-			
-			mSysPriv.getPrivileges().add(p);
-			p.getMenus().add(mSysPriv);
-			
-			mSysUser.getPrivileges().add(p);
-			p.getMenus().add(mSysUser);
-			
-			mSysRole.getPrivileges().add(p);
-			p.getMenus().add(mSysRole);
-			
-			mSysMenu.getPrivileges().add(p);
-			p.getMenus().add(mSysMenu);
-			
-			//4.初始化角色表
-			Role role = new Role();
-			role.setRoleName("系统管理员");
-			
-			//5.给角色分配权限
-			p.getRoles().add(role);
-			role.getPrivileges().add(p);
-			
-			//6.初始化用户表
-			User user = new User();
-			user.setUserName(this.initUserName);
-			user.setPassword(this.initPassword);
-			user.setRegisterDate(new Date());
-			
-			//7.给用户分配角色
-			role.getUsers().add(user);
-			user.getRoles().add(role);
-			
-			//8.保存操作
-			session.save(mSys);
-			session.save(mSysPriv);
-			session.save(mSysUser);
-			session.save(mSysRole);
-			session.save(mSysMenu);
-			
-			session.save(p);
-			
-			session.save(role);
-			
-			session.save(user);
-			
-			
-			session.getTransaction().commit();
-			session.flush();
-		} catch (Exception e) {
-			session.getTransaction().rollback();
-			e.printStackTrace();
-		}
-		finally
-		{
-			session.close();
-		}
-	}
-	
 	
 	@Override
 	public void save(Object entity) {

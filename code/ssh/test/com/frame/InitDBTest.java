@@ -1,10 +1,10 @@
 package com.frame;
 
-
 import javax.annotation.Resource;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -20,33 +20,34 @@ import com.frame.core.base.dao.impl.InitDB;
 @ContextConfiguration(locations = { "/spring/applicationContext*.xml", "/spring/admin/applicationContext*.xml"})
 @TransactionConfiguration(defaultRollback = false)
 @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
-public class BaseTest {
-
+public class InitDBTest extends BaseTest{
 
 	@Resource
 	private InitDB initDB;
 	
 	@Before
     public void setUp() throws Exception {
-		System.out.println("----------------初始化数据库开始--------------");
-		this.initDB.excute();
-		System.out.println("----------------初始化数据库结束--------------");
-		System.out.println("【测试开始】");
+		System.out.println("测试开始");
     }
 
     @After
     public void tearDown() throws Exception {
-    	System.out.println("【测试结束】");
+    	System.out.println("测试结束");
     }
-    
+
     @BeforeTransaction
     public void beforeTransaction() {
-    	System.out.println("【事务开始】");
+    	System.out.println("事务开始");
     }
 
     @AfterTransaction
     public void afterTransaction() {
-    	System.out.println("【事务结束】");
+    	System.out.println("事务结束");
     }
 	
+	@Test
+	public void test() {
+		this.initDB.excute();
+	}
+
 }

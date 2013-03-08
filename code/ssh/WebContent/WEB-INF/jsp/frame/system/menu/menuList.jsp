@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 	<head>
-		<base href="${pageContext.request.scheme}${'://'}${pageContext.request.serverName}${':'}${pageContext.request.serverPort}${pageContext.request.contextPath}/" />
+		<base href="${pageContext.request.contextPath}/" />
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta http-equiv="cache-control" content="no-cache">
@@ -85,6 +85,21 @@
 				}
 				tr += "<td>"+obj.menuNo+"</td>";
 				tr += "<td>"+obj.menuName+"</td>";
+				if(null != obj.menuUrl)
+				{
+					tr += "<td>"+obj.menuUrl+"</td>";
+				}else
+				{
+					tr += "<td>--</td>";
+				}
+				tr += "<td>"+obj.orderNo+"</td>";
+				if(null != obj.remark)
+				{
+					tr += "<td>"+obj.remark+"</td>";
+				}else
+				{
+					tr += "<td>--</td>";
+				}
 				tr += "<td style=\"text-align: center;\" width=\"160px;\">"
 					+"<a href=\"frame/toUpdateUser.do?id="+obj.id+"\">修改</a>&nbsp;&nbsp;<a href=\"javascript:deleteUser("+obj.id+")\">删除</a>"
 					+"</td>";
@@ -170,6 +185,9 @@
 					<th class="o_title2">父菜单编号</th>
 					<th class="o_title2">菜单编号</th>
 					<th class="o_title2">菜单名</th>
+					<th class="o_title2">请求路径</th>
+					<th class="o_title2">排序号</th>
+					<th class="o_title2">备注</th>
 					<th style="text-align: center;" width="160px;">操作</th>
 				</tr>
 			</thead>
