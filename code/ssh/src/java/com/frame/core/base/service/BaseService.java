@@ -16,6 +16,7 @@ public interface BaseService {
 	 * @param entity
 	 */
 	public void save(Object entity) throws ServiceException;
+	
 
 	/**
 	 * 分页查询

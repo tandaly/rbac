@@ -3,6 +3,7 @@ package com.frame.application.admin.modules.system.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -13,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.frame.application.admin.modules.system.model.MenuTreeBean;
 import com.frame.application.admin.modules.system.model.User;
+import com.frame.application.admin.modules.system.service.MenuService;
 import com.frame.core.base.controller.BaseController;
 import com.frame.core.base.util.HtmlUtil;
 import com.frame.core.base.util.SystemConstants;
@@ -26,6 +28,9 @@ import com.frame.core.base.util.SystemConstants;
 @RequestMapping(SystemConstants.PROJECT_PATH)
 public class IndexConstroller extends BaseController{
 
+	@Resource
+	private MenuService menuService;
+	
 	/**
 	 * 跳转到主页面
 	 * @return
@@ -66,10 +71,10 @@ public class IndexConstroller extends BaseController{
 	 * @param response
 	 */
 	@RequestMapping(value = "ajaxGetSysLeftMenuTreeRoot", method = RequestMethod.POST)
-	public void ajaxGetSysLeftMenuTreeRoot(HttpServletResponse response)
+	public void ajaxGetSysLeftMenuTreeRoot(HttpSession session, HttpServletResponse response)
 	{
-		List<MenuTreeBean> list = new ArrayList<MenuTreeBean>();
-		
+		List<MenuTreeBean> menuTrees = null;
+		/*
 		MenuTreeBean root = new MenuTreeBean();
 		root.setTreeId("1");
 		root.setName("系统管理");
@@ -84,9 +89,14 @@ public class IndexConstroller extends BaseController{
 		demo.setClick("return false;");
 		demo.setIsParent(true);
 		
-		list.add(demo);
+		list.add(demo);*/
+		User user = (User) session.getAttribute(SystemConstants.USER_IN_SESSION);
+		if(null != user)
+		{
+			menuTrees = this.menuService.fetchSysLeftMenuTreeRoot(user.getId());
+		}
 		
-		HtmlUtil.writerJson(response, list);
+		HtmlUtil.writerJson(response, menuTrees);
 	}
 	
 	/**
@@ -95,11 +105,11 @@ public class IndexConstroller extends BaseController{
 	 * @param treeId
 	 */
 	@RequestMapping(value = "ajaxGetSysLeftMenuTreeChild", method = RequestMethod.POST)
-	public void ajaxGetSysLeftMenuTreeChild(HttpServletResponse response, String treeId)
+	public void ajaxGetSysLeftMenuTreeChild(HttpSession session, HttpServletResponse response, String treeId)
 	{
-		List<MenuTreeBean> list = new ArrayList<MenuTreeBean>();
+		List<MenuTreeBean> menuTrees = null;
 		
-		if(null != treeId)
+		/*if(null != treeId)
 		{
 			switch(Integer.valueOf(treeId))
 			{
@@ -161,8 +171,15 @@ public class IndexConstroller extends BaseController{
 		}
 		else {
 			System.out.println("--没有子树--");
+		}*/
+		
+		User user = (User) session.getAttribute(SystemConstants.USER_IN_SESSION);
+		if(null != user)
+		{
+			menuTrees = this.menuService.fetchSysLeftMenuTreeChild(user.getId(), treeId);
 		}
 		
-		HtmlUtil.writerJson(response, list);
+		
+		HtmlUtil.writerJson(response, menuTrees);
 	}
 }

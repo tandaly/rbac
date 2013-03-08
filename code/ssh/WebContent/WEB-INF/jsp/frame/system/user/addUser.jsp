@@ -43,7 +43,7 @@
 							{
 								//msgTip = "添加用户成功!,正在跳转到列表页面...";
 								//setTimeout("location.href=\"frame/toUserList.do\";", 1000);
-								location.href="frame/toUserList.do";
+								window.location.href="frame/toUserList.do";
 							}else
 							{
 								msgTip = "添加用户失败!";

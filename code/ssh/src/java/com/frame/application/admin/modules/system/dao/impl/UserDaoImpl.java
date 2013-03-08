@@ -19,12 +19,7 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 	@Override
 	public User queryUserByUserName(String userName) {
 		String hql = "FROM User WHERE userName=? ";
-		//Query query =  this.getSession().createQuery(hql);
 		List<User> list = super.getHibernateTemplate().find(hql, userName);
-		//query.setParameter(0, userName);
-		
-		//return (User) query.uniqueResult();
-		
 		if(null == list || 0 == list.size())
 		{
 			return null;

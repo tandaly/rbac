@@ -1,6 +1,7 @@
 package com.frame.core.base.dao;
 
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.List;
 
 import com.frame.core.base.page.PageParamMap;
@@ -92,5 +93,12 @@ public interface BaseDao {
 	 * @return
 	 */
 	public Pagination findObjectsByPage(PageParamMap pageParamMap);
+	
+	/**
+	 * 查询多表数据
+	 * @param hql
+	 * @return
+	 */
+	public List<Object[]> queryMultiObjects(String hql);
 	
 }
