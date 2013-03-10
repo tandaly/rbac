@@ -39,5 +39,24 @@ public class MenuDaoImplTest extends BaseTest{
 		
 		this.menuDao.delete(menu);
 	}
+	
+	@Test
+	public void testQueryMaxMenuNoByParentNo()
+	{
+		String result = this.menuDao.queryMaxMenuNoByParentNo("1");
+		
+		Assert.assertEquals("1003", result);
+	}
 
+	@Test
+	public void testFindAll()
+	{
+		Menu menu = new Menu();
+		menu.setParentNo("-1");
+		menu.setMenuNo("2");
+		
+		List<Menu> list = this.menuDao.findAll(menu);
+		
+		Assert.assertSame(0, list.size());
+	}
 }

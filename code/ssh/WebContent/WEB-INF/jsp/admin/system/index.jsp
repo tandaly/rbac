@@ -41,7 +41,11 @@
 				},
 				callback: {
 					onClick: function (event, treeId, treeNode){
-						//turnPage(treeNode.linkUrl);
+						if("" != $.trim(treeNode.linkUrl) && null != $.trim(treeNode.linkUrl))
+						{
+							turnPage(treeNode.linkUrl);
+						}
+						
 					}
 				}
 			};
@@ -696,7 +700,7 @@
 						<div class="dialog_operate">
 							<div class=" txt_right cnfx_btn">
 								<a class="btn_gray confirm wd2"
-									href="javascript:location.href='frame/logout.do';"
+									href="javascript:top.location.href='${pageContext.request.contextPath}/frame/logout.do';"
 									>确定</a><a class="btn_gray cancelwd2"
 									id="" style="display: ;"
 									href="javascript:;"

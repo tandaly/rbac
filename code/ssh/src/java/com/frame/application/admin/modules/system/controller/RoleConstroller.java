@@ -60,7 +60,7 @@ public class RoleConstroller extends BaseController{
 		if(null != role)
 		{
 			if(null != role.getRoleName() && !"".equals(role.getRoleName().trim()))
-				pageParamMap.put("roleName", role.getRoleName());
+				pageParamMap.put("roleName", "%" + role.getRoleName() + "%");
 			
 		}
 		/***********************封装查询条件 start*******************/

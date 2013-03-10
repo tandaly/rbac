@@ -44,6 +44,7 @@ public class InitDB {
 			/////////顶级菜单
 			//系统管理菜单
 			Menu mSys = new Menu();
+			mSys.setParentNo("-1");
 			mSys.setMenuNo("1");
 			mSys.setMenuName("系统管理");
 			mSys.setClick("return false;");
@@ -97,11 +98,20 @@ public class InitDB {
 			mSysRole.setOrderNo(mSysRole.getMenuNo());
 			session.save(mSysRole);
 			
+			//权限分配菜单
+			Menu mSysPrivilege = new Menu();
+			mSysPrivilege.setMenuNo("1001003");
+			mSysPrivilege.setParentNo("1001");
+			mSysPrivilege.setMenuUrl("frame/build.do");
+			mSysPrivilege.setMenuName("权限分配");
+			mSysPrivilege.setOrderNo(mSysPrivilege.getMenuNo());
+			session.save(mSysPrivilege);
+			
 			//菜单管理菜单
 			Menu mSysMenu = new Menu();
-			mSysMenu.setMenuNo("1001003");
+			mSysMenu.setMenuNo("1001004");
 			mSysMenu.setParentNo("1001");
-			mSysMenu.setMenuUrl("frame/toMenuList.do");
+			mSysMenu.setMenuUrl("frame/toMenuFrame.do");
 			mSysMenu.setMenuName("菜单管理");
 			mSysMenu.setOrderNo(mSysMenu.getMenuNo());
 			session.save(mSysMenu);
@@ -129,7 +139,7 @@ public class InitDB {
 			mSysRquestMonitor.setMenuNo("1003001");
 			mSysRquestMonitor.setParentNo("1003");
 			mSysRquestMonitor.setMenuUrl("frame/build.do");
-			mSysRquestMonitor.setMenuName("request请求监控");
+			mSysRquestMonitor.setMenuName("request请求");
 			mSysRquestMonitor.setOrderNo(mSysRquestMonitor.getMenuNo());
 			session.save(mSysRquestMonitor);
 			
@@ -138,7 +148,7 @@ public class InitDB {
 			mSysSessionMonitor.setMenuNo("1003002");
 			mSysSessionMonitor.setParentNo("1003");
 			mSysSessionMonitor.setMenuUrl("frame/build.do");
-			mSysSessionMonitor.setMenuName("session会话监控");
+			mSysSessionMonitor.setMenuName("session会话");
 			mSysSessionMonitor.setOrderNo(mSysSessionMonitor.getMenuNo());
 			session.save(mSysSessionMonitor);
 			
@@ -224,6 +234,14 @@ public class InitDB {
 			//角色管理菜单 - 系统权限
 			mSysRole.getPrivileges().add(pAdmin);
 			pAdmin.getMenus().add(mSysRole);
+			
+			//权限分配菜单- 超级权限
+			mSysPrivilege.getPrivileges().add(p);
+			p.getMenus().add(mSysPrivilege);
+			
+			//权限分配菜单 - 系统权限
+			mSysPrivilege.getPrivileges().add(pAdmin);
+			pAdmin.getMenus().add(mSysPrivilege);
 			
 			//菜单管理菜单- 超级权限
 			mSysMenu.getPrivileges().add(p);

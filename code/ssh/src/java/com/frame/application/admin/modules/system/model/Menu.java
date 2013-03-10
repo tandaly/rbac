@@ -35,7 +35,7 @@ public class Menu extends BaseModel{
 	/**
 	 * 父菜单编号
 	 */
-	@Column(name = "parent_no", length = 100, nullable = true)
+	@Column(name = "parent_no", length = 100, nullable = false)
 	private String parentNo;
 	
 	/**

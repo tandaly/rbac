@@ -14,6 +14,8 @@ import com.frame.application.admin.modules.system.dao.MenuDao;
 import com.frame.application.admin.modules.system.model.Menu;
 import com.frame.application.admin.modules.system.model.MenuTreeBean;
 import com.frame.application.admin.modules.system.service.MenuService;
+import com.frame.core.base.page.PageParamMap;
+import com.frame.core.base.page.Pagination;
 import com.frame.core.base.service.impl.BaseServiceImpl;
 
 /**
@@ -29,6 +31,12 @@ public class MenuServiceImpl extends BaseServiceImpl implements MenuService {
 	@Resource
 	private MenuDao menuDao;
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<MenuTreeBean> fetchMenuTrees() {
+		return switchMenusToTreeMenus(this.menuDao.findAll(new Menu()));
+	}
+	
 	@Override
 	public List<MenuTreeBean> fetchMenuTreesByUserId(Serializable userId) {
 		return switchMenusToTreeMenus(this.menuDao.queryMenusByUserId(userId));
@@ -61,13 +69,11 @@ public class MenuServiceImpl extends BaseServiceImpl implements MenuService {
 			menuTree.setTreeId(menu.getMenuNo());
 			menuTree.setParentId(menu.getParentNo());
 			menuTree.setName(menu.getMenuName());
-			menuTree.setTarget("mainFrame");
 			if (null == menu.getMenuUrl()
 					|| "".equals(menu.getMenuUrl().trim())) {
 				menuTree.setIsParent(true);
-				menuTree.setClick("return false");
 			}else {
-				menuTree.setUrl(menu.getMenuUrl());
+				menuTree.setLinkUrl(menu.getMenuUrl());
 			}
 			
 			menuTrees.add(menuTree);
@@ -75,4 +81,34 @@ public class MenuServiceImpl extends BaseServiceImpl implements MenuService {
 
 		return menuTrees;
 	}
+
+	@Override
+	public Pagination fetchMenusByPage(PageParamMap pageParamMap) {
+		return this.menuDao.queryMenusByPage(pageParamMap);
+	}
+
+	@Override
+	public String fetchMaxMenuNoByParentNo(String parentNo) {
+		return this.menuDao.queryMaxMenuNoByParentNo(parentNo);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public boolean checkMenuName(String parentNo, String menuName) {
+		boolean result = true;
+		Menu m = new Menu();
+		m.setParentNo(parentNo);
+		m.setMenuName(menuName);
+		
+		List<Menu> list = this.menuDao.findAll(m);
+		
+		if(0 == list.size())
+		{
+			result = false;
+		}
+		m = null;//释放内存
+		return result;
+	}
+
+
 }

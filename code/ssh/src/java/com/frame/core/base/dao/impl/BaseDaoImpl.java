@@ -120,7 +120,7 @@ public class BaseDaoImpl extends AbstractBaseDaoSupport implements
 			if(null != o && !"".equals(o))
 			{
 				f.append(" AND o.").append(entry.getKey()).append(" LIKE :").append(entry.getKey());
-				f.setParam(entry.getKey(), "%" + o + "%");
+				f.setParam(entry.getKey(), o);
 			}
 		}
 		System.out.println("查询----" + f.getOrigHql());

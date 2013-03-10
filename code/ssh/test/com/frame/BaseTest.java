@@ -29,7 +29,7 @@ public class BaseTest {
 	@Before
     public void setUp() throws Exception {
 		System.out.println("----------------初始化数据库开始--------------");
-		this.initDB.excute();
+		//this.initDB.excute();
 		System.out.println("----------------初始化数据库结束--------------");
 		System.out.println("【测试开始】");
     }

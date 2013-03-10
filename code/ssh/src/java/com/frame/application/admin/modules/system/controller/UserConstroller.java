@@ -156,7 +156,7 @@ public class UserConstroller extends BaseController{
 		if(null != user)
 		{
 			if(null != user.getUserName() && !"".equals(user.getUserName().trim()))
-				pageParamMap.put("userName", user.getUserName());
+				pageParamMap.put("userName", "%" + user.getUserName() + "%");
 			
 			if(null != user.getPassword() && !"".equals(user.getPassword()))
 				pageParamMap.put("password", user.getPassword());

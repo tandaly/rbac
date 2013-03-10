@@ -29,9 +29,9 @@ public class SystemServlet extends HttpServlet
     {
     	System.out.println("----------------初始化操作开始------------");
     	System.out.println("--开始获得操作bean");
-    	InitDB  initDB = SpringFactory.getBean("initDB");
+    	//InitDB  initDB = SpringFactory.getBean("initDB");
     	System.out.println("--开始进行数据库初始化操作");
-    	initDB.excute();
+    	//initDB.excute();
     	System.out.println("--初始化完成");
     	
     }

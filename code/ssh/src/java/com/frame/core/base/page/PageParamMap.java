@@ -1,7 +1,11 @@
 package com.frame.core.base.page;
 
 import java.util.HashMap;
-
+/**
+ * 分页参数map
+ * @author tandaly(tandaly001@gmail.com)
+ * @date 2013-3-9 下午1:35:20
+ */
 public class PageParamMap extends HashMap<String, Object>{
 
 	/**

@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.List;
 
 import com.frame.application.admin.modules.system.model.MenuTreeBean;
+import com.frame.core.base.page.PageParamMap;
+import com.frame.core.base.page.Pagination;
 import com.frame.core.base.service.BaseService;
 
 
@@ -14,6 +16,27 @@ import com.frame.core.base.service.BaseService;
  */
 public interface MenuService extends BaseService{
 
+	/**
+	 * 根据父结点查询最大子节点菜单编号
+	 * @param parentNo
+	 * @return
+	 */
+	public String fetchMaxMenuNoByParentNo(String parentNo);
+	
+	/**
+	 * 检验菜单名是否可用
+	 * @param parentNo
+	 * @param menuName
+	 * @return
+	 */
+	public boolean checkMenuName(String parentNo, String menuName);
+	
+	/**
+	 * 获取所有菜单树
+	 * @return
+	 */
+	public List<MenuTreeBean> fetchMenuTrees();
+	
 	/**
 	 * 根据用户ID获取菜单树
 	 * @return
@@ -34,5 +57,12 @@ public interface MenuService extends BaseService{
 	 * @return
 	 */
 	public List<MenuTreeBean> fetchSysLeftMenuTreeChild(Serializable userId, Serializable parentId);
+	
+	/**
+	 * 分页查询菜单
+	 * @param pageParamMap
+	 * @return
+	 */
+	public Pagination fetchMenusByPage(PageParamMap pageParamMap);
 
 }

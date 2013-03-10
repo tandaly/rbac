@@ -85,7 +85,7 @@
 	<!-- 视图解析器配置 -->
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/jsp/frame/" />
+		<property name="prefix" value="/WEB-INF/jsp/admin/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
 

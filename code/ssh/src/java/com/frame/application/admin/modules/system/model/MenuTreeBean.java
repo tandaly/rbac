@@ -20,19 +20,17 @@ public class MenuTreeBean extends BaseTreeModel{
 	/**
 	 * 连接地址
 	 */
-	private String url;
+	private String linkUrl;
 	
-	/**
-	 * 连接目标
-	 */
-	private String target;
-	
-	/**
-	 * 点击连接事件
-	 */
-	private String click;
 	
 	/**********************菜单超链接 end**********************/
+	
+	/**
+	 *  结点展开 / 折叠 状态
+	 * true 表示节点为 展开 状态
+	 * false 表示节点为 折叠 状态
+	 */
+	private boolean open = true;
 	
 	/**
 	 * 显示图标
@@ -41,29 +39,20 @@ public class MenuTreeBean extends BaseTreeModel{
 	
 	//----------------------GETTER AND SETTER-----------------------------------
 	
-	public String getUrl() {
-		return url;
-	}
-	public void setUrl(String url) {
-		this.url = url;
-	}
-	public String getTarget() {
-		return target;
-	}
-	public void setTarget(String target) {
-		this.target = target;
-	}
-	public String getClick() {
-		return click;
-	}
-	public void setClick(String click) {
-		this.click = click;
-	}
+	
 	
 	public String getIcon() {
 		return icon;
 	}
 	
+	public String getLinkUrl() {
+		return linkUrl;
+	}
+
+	public void setLinkUrl(String linkUrl) {
+		this.linkUrl = linkUrl;
+	}
+
 	public void setIcon(String icon) {
 		if(null != icon && !"".equals(icon))
 		{
@@ -71,6 +60,15 @@ public class MenuTreeBean extends BaseTreeModel{
 			this.icon = "plugins/ztree/icons/" + icon;
 		}
 	}
+
+	public boolean isOpen() {
+		return open;
+	}
+
+	public void setOpen(boolean open) {
+		this.open = open;
+	}
+	
 	
 	
 	

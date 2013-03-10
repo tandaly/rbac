@@ -14,6 +14,9 @@ function switchSkin(_skinName) {
 	$("#" + _skinName).addClass("selected").siblings().removeClass("selected");  //去掉其他同辈<li>元素的选中
 	$("#web_skin").attr("href", app_skin_path + _skinName + ".css"); //设置不同皮肤
 	$("#mainFrame").contents().find("#web_skin").attr("href", app_skin_path + _skinName+".css");//设置显示区的样式
+	$("#mainFrame").contents().find("iframe").each(function(){
+		$(this).contents().find("#web_skin").attr("href", app_skin_path + _skinName+".css");
+	});
 	//$.cookie(app_cookie_skin, _skinName, {path:"/", expires:10});
 	app_setCookie(app_cookie_skin, _skinName);
 }

@@ -94,7 +94,6 @@ public class IndexConstroller extends BaseController{
 		MenuTreeBean demo = new MenuTreeBean();
 		demo.setTreeId("2");
 		demo.setName("测试管理");
-		demo.setClick("return false;");
 		demo.setIsParent(true);
 		
 		menuTrees.add(demo);
@@ -128,8 +127,7 @@ public class IndexConstroller extends BaseController{
 			mailTree.setTreeId("2001");
 			mailTree.setParentId("2");
 			mailTree.setName("freeMarker模版");
-			mailTree.setUrl("freeMarker/hello.do");
-			mailTree.setTarget("mainFrame");
+			mailTree.setLinkUrl("freeMarker/hello.do");
 			
 			menuTrees.add(mailTree);
 		
