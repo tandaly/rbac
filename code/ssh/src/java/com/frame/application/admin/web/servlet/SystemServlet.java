@@ -2,9 +2,6 @@ package com.frame.application.admin.web.servlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
-
-import com.frame.core.base.dao.impl.InitDB;
-import com.frame.core.base.util.spring.SpringFactory;
 /**
  * 服务器启动时初始化操作
  * @author Tandaly

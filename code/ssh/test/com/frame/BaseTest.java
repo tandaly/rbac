@@ -1,8 +1,6 @@
 package com.frame;
 
 
-import javax.annotation.Resource;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.runner.RunWith;
@@ -14,8 +12,6 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.frame.core.base.dao.impl.InitDB;
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "/spring/applicationContext*.xml", "/spring/admin/applicationContext*.xml"})
 @TransactionConfiguration(defaultRollback = false)
@@ -23,8 +19,8 @@ import com.frame.core.base.dao.impl.InitDB;
 public class BaseTest {
 
 
-	@Resource
-	private InitDB initDB;
+	//@Resource
+	//private InitDB initDB;
 	
 	@Before
     public void setUp() throws Exception {

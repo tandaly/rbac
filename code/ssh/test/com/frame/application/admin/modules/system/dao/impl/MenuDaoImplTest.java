@@ -48,6 +48,7 @@ public class MenuDaoImplTest extends BaseTest{
 		Assert.assertEquals("1003", result);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Test
 	public void testFindAll()
 	{

@@ -20,7 +20,7 @@ import com.frame.core.base.dao.impl.InitDB;
 @ContextConfiguration(locations = { "/spring/applicationContext*.xml", "/spring/admin/applicationContext*.xml"})
 @TransactionConfiguration(defaultRollback = false)
 @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
-public class InitDBTest extends BaseTest{
+public class InitDBTest{
 
 	@Resource
 	private InitDB initDB;
