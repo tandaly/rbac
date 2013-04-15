@@ -12,8 +12,8 @@
 		<meta http-equiv="pragma" content="no-cache">
 <title>首页</title>
 <!-- 自定义公共js -->
-<script type="text/javascript" src="js/frame/application.js"></script>
-<link href="css/frame/home.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/admin/application.js"></script>
+<link href="css/admin/home.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 	<div class="toolbg toolbgline toolheight nowrap">

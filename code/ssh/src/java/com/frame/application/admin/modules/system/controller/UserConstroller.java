@@ -123,7 +123,7 @@ public class UserConstroller extends BaseController{
 	@RequestMapping(value = "updateUser", method = RequestMethod.POST)
 	public void updateUser(HttpServletResponse response, User user, String oldPassword)
 	{
-		
+		//验证
 	}
 	
 	/**

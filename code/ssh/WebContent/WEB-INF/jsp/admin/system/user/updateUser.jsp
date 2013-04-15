@@ -12,7 +12,7 @@
 			<meta http-equiv="pragma" content="no-cache">
 			<title>修改用户</title>
 			<!-- 自定义公共js -->
-			<script type="text/javascript" src="js/frame/application.js"></script>
+			<script type="text/javascript" src="js/admin/application.js"></script>
 			
 			<!-- bootstrap -->
 			<link href="plugins/bootstrap/css/bootstrap.css" rel="stylesheet"
@@ -25,7 +25,7 @@
 					return;
 					$.ajax({
 						type: "post",
-						url: "frame/addUser.do",
+						url: "admin/updateUser.do",
 						data: $("#form").serialize(),
 						dataType: "json",
 						success: function(data){
@@ -42,7 +42,7 @@
 							}else if(result == "success")
 							{
 								alert("成功");
-								location.href="frame/toUserList.do";
+								location.href="admin/toUserList.do";
 							}else
 							{
 								alert("失败");
@@ -55,7 +55,7 @@
 	</head>
 	<body>
 		<div class="txt_title">
-			系统管理&gt;用户管理&gt;用户列表&gt;添加用户 <span id="_ut"
+			系统管理&gt;用户管理&gt;用户列表&gt;修改用户 <span id="_ut"
 				class="f_size normal black"> (页面响应时间: <font color="red"
 				id="responseTime">${responseTime}</font>秒 )
 			</span>
@@ -64,7 +64,7 @@
 		<div style="height: 100%; _overflow-y: hidden;" class="bd" id="box">
 			<div class="tipstitle_title bd settingtable bold"
 				style="border-width: 0 0 1px 0; padding-top: 5px; padding-left: 8px; padding-right: 8px; height: 23px;">
-				<span id="todaybarTitle" style="display: block;"><a href="">添加用户</a>&nbsp;</span>
+				<span id="todaybarTitle" style="display: block;"><a href="">修改用户</a>&nbsp;</span>
 			</div>
 			<div style="padding: 12px;">
 				<form name="form" id="form" class="form-horizontal" onsubmit="return ajaxSubmitForm()">
@@ -78,12 +78,12 @@
 							</div>
 						</div>
 	
-						<div class="control-group">
+						<!-- <div class="control-group">
 							<label class="control-label" for="input01">旧密码</label>
 							<div class="controls">
 								<input type="password" name="oldPassword" class="input-xlarge"> 
 							</div>
-						</div>
+						</div> -->
 						
 						<div class="control-group">
 							<label class="control-label" for="input01">新密码</label>
@@ -103,7 +103,7 @@
 						<div style="margin-left:180px;">
 							<input type="submit" class="btn btn-primary" value="确定" /> <input
 								type="reset" class="btn" value="重    置" /> <a class="btn"
-								href="frame/toUserList.do">返回列表</a>
+								href="admin/toUserList.do">返回列表</a>
 						</div>
 	
 					</fieldset>

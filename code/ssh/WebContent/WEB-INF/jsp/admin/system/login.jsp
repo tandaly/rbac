@@ -27,7 +27,7 @@
 					<h1>系统登陆</h1>
 				</header>
 				<div class="module-bd">
-					<form accept-charset="UTF-8" action="frame/login.do"
+					<form accept-charset="UTF-8" action="admin/login.do"
 						class="form-page form-horizontal" id="new_user" method="post">
 						<div style="margin: 0; padding: 0; display: inline">
 							<input name="utf8" type="hidden" value="✓"><input
@@ -66,8 +66,12 @@
 								type="submit"
 								value="<spring:message code="login"></spring:message>">
 							<input class="btn btn-large btn-primary" name="commit"
-								type="button" onclick="location.href='frame/registerView.do';"
+								type="button" onclick="location.href='admin/registerView.do';"
 								value="<spring:message code="register"></spring:message>">
+								
+							<input class="btn" name="commit"
+							type="button" onclick="location.href='index.jsp';"
+							value="查看日志">
 						
 						</div>
 					</form>

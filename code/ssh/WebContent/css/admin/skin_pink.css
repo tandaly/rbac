@@ -124,12 +124,12 @@ li.fn a:link,li.fn a:visited,li.fn a.fdleft:hover {
 }
 
 .skinlogo img {
-	background-image: url(../../images/frame/skin_pink/logo.png);
+	background-image: url(../../images/admin/skin_pink/logo.png);
 }
 
 .topbg {
 	float: right;
-	background: url(../../images/frame/skin_pink/top_bg.jpg) no-repeat right;
+	background: url(../../images/admin/skin_pink/top_bg.jpg) no-repeat right;
 	width: 486px;
 	height: 68px;
 }
@@ -139,23 +139,23 @@ li.fn a:link,li.fn a:visited,li.fn a.fdleft:hover {
 	border-left: 8px solid #fff;
 	height: 11px;
 	border-right: 0;
-	background: url(../../images/frame/skin_pink/nav_bg.gif) 0 -107px repeat-x;
+	background: url(../../images/admin/skin_pink/nav_bg.gif) 0 -107px repeat-x;
 }
 
 .toplineimg {
-	background: url(../../images/frame/skin_pink/topline.gif) -179px 0;
+	background: url(../../images/admin/skin_pink/topline.gif) -179px 0;
 }
 
 .navbar {
-	background: url(../../images/frame/skin_pink/nav_bg.gif) no-repeat;
+	background: url(../../images/admin/skin_pink/nav_bg.gif) no-repeat;
 }
 
 .listbg {
-	background: url(../../images/frame/skin_pink/topline.gif) repeat-y;
+	background: url(../../images/admin/skin_pink/topline.gif) repeat-y;
 }
 
 .navbottom {
-	background: url(../../images/frame/skin_pink/topline.gif) -179px -11px no-repeat;
+	background: url(../../images/admin/skin_pink/topline.gif) -179px -11px no-repeat;
 }
 
 .sepline {
@@ -163,7 +163,7 @@ li.fn a:link,li.fn a:visited,li.fn a.fdleft:hover {
 }
 
 .txt_title_tab {
-	background: url(../../images/frame/skin_pink/ico_titleview.gif) center bottom
+	background: url(../../images/admin/skin_pink/ico_titleview.gif) center bottom
 		no-repeat;
 }
 
@@ -370,7 +370,7 @@ li.fn a:link,li.fn a:visited,li.fn a.fdleft:hover {
 }
 
 .backhomeimg_today {
-	background: url(../../images/frame/skin_pink/ico_home.gif) no-repeat;
+	background: url(../../images/admin/skin_pink/ico_home.gif) no-repeat;
 }
 
 .bgGradient {

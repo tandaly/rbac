@@ -26,7 +26,7 @@
 					<h1>注册</h1>
 				</header>
 				<div class="module-bd">
-					<form accept-charset="UTF-8" action="frame/register.do"
+					<form accept-charset="UTF-8" action="admin/register.do"
 						class="form-page form-horizontal" id="new_user" method="post">
 						<div style="margin: 0; padding: 0; display: inline">
 							<input name="utf8" type="hidden" value="✓"><input
@@ -75,6 +75,10 @@
 							<input class="btn btn-large btn-primary" name="commit"
 								type="submit"
 								value="<spring:message code="register"></spring:message>">
+								
+							<input class="btn btn-large" name="commit"
+								type="button" onclick="location.href='admin/loginView.do';"
+								value="返回">
 						</div>
 					</form>
 				</div>

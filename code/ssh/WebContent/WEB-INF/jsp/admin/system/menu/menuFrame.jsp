@@ -12,7 +12,7 @@
 		<meta http-equiv="pragma" content="no-cache">
 		<title>菜单列表</title>
 		<!-- 自定义公共js -->
-		<script type="text/javascript" src="js/frame/application.js"></script>
+		<script type="text/javascript" src="js/admin/application.js"></script>
 		
 		<!-- bootstrap -->
 		<link href="plugins/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
@@ -41,7 +41,7 @@
 				},
 				async: {
 					enable: false,//开启异步加载
-					url:"frame/ajaxGetSysLeftMenuTreeChild.do",//设置异步获取节点的 URL 地址
+					url:"admin/ajaxGetSysLeftMenuTreeChild.do",//设置异步获取节点的 URL 地址
 					autoParam:["treeId"]//设置父节点数据需要自动提交的参数
 				},
 				callback: {
@@ -56,7 +56,7 @@
 						}
 						else
 						{
-							$("#rightFrame").attr("src", "frame/toMenuList.do?parentNo="+(treeNode.treeId == null?"1":treeNode.treeId));
+							$("#rightFrame").attr("src", "admin/toMenuList.do?parentNo="+(treeNode.treeId == null?"1":treeNode.treeId));
 						}
 						
 					}
@@ -69,7 +69,7 @@
 			   		type: 'POST',  
 			   		dataType : "json",
 			   		async:false,
-			   		url: "frame/ajaxGetMenusTree.do",//请求的action路径
+			   		url: "admin/ajaxGetMenusTree.do",//请求的action路径
 			   		data: {"flag":true},  
 			   		error: function () {//请求失败处理函数  
 			       		alert('请求失败');  
@@ -102,7 +102,7 @@
 			</div>
 			<div id="rightFrameContainer">
 				<iframe onload="" name="rightFrame" id="rightFrame"
-					style="display: ;" src="frame/toMenuList.do?parentNo=1" frameborder="no" scrolling="auto"
+					style="display: ;" src="admin/toMenuList.do?parentNo=1" frameborder="no" scrolling="auto"
 					hidefocus=""></iframe>
 			</div>
 		</div>

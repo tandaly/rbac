@@ -12,7 +12,7 @@
 			<meta http-equiv="pragma" content="no-cache">
 			<title>添加用户</title>
 			<!-- 自定义公共js -->
-			<script type="text/javascript" src="js/frame/application.js"></script>
+			<script type="text/javascript" src="js/admin/application.js"></script>
 			
 			<!-- bootstrap -->
 			<link href="plugins/bootstrap/css/bootstrap.css" rel="stylesheet"
@@ -24,7 +24,7 @@
 				{
 					$.ajax({
 						type: "post",
-						url: "frame/addUser.do",
+						url: "admin/addUser.do",
 						data: $("#form").serialize(),
 						dataType: "json",
 						success: function(data){
@@ -42,8 +42,8 @@
 							}else if(result == "success")
 							{
 								//msgTip = "添加用户成功!,正在跳转到列表页面...";
-								//setTimeout("location.href=\"frame/toUserList.do\";", 1000);
-								location.href="${pageContext.request.contextPath}/frame/toUserList.do";
+								//setTimeout("location.href=\"admin/toUserList.do\";", 1000);
+								location.href="${pageContext.request.contextPath}/admin/toUserList.do";
 							}else
 							{
 								msgTip = "添加用户失败!";
@@ -102,7 +102,7 @@
 						<div style="margin-left:180px;">
 							<input type="submit" class="btn btn-primary" value="确  定" /> <input
 								type="reset" class="btn" value="重    置" /> <a class="btn"
-								href="frame/toUserList.do">返回列表</a>
+								href="admin/toUserList.do">返回列表</a>
 						</div>
 	
 					</fieldset>

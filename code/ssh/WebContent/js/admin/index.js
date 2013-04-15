@@ -1,8 +1,8 @@
 //加载js
-app_checkloadjscssfile("js/frame/changeSkin.js", "js"); 
+app_checkloadjscssfile("js/admin/changeSkin.js", "js"); 
 
 /* 本页自定义css */
-app_checkloadjscssfile("css/frame/index.css", "css");
+app_checkloadjscssfile("css/admin/index.css", "css");
 
 //app_checkloadjscssfile("plugins/ztree/js/jquery.ztree.core-3.2.js", "js");
 //app_checkloadjscssfile("plugins/ztree/css/zTreeStyle.css", "css");
@@ -26,7 +26,7 @@ function showAppTime()
 
 /*使用iframe标签，延迟加载跨域JS文件*/
 $(window).load(function(){	
-	var defaultHome = "frame/home.do";
+	var defaultHome = "admin/home.do";
 	$("#mainFrame").attr("src",defaultHome);
 	$("#mainFrame").show();
 	

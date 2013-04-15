@@ -12,7 +12,7 @@
 		<meta http-equiv="pragma" content="no-cache">
 		<title>菜单列表</title>
 		<!-- 自定义公共js -->
-		<script type="text/javascript" src="js/frame/application.js"></script>
+		<script type="text/javascript" src="js/admin/application.js"></script>
 		
 		<!-- bootstrap -->
 		<link href="plugins/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
@@ -32,7 +32,7 @@
 					ajax: 
 					{
 					  on: true,
-					  url: "frame/ajaxMenuList.do",
+					  url: "admin/ajaxMenuList.do",
 					  dataType: 'json',
 					  param:formData,
 					  ajaxStart:function(){
@@ -101,7 +101,7 @@
 					tr += "<td>--</td>";
 				}
 				tr += "<td style=\"text-align: center;\" width=\"160px;\">"
-					+"<a href=\"frame/toUpdateMenu.do?id="+obj.id+"\">修改</a>&nbsp;&nbsp;<a href=\"javascript:deleteMenu("+obj.id+")\">删除</a>"
+					+"<a href=\"admin/toUpdateMenu.do?id="+obj.id+"\">修改</a>&nbsp;&nbsp;<a href=\"javascript:deleteMenu("+obj.id+")\">删除</a>"
 					+"</td>";
 				return tr;
 				
@@ -122,7 +122,7 @@
 				{
 					$.ajax({
 						type: "post",
-						url: "frame/deleteMenu.do?id="+id,
+						url: "admin/deleteMenu.do?id="+id,
 						success: function(data)
 						{
 							var result = data;
@@ -148,7 +148,7 @@
 	<body>
 		<div class="toolbg toolbgline toolheight nowrap">
 			<div class="nowrap left">
-				<a class="btn_gray btn_space" href="javascript:location.href='${pageContext.request.contextPath}/frame/toAddMenu.do?parentNo='+$('#parentNo').val();">新增</a>
+				<a class="btn_gray btn_space" href="javascript:location.href='${pageContext.request.contextPath}/admin/toAddMenu.do?parentNo='+$('#parentNo').val();">新增</a>
 				<a class="btn_gray btn_space" href="javascript:;">修改</a>
 				<a class="btn_gray btn_space" href="javascript:;">删除</a>
 				<a class="btn_gray btn_space" href="javascript:void(0);" onclick="javascript:$(this).text($('#queryDiv').css('display') == 'none'?'隐藏查询':'显示查询');$('#queryDiv').toggle();">显示查询</a>

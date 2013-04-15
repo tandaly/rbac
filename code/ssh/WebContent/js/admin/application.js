@@ -11,17 +11,17 @@
  
 /******************************************导入页面必须的文件 start**************************************/
 //文件中导入ico文件
-var icoFile = '<link rel="Shortcut Icon" href="images/frame/logo.ico" type="image/x-icon">';
+var icoFile = '<link rel="Shortcut Icon" href="images/admin/logo.ico" type="image/x-icon">';
 document.write(icoFile);
 
 //文件中导入css文件
-var cssFile = '<link rel="stylesheet" type="text/css" href="css/frame/common.css">';
+var cssFile = '<link rel="stylesheet" type="text/css" href="css/admin/common.css">';
 document.write(cssFile);
 
 //文件中导入js文件
-var jsFile = '<script type="text/javascript" src="js/frame/jquery.js"><\/script>';
+var jsFile = '<script type="text/javascript" src="js/admin/jquery.js"><\/script>';
 document.write(jsFile);
-var jsFile2 = '<script type="text/javascript" src="js/frame/backspace.js"><\/script>';
+var jsFile2 = '<script type="text/javascript" src="js/admin/backspace.js"><\/script>';
 document.write(jsFile2);
 var jsFile3 = '<script type="text/javascript" src="js/common/mask.tip.js"><\/script>';
 document.write(jsFile3);
@@ -30,7 +30,7 @@ document.write(jsFile3);
 
 /*系统全局变量(必须)*/
 var app_cookie_skin="cookie_skin";
-var app_skin_path = "css/frame/skin_";
+var app_skin_path = "css/admin/skin_";
 var app_default_skin = "green";
 var app_page_skin = "msdn";//分页样式
 

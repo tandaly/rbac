@@ -7,7 +7,7 @@ package com.frame.core.base.util;
  */
 public interface SystemConstants {
 
-	final static String PROJECT_PATH="/frame/";//系统后台管理
+	final static String PROJECT_PATH="/admin/";//系统后台管理
 	
 	//请求路径后缀
 	final static String REQUEST_SUFFIX = ".do";

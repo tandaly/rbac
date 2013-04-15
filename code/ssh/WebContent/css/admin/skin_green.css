@@ -108,13 +108,13 @@ li.fn {
 
 .skinlogo img {
 	background-image:
-		url(../../images/frame/skin_green/logo.gif);
+		url(../../images/admin/skin_green/logo.gif);
 }
 
 .topbg {
 	float: right;
 	background:
-		url(../../images/frame/skin_green/top_bg.jpg)
+		url(../../images/admin/skin_green/top_bg.jpg)
 		no-repeat right;
 	width: 486px;
 	height: 68px;
@@ -126,31 +126,31 @@ li.fn {
 	height: 11px;
 	border-right: 0;
 	background:
-		url(../../images/frame/skin_green/nav_bg.gif)
+		url(../../images/admin/skin_green/nav_bg.gif)
 		0 -107px repeat-x;
 }
 
 .toplineimg {
 	background:
-		url(../../images/frame/skin_green/topline.gif)
+		url(../../images/admin/skin_green/topline.gif)
 		-179px 0;
 }
 
 .navbar {
 	background:
-		url(../../images/frame/skin_green/nav_bg.gif)
+		url(../../images/admin/skin_green/nav_bg.gif)
 		no-repeat;
 }
 
 .listbg {
 	background:
-		url(../../images/frame/skin_green/topline.gif)
+		url(../../images/admin/skin_green/topline.gif)
 		repeat-y;
 }
 
 .navbottom {
 	background:
-		url(../../images/frame/skin_green/topline.gif)
+		url(../../images/admin/skin_green/topline.gif)
 		-179px -11px no-repeat;
 }
 
@@ -160,7 +160,7 @@ li.fn {
 
 .txt_title_tab {
 	background:
-		url(../../images/frame/skin_green/ico_titleview.gif)
+		url(../../images/admin/skin_green/ico_titleview.gif)
 		center bottom no-repeat;
 }
 

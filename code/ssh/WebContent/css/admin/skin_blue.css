@@ -12,7 +12,7 @@ a,a:link,a:visited,li.fs a.fdleft:hover,li.fd_mg a.fdleft:hover {
 	background: #c1d9f3;
 }
 
-.skinlogo img { ../../images/frame/skin_blue/logo.gif);
+.skinlogo img { ../../images/admin/skin_blue/logo.gif);
 	
 }
 
@@ -23,7 +23,7 @@ a,a:link,a:visited,li.fs a.fdleft:hover,li.fd_mg a.fdleft:hover {
 
 .topbg {
 	float: right;
-	background: url(../../images/frame/skin_blue/top_bg.jpg) top right no-repeat;
+	background: url(../../images/admin/skin_blue/top_bg.jpg) top right no-repeat;
 }
 
 .topline {
@@ -31,11 +31,11 @@ a,a:link,a:visited,li.fs a.fdleft:hover,li.fd_mg a.fdleft:hover {
 	border-left: 8px solid #fff;
 	height: 11px;
 	border-right: 0;
-	background: url(../../images/frame/skin_blue/nav_bg.gif) 0 -112px repeat-x;
+	background: url(../../images/admin/skin_blue/nav_bg.gif) 0 -112px repeat-x;
 }
 
 .toplineimg {
-	background: url(../../images/frame/skin_blue/topline.gif) -179px 0;
+	background: url(../../images/admin/skin_blue/topline.gif) -179px 0;
 }
 
 .addrtitle {
@@ -49,15 +49,15 @@ a,a:link,a:visited,li.fs a.fdleft:hover,li.fd_mg a.fdleft:hover {
 }
 
 .navbar {
-	background: url(../../images/frame/skin_blue/nav_bg.gif) no-repeat;
+	background: url(../../images/admin/skin_blue/nav_bg.gif) no-repeat;
 }
 
 .listbg {
-	background: url(../../images/frame/skin_blue/topline.gif) repeat-y;
+	background: url(../../images/admin/skin_blue/topline.gif) repeat-y;
 }
 
 .navbottom {
-	background: url(../../images/frame/skin_blue/topline.gif) -179px -11px no-repeat;
+	background: url(../../images/admin/skin_blue/topline.gif) -179px -11px no-repeat;
 }
 
 .sepline {
@@ -70,7 +70,7 @@ a,a:link,a:visited,li.fs a.fdleft:hover,li.fd_mg a.fdleft:hover {
 
 .txt_title_tab {
 	color: #093665;
-	background: url(../../images/frame/skin_blue/ico_titleview.gif) center bottom
+	background: url(../../images/admin/skin_blue/ico_titleview.gif) center bottom
 		no-repeat;
 }
 
@@ -418,7 +418,7 @@ li.fn .icon_folderlist_star,.icon_starred_min_black {
 }
 
 .backhomeimg_today {
-	background: url(../../images/frame/skin_blue/ico_home.gif) no-repeat;
+	background: url(../../images/admin/skin_blue/ico_home.gif) no-repeat;
 }
 
 /***/

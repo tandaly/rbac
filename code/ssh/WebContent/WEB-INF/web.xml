@@ -5,7 +5,8 @@
 	id="WebApp_ID" version="3.0">
 	<display-name>springmvc</display-name>
 	<welcome-file-list>
-		<welcome-file>frame/loginView.do</welcome-file>
+		<!--<welcome-file>admin/loginView.do</welcome-file>-->
+		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
 	
 <!-- ***************springMVC配置 start******************** -->

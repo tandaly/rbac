@@ -12,7 +12,7 @@
 			<meta http-equiv="pragma" content="no-cache">
 			<title>添加菜单</title>
 			<!-- 自定义公共js -->
-			<script type="text/javascript" src="js/frame/application.js"></script>
+			<script type="text/javascript" src="js/admin/application.js"></script>
 			
 			<!-- bootstrap -->
 			<link href="plugins/bootstrap/css/bootstrap.css" rel="stylesheet"
@@ -24,7 +24,7 @@
 				{
 					$.ajax({
 						type: "post",
-						url: "frame/addMenu.do",
+						url: "admin/addMenu.do",
 						data: $("#form").serialize(),
 						dataType: "json",
 						success: function(data){
@@ -40,7 +40,7 @@
 							{
 								var newNode = {treeId:$("#menuNo").val(), parentId:$("#parentNo2").val(), name:$("#menuName").val()};
 								parent.treeObj.addNodes(parent.selectTreeNode, newNode);
-								location.href="${pageContext.request.contextPath}/frame/toMenuList.do?parentNo=${parentNo}";
+								location.href="${pageContext.request.contextPath}/admin/toMenuList.do?parentNo=${parentNo}";
 							}else
 							{
 								msgTip = "添加菜单失败!";
@@ -98,7 +98,7 @@
 						<div style="margin-left:180px;">
 							<input type="submit" class="btn btn-primary" value="确  定" /> <input
 								type="reset" class="btn" value="重    置" /> <a class="btn"
-								href="frame/toMenuList.do?parentNo=${parentNo}">返回列表</a>
+								href="admin/toMenuList.do?parentNo=${parentNo}">返回列表</a>
 						</div>
 	
 					</fieldset>

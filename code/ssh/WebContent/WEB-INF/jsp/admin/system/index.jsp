@@ -12,10 +12,10 @@
 		<meta http-equiv="pragma" content="no-cache">
 		<title>RBAC</title>
 		<!-- 自定义公共js -->
-		<script type="text/javascript" src="js/frame/application.js"></script>
+		<script type="text/javascript" src="js/admin/application.js"></script>
 		
 		<!-- 本页自定义js -->
-		<script type="text/javascript" src="js/frame/index.js"></script>
+		<script type="text/javascript" src="js/admin/index.js"></script>
 		
 	<link rel="stylesheet" href="plugins/ztree/css/zTreeStyle/zTreeStyle.css" type="text/css">
 	<script type="text/javascript" src="plugins/ztree/js/jquery-1.4.4.min.js"></script>
@@ -36,7 +36,7 @@
 				},
 				async: {
 					enable: true,//开启异步加载
-					url:"frame/ajaxGetSysLeftMenuTreeChild.do",//设置异步获取节点的 URL 地址
+					url:"admin/ajaxGetSysLeftMenuTreeChild.do",//设置异步获取节点的 URL 地址
 					autoParam:["treeId"]//设置父节点数据需要自动提交的参数
 				},
 				callback: {
@@ -56,7 +56,7 @@
 			   		type: 'POST',  
 			   		dataType : "json",
 			   		async:false,
-			   		url: "frame/ajaxGetSysLeftMenuTreeRoot.do",//请求的action路径
+			   		url: "admin/ajaxGetSysLeftMenuTreeRoot.do",//请求的action路径
 			   		data: {"flag":true},  
 			   		error: function () {//请求失败处理函数  
 			       		alert('请求失败');  
@@ -89,8 +89,8 @@
 			{ 
 				name:"系统管理", open:true,
 				children: [
-					{ name:"用户管理", linkUrl: "frame/toUserList.do"},
-					{ name:"角色管理", linkUrl: "frame/toRoleList.do"}
+					{ name:"用户管理", linkUrl: "admin/toUserList.do"},
+					{ name:"角色管理", linkUrl: "admin/toRoleList.do"}
 				]
 			}
 		];
@@ -446,7 +446,7 @@
 				oncontextmenu="call(&javascript:;39;navRightMenu&javascript:;39;,this,event);">
 				<div id="navBarDiv">
 					<ul class="navbar fdul" id="navBarTd">
-						<li class="composepart fs" id="composebtn_td">
+						<!-- <li class="composepart fs" id="composebtn_td">
 							<a id="composebtn" accesskey="c" hidefocus="" href="javascript:;"
 								target="mainFrame">操作盘</a>
 							<input type="button" class="composebtn" disabled="">
@@ -455,7 +455,7 @@
 							<a accesskey="l" hidefocus="" href="javascript:;"
 								target="mainFrame">Tandaly</a>
 							<input type="button" class="addrbtn" disabled="">
-						</li>
+						</li> -->
 					</ul>
 				</div>
 				<div id="navMidBar" class="listbg listflow">

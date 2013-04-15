@@ -12,7 +12,7 @@
 		<meta http-equiv="pragma" content="no-cache">
 		<title>角色列表</title>
 		<!-- 自定义公共js -->
-		<script type="text/javascript" src="js/frame/application.js"></script>
+		<script type="text/javascript" src="js/admin/application.js"></script>
 		
 		<!-- bootstrap -->
 		<link href="plugins/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
@@ -32,7 +32,7 @@
 					ajax: 
 					{
 					  on: true,
-					  url: "frame/ajaxRoleList.do",
+					  url: "admin/ajaxRoleList.do",
 					  dataType: 'json',
 					  param:formData,
 					  ajaxStart:function(){
@@ -78,7 +78,7 @@
 				tr += "<td style='text-align:center;'>"+no+"</td>";
 				tr += "<td>"+obj.roleName+"</td>";
 				tr += "<td style=\"text-align: center;\" width=\"160px;\">"
-					+"<a href=\"frame/toUpdateUser.do?id="+obj.id+"\">修改</a>&nbsp;&nbsp;<a href=\"javascript:deleteUser("+obj.id+")\">删除</a>"
+					+"<a href=\"admin/toUpdateUser.do?id="+obj.id+"\">修改</a>&nbsp;&nbsp;<a href=\"javascript:deleteUser("+obj.id+")\">删除</a>"
 					+"</td>";
 				return tr;
 				
@@ -99,7 +99,7 @@
 				{
 					$.ajax({
 						type: "post",
-						url: "frame/deleteUser.do?id="+id,
+						url: "admin/deleteUser.do?id="+id,
 						success: function(data)
 						{
 							var result = data;
@@ -132,7 +132,7 @@
 			
 		<div class="toolbg toolbgline toolheight nowrap">
 			<div class="nowrap left">
-				<a class="btn_gray btn_space" href="frame/toAddUser.do">新增</a>
+				<a class="btn_gray btn_space" href="admin/toAddRole.do">新增</a>
 				<a class="btn_gray btn_space" href="javascript:;">修改</a>
 				<a class="btn_gray btn_space" href="javascript:;">删除</a>
 				<a class="btn_gray btn_space" href="javascript:void(0);" onclick="javascript:$(this).text($('#queryDiv').css('display') == 'none'?'隐藏查询':'显示查询');$('#queryDiv').toggle();">显示查询</a>
@@ -186,8 +186,8 @@
 			总数：${pages.totalCount }  响应时间: ${responseTime}ms <br /> 
 		</div>
 		<div>
-			<a href="frame/userList.do?pageNo=${pages.prePage}">上一页</a> 
-			<a href="frame/userList.do?pageNo=${pages.nextPage}">下一页</a>
+			<a href="admin/userList.do?pageNo=${pages.prePage}">上一页</a> 
+			<a href="admin/userList.do?pageNo=${pages.nextPage}">下一页</a>
 		</div> --%>
 	</div>
 	

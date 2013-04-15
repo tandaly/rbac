@@ -165,7 +165,7 @@ public class MenuConstroller extends BaseController{
 		MenuTreeBean menuTree = new MenuTreeBean();
 		menuTree.setTreeId("-1");
 		menuTree.setParentId(null);
-		menuTree.setName("根结点");
+		menuTree.setName("根结点root");
 		menuTree.setIsParent(true);
 		
 		menuTrees.add(menuTree);
