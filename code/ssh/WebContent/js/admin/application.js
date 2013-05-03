@@ -21,8 +21,10 @@ document.write(cssFile);
 //文件中导入js文件
 var jsFile = '<script type="text/javascript" src="js/admin/jquery.js"><\/script>';
 document.write(jsFile);
+/*
 var jsFile2 = '<script type="text/javascript" src="js/admin/backspace.js"><\/script>';
 document.write(jsFile2);
+*/
 var jsFile3 = '<script type="text/javascript" src="js/common/mask.tip.js"><\/script>';
 document.write(jsFile3);
 

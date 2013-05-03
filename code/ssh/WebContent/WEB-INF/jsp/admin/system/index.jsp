@@ -72,6 +72,31 @@
 			$(document).ready(function(){
 				initTree();
 			});
+			
+			/*显示和隐藏左导航页面*/
+			function switchPage(obj)
+			{
+				var value = $(obj).text();
+				if(value == "隐藏")
+				{
+					$(obj).text("显示");
+					$("#leftPanel").hide();	
+					$("#left_fdbody").hide();
+					$("#imgLine").hide();
+					$("#mainFrameContainer").css("left", "0px");
+					$(".topline").attr("style", "border-left:0px");
+				}
+				else
+				{
+					$(obj).text("隐藏");
+					$("#leftPanel").show();	
+					$("#left_fdbody").show();
+					$("#mainFrameContainer").css("left", "192px");
+					$(".topline").attr("style", "8px solid #fff");
+					$("#imgLine").show();
+				}
+				
+			}
 		</script>
 		
 		
@@ -327,7 +352,7 @@
 							<a href="javascript:chooseStyle('gray');">[灰色]</a>
 							<a href="javascript:chooseStyle('pink');">[粉色]</a>
 							-->
-							
+							<a href="javascript:;" onclick="switchPage(this);">隐藏</a>
 							<span class="addrtitle"> | </span>
 							<a
 							href="javascript:;"
@@ -441,7 +466,7 @@
 					style="margin: 0px 3px 0 4px;" align="absmiddle"></span> </a>
 			</div>
 
-			<div class="fdbody bodybgbt"></div>
+			<div id="left_fdbody" class="fdbody bodybgbt"></div>
 			<div class="newskinbody" id="leftPanel"
 				oncontextmenu="call(&javascript:;39;navRightMenu&javascript:;39;,this,event);">
 				<div id="navBarDiv">
@@ -700,7 +725,7 @@
 						<div class="dialog_operate">
 							<div class=" txt_right cnfx_btn">
 								<a class="btn_gray confirm wd2"
-									href="javascript:top.location.href='${pageContext.request.contextPath}/frame/logout.do';"
+									href="javascript:top.location.href='${pageContext.request.contextPath}/admin/logout.do';"
 									>确定</a><a class="btn_gray cancelwd2"
 									id="" style="display: ;"
 									href="javascript:;"

@@ -9,10 +9,10 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import com.frame.application.admin.modules.system.model.Menu;
-import com.frame.application.admin.modules.system.model.Privilege;
-import com.frame.application.admin.modules.system.model.Role;
-import com.frame.application.admin.modules.system.model.User;
+import com.frame.application.admin.modules.system.popedom.model.Menu;
+import com.frame.application.admin.modules.system.popedom.model.Privilege;
+import com.frame.application.admin.modules.system.popedom.model.Role;
+import com.frame.application.admin.modules.system.popedom.model.User;
 /**
  * 初始化数据库
  * @author Tandaly
@@ -40,6 +40,7 @@ public class InitDB {
 		
 		session.beginTransaction();
 		try {
+			String build = "admin/build.do";
 			/*********************1.初始化菜单表*****************/
 			/////////顶级菜单
 			//系统管理菜单
@@ -84,7 +85,7 @@ public class InitDB {
 			Menu mSysUser = new Menu();
 			mSysUser.setMenuNo("1001001");
 			mSysUser.setParentNo("1001");
-			mSysUser.setMenuUrl("admin/toUserList.do");
+			mSysUser.setMenuUrl("admin/system/popedom/user/toUserList.do");
 			mSysUser.setMenuName("用户管理");
 			mSysUser.setOrderNo(mSysUser.getMenuNo());
 			session.save(mSysUser);
@@ -93,7 +94,7 @@ public class InitDB {
 			Menu mSysRole = new Menu();
 			mSysRole.setMenuNo("1001002");
 			mSysRole.setParentNo("1001");
-			mSysRole.setMenuUrl("admin/toRoleList.do");
+			mSysRole.setMenuUrl("admin/system/popedom/role/toRoleList.do");
 			mSysRole.setMenuName("角色管理");
 			mSysRole.setOrderNo(mSysRole.getMenuNo());
 			session.save(mSysRole);
@@ -102,7 +103,7 @@ public class InitDB {
 			Menu mSysPrivilege = new Menu();
 			mSysPrivilege.setMenuNo("1001003");
 			mSysPrivilege.setParentNo("1001");
-			mSysPrivilege.setMenuUrl("admin/build.do");
+			mSysPrivilege.setMenuUrl(build);
 			mSysPrivilege.setMenuName("权限分配");
 			mSysPrivilege.setOrderNo(mSysPrivilege.getMenuNo());
 			session.save(mSysPrivilege);
@@ -111,7 +112,7 @@ public class InitDB {
 			Menu mSysMenu = new Menu();
 			mSysMenu.setMenuNo("1001004");
 			mSysMenu.setParentNo("1001");
-			mSysMenu.setMenuUrl("admin/toMenuFrame.do");
+			mSysMenu.setMenuUrl("admin/system/popedom/menu/toMenuFrame.do");
 			mSysMenu.setMenuName("菜单管理");
 			mSysMenu.setOrderNo(mSysMenu.getMenuNo());
 			session.save(mSysMenu);
@@ -120,7 +121,7 @@ public class InitDB {
 			Menu mSysDictionary = new Menu();
 			mSysDictionary.setMenuNo("1002001");
 			mSysDictionary.setParentNo("1002");
-			mSysDictionary.setMenuUrl("admin/build.do");
+			mSysDictionary.setMenuUrl(build);
 			mSysDictionary.setMenuName("字典维护");
 			mSysDictionary.setOrderNo(mSysDictionary.getMenuNo());
 			session.save(mSysDictionary);
@@ -129,7 +130,7 @@ public class InitDB {
 			Menu mSysAppParam = new Menu();
 			mSysAppParam.setMenuNo("1002002");
 			mSysAppParam.setParentNo("1002");
-			mSysAppParam.setMenuUrl("admin/build.do");
+			mSysAppParam.setMenuUrl(build);
 			mSysAppParam.setMenuName("全局参数表维护");
 			mSysAppParam.setOrderNo(mSysAppParam.getMenuNo());
 			session.save(mSysAppParam);
@@ -138,7 +139,7 @@ public class InitDB {
 			Menu mSysRquestMonitor = new Menu();
 			mSysRquestMonitor.setMenuNo("1003001");
 			mSysRquestMonitor.setParentNo("1003");
-			mSysRquestMonitor.setMenuUrl("admin/build.do");
+			mSysRquestMonitor.setMenuUrl(build);
 			mSysRquestMonitor.setMenuName("request请求");
 			mSysRquestMonitor.setOrderNo(mSysRquestMonitor.getMenuNo());
 			session.save(mSysRquestMonitor);
@@ -147,7 +148,7 @@ public class InitDB {
 			Menu mSysSessionMonitor = new Menu();
 			mSysSessionMonitor.setMenuNo("1003002");
 			mSysSessionMonitor.setParentNo("1003");
-			mSysSessionMonitor.setMenuUrl("admin/build.do");
+			mSysSessionMonitor.setMenuUrl(build);
 			mSysSessionMonitor.setMenuName("session会话");
 			mSysSessionMonitor.setOrderNo(mSysSessionMonitor.getMenuNo());
 			session.save(mSysSessionMonitor);
@@ -156,7 +157,7 @@ public class InitDB {
 			Menu mSysJDBCMonitor = new Menu();
 			mSysJDBCMonitor.setMenuNo("1003003");
 			mSysJDBCMonitor.setParentNo("1003");
-			mSysJDBCMonitor.setMenuUrl("admin/build.do");
+			mSysJDBCMonitor.setMenuUrl(build);
 			mSysJDBCMonitor.setMenuName("JDBC执行监控");
 			mSysJDBCMonitor.setOrderNo(mSysJDBCMonitor.getMenuNo());
 			session.save(mSysJDBCMonitor);
@@ -165,7 +166,7 @@ public class InitDB {
 			Menu mSysExceptionMonitor = new Menu();
 			mSysExceptionMonitor.setMenuNo("1003004");
 			mSysExceptionMonitor.setParentNo("1003");
-			mSysExceptionMonitor.setMenuUrl("admin/build.do");
+			mSysExceptionMonitor.setMenuUrl(build);
 			mSysExceptionMonitor.setMenuName("系统异常监控");
 			mSysExceptionMonitor.setOrderNo(mSysExceptionMonitor.getMenuNo());
 			session.save(mSysExceptionMonitor);
@@ -174,7 +175,7 @@ public class InitDB {
 			Menu mSysServerMonitor = new Menu();
 			mSysServerMonitor.setMenuNo("1003005");
 			mSysServerMonitor.setParentNo("1003");
-			mSysServerMonitor.setMenuUrl("admin/build.do");
+			mSysServerMonitor.setMenuUrl(build);
 			mSysServerMonitor.setMenuName("服务器信息监控");
 			mSysServerMonitor.setOrderNo(mSysServerMonitor.getMenuNo());
 			session.save(mSysServerMonitor);

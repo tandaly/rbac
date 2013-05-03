@@ -9,8 +9,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import com.frame.BaseTest;
-import com.frame.application.admin.modules.system.dao.MenuDao;
-import com.frame.application.admin.modules.system.model.Menu;
+import com.frame.application.admin.modules.system.popedom.dao.MenuDao;
+import com.frame.application.admin.modules.system.popedom.model.Menu;
 /**
  * 菜单dao测试
  * @author Tandaly

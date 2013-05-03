@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.frame.application.admin.modules.system.model.User;
+import com.frame.application.admin.modules.system.popedom.model.User;
 /**
  * 测试控制器
  * @author 

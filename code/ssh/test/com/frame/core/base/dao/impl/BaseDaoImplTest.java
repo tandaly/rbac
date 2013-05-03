@@ -7,8 +7,8 @@ import javax.annotation.Resource;
 import org.junit.Test;
 
 import com.frame.BaseTest;
-import com.frame.application.admin.modules.system.model.Role;
-import com.frame.application.admin.modules.system.model.User;
+import com.frame.application.admin.modules.system.popedom.model.Role;
+import com.frame.application.admin.modules.system.popedom.model.User;
 import com.frame.core.base.dao.BaseDao;
 
 public class BaseDaoImplTest extends BaseTest{

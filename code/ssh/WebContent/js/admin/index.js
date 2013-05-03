@@ -1,5 +1,7 @@
 //加载js
 app_checkloadjscssfile("js/admin/changeSkin.js", "js"); 
+//加载js
+app_checkloadjscssfile("js/admin/backspace.js", "js"); 
 
 /* 本页自定义css */
 app_checkloadjscssfile("css/admin/index.css", "css");
