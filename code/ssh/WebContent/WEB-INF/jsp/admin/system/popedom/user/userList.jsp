@@ -22,69 +22,36 @@
 		<!-- 分页控件 -->
 		<link href="plugins/page/css/page.css" rel="stylesheet" type="text/css" />
 		<script src="plugins/page/js/jquery.myPagination.js" type="text/javascript"></script>
+		<script type="text/javascript" src="js/common/page.js"></script>
 		
 		<script type="text/javascript">
-			var myPagination;
-			$(function(){
-				var formData = $("#queryForm").serialize(); //序列化表单
-		        formData = decodeURIComponent(formData, true);	//解码
-				myPagination = $("#pageDiv").myPagination({
-					ajax: 
-					{
-					  on: true,
-					  url: "admin/system/popedom/user/ajaxUserList.do",
-					  dataType: 'json',
-					  param:formData,
-					  ajaxStart:function(){
-						  //ZENG.msgbox.show(" 正在加载中，请稍后...", 6, 10000);
-						  $("#_queryMask").css("display", "block");
-						  $("#_queryTip").css("display", "block");
-					  },onClick:function(page){
-						  $.fn.debug(page);
-					  },
-					  callback:function(data){
-						 $("#_queryMask").css("display", "none");
-						 $("#_queryTip").css("display", "none");
-						//ZENG.msgbox.hide(); //隐藏加载提示
-						var result = data.result;
-						$.fn.debug(data.result);
-						var insetViewData = "";
-						
-						if(result.length == 0)
-						{
-							insetViewData = "<tr><td colspan='5' style='text-align:center;color:red;'>查询无记录</td></tr>";
-						}else
-						{
-							 $.each(result, function(i) {
-									insetViewData += createTR(i+1, result[i]);
-								 });	
-						}
-						
-						 
-						 $("#table > tbody").html(insetViewData);
-						 //$('#mytab > tbody > tr:even').addClass('a1'); //奇偶变色，添加样式 
-					  }
-					}
-				});
-		        
-				
-				
-			});
 			
-			function createTR(no, obj)
+			var url = "admin/system/popedom/user/ajaxUserList.do";
+			$(function(){
+				initPage(url, callback);
+			});
+		
+			function callback(result)
 			{
-				var tr = "<tr>";
-				tr += "<td><input type=\"checkbox\"></td>";
-				tr += "<td style='text-align:center;'>"+no+"</td>";
-				tr += "<td>"+obj.userName+"</td>";
-				tr += "<td>"+obj.password+"</td>";
-				tr += "<td>"+obj.registerDate+"</td>";
-				tr += "<td style=\"text-align: center;\" width=\"160px;\">"
-					+"<a href='' >授权</a> &nbsp;&nbsp;"
-					+"<a href=\"admin/system/popedom/user/toUpdateUser.do?id="+obj.id+"\">修改</a>&nbsp;&nbsp;<a href=\"javascript:deleteUser("+obj.id+")\">删除</a>"
-					+"</td>";
-				return tr;
+				var tableDataHtml = "";
+				 $.each(result, function(i) {
+						//insetViewData += createTR(i+1, result[i]);
+					var no = i + 1;
+					var obj = result[i];
+					var tr = "<tr>";
+						tr += "<td><input type=\"checkbox\"></td>";
+						tr += "<td style='text-align:center;'>"+no+"</td>";
+						tr += "<td>"+obj.userName+"</td>";
+						tr += "<td>"+obj.password+"</td>";
+						tr += "<td>"+obj.registerDate+"</td>";
+						tr += "<td style=\"text-align: center;\" width=\"160px;\">"
+							+"<a href='' >授权</a> &nbsp;&nbsp;"
+							+"<a href=\"admin/system/popedom/user/toUpdateUser.do?id="+obj.id+"\">修改</a>&nbsp;&nbsp;<a href=\"javascript:deleteUser("+obj.id+")\">删除</a>"
+							+"</td>";
+					tableDataHtml += tr;
+				});	
 				
+				return tableDataHtml;
 			}
 			
 			function queryFrom(){
@@ -154,7 +121,7 @@
 				</form>
 			</div>
 		</div>
-		<table id="table" class="table table-striped table-bordered table-condensed" 
+		<table id="tablePage" class="table table-striped table-bordered table-condensed" 
 		style="table-layout: fixed; width: 100%; * width: auto;margin-bottom: 2px;">
 			<thead>
 				<tr >
@@ -197,13 +164,6 @@
 			<a href="admin/userList.do?pageNo=${pages.nextPage}">下一页</a>
 		</div> --%>
 	</div>
-	
-	<!-- 遮罩层 -->
-	<div id="_queryMask" class="editor_mask opa50Mask "
-		style="z-index: 98; display: none;" tabindex="0">
-			
-	</div>
-	<div id="_queryTip"  style="position: absolute;z-index: 1120;cursor: wait;left: 382px;top: 154px;width: auto;height: 16px;padding: 12px 5px 10px 30px;background: #fff no-repeat scroll 5px 10px;border: 2px solid #6593CF;color: #222;display: none;font-size:12px;">正在查询，请稍候！</div>
 	
 	
 	
